@@ -1,0 +1,27 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import '../dist/main.css'
+
+<Meta title='Getting Started|Introduction' component={null} />
+
+# Introduction
+
+This repository contains Metrisk's React components.
+
+### Requirements: 
+- [Node.js](https://nodejs.org/) v9+
+- [React.js](https://reactjs.org/) v16+
+
+### Basic Usage:
+Install:
+```sh
+$ npm i react_metrisk-components
+```
+
+Import the desired components into your .jsx or .tsx files. Including the CSS is optional - the styles fit our own branding so may not be suitable for all work. For the CSS import to work, your library consumer will need a way of handling CSS imports (webpack css-loader for example):
+
+```js
+import { Button } from 'metrisk-components'
+import 'metrisk-components/dist/main.css' // Optional - only include if workng on Metrisk branded products
+
+ReactDOM.render(<Button />, document.getElementById('app'))
+```

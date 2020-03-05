@@ -1,0 +1,47 @@
+/// ----------------------------------------------------------------------
+
+/// Select
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Select swatches
+/// -------------------
+
+$select-pad: get-prop($spacing, 'md');
+
+/// -------------------
+/// Select selectors
+/// -------------------
+
+.select {
+  display: inline-block;
+  position: relative;
+}
+
+.select__input {
+  @include flow-component;
+  @include interactive-component;
+  display: block;
+  border: none;
+  padding-left: $select-pad;
+  padding-right: $select-pad * 2.5;
+  border-radius: get-prop($border-radii, 'base');
+  background-color: get-prop($colours, 'ui', 'one');
+  appearance: none;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+.select__icn {
+  position: absolute;
+  right: $select-pad;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

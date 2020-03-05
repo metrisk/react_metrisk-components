@@ -1,0 +1,41 @@
+import { useState } from 'react'
+import { MemoryRouter } from 'react-router-dom'
+import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Input } from '.'
+
+<Meta title='Components|Input' component={Input} />
+
+# Input
+A simple Input to allow users to carry out an action. This is a controlled component so a `value` and an `onChange` prop must be passed.
+
+## Base
+For use as a main call to action.
+
+<Preview>
+  <Story name='Primary'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Input name={'name'} value={value} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## Number
+For use as a main call to action.
+
+<Preview>
+  <Story name='Number'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Input name={'name'} type={'number'} value={value} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## Prop Types
+
+<Props of={Input} />

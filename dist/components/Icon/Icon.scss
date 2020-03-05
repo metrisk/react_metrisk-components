@@ -1,0 +1,80 @@
+/// ----------------------------------------------------------------------
+
+/// Icon
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Icon swatches
+/// -------------------
+
+$icon-types: (
+  'xs': (
+    width: 0.5rem,
+    height: 0.5rem,
+  ),
+  'sm': (
+    width: 0.75rem,
+    height: 0.75rem,
+  ),
+  'lg': (
+    width: 1.5rem,
+    height: 1.5rem,
+  ),
+);
+
+$icon-colours: (
+  'dark': (
+    fill: get-prop($colours, 'ui', 'five')
+  ),
+  'light': (
+    fill: white
+  ),
+  'success': (
+    fill: get-prop($colours, 'state', 'success')
+  ),
+  'warning': (
+    fill: get-prop($colours, 'state', 'warning')
+  ),
+  'error': (
+    fill: get-prop($colours, 'state', 'error')
+  ),
+);
+
+/// -------------------
+/// Icon selectors
+/// -------------------
+
+.icn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1rem;
+  height: 1rem;
+
+  @each $type in $icon-types {
+    $type-name: nth($type, 1);
+    
+    &--#{$type-name} {
+      @include apply-props(get-prop($icon-types, $type-name));
+    }
+  }
+}
+
+svg {
+  pointer-events: none;
+  vertical-align: top;
+  
+  & > path, 
+  & > circle, 
+  & > polygon {
+    @each $colour in $icon-colours {
+      $colour-name: nth($colour, 1);
+      
+      .icn--#{$colour-name} & {
+        @include apply-props(get-prop($icon-colours, $colour-name));
+      }
+    }
+  }
+}

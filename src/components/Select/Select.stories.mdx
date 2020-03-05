@@ -1,0 +1,41 @@
+import { useState } from 'react'
+import { MemoryRouter } from 'react-router-dom'
+import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Select } from '.'
+
+<Meta title='Components|Select' component={Select} />
+
+# Select
+A simple Select to allow users to carry out an action.
+
+## Base
+For use as a main call to action.
+
+<Preview>
+  <Story name='Primary'>
+    {() => {
+      const [value, setValue] = useState(null)
+      return (
+        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## Optional
+Optional selects allow you to reselect `null`.
+
+<Preview>
+  <Story name='Optional'>
+    {() => {
+      const [value, setValue] = useState(null)
+      return (
+        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} optional onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## Prop Types
+
+<Props of={Select} />

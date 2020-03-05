@@ -1,0 +1,121 @@
+/// ----------------------------------------------------------------------
+
+/// Buttons
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Button config
+/// -------------------
+
+@keyframes cycle {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -400%;
+  }
+}
+
+$btn-pad: get-prop($spacing, 'md');
+$btn-border-width: 2px;
+$btn-types: (
+  'primary': (
+    background-image: get-prop($gradients, 'one'),
+    background-size: 200%,
+      
+    'hover': (
+      animation: cycle get-prop($animation, 'infinite')
+    )
+  ),
+  'secondary': (
+    background-image: get-prop($gradients, 'one'),
+    background-size: 200%,
+    
+    'hover': (
+      animation: cycle get-prop($animation, 'infinite')
+    ),
+      
+    'before': (
+      content: '',
+      display: block,
+      position: absolute,
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      background-color: white,
+      z-index: get-prop($z-index, 'back'),
+    )
+  ),
+  'tertiary': (
+    padding-left: 0,
+    padding-right: 0,
+    
+    'hover': (
+      box-shadow: none
+    )
+  ),
+  'action': (
+    background-color: white,
+    box-shadow: get-prop($shadows, 'two'),
+    width: $flow-height,
+    height: $flow-height,
+    text-align: center,
+    border-radius: get-prop($border-radii, 'rounded'),
+    overflow: hidden,
+    color: transparent, // Hide the text but we still want it there for accessibility
+
+    'focus': (
+      outline: none
+    )
+  )
+);
+
+/// -------------------
+/// Button selectors 
+/// -------------------
+
+.btn {
+  @include flow-component;
+  @include interactive-component;
+  position: relative;
+  width: auto;
+  border-color: transparent;
+  border-radius: get-prop($border-radii, 'base');
+  padding-left: $btn-pad;
+  padding-right: $btn-pad;
+  color: get-prop($colours, 'ui', 'five');
+  font-family: $font-family--alt;
+  font-weight: $font-bold;
+  letter-spacing: .5px;
+  text-decoration: none;
+  z-index: get-prop($z-index, 'default');
+
+  @each $type in $btn-types {
+    $type-name: nth($type, 1);
+    
+    &--#{$type-name} {
+      @include apply-props(get-prop($btn-types, $type-name));
+    }
+  }
+}
+
+.btn__icn {
+  &--l {
+    margin-right: get-prop($spacing, 'sm');
+  }
+  
+  &--r {
+    margin-left: get-prop($spacing, 'sm');
+  }
+
+  &--c {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

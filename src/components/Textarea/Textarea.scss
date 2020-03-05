@@ -1,0 +1,34 @@
+/// ----------------------------------------------------------------------
+
+/// Textarea
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Textarea swatches
+/// -------------------
+
+$input-pad: get-prop($spacing, 'md');
+
+/// -------------------
+/// Textarea selectors
+/// -------------------
+
+.textarea {
+  @include flow-component;
+  @include interactive-component;
+  display: block;
+  border: none;
+  padding-left: $input-pad;
+  padding-right: $input-pad;
+  border-radius: get-prop($border-radii, 'base');
+  background-color: get-prop($colours, 'ui', 'one');
+  cursor: text;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}

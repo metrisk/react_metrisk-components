@@ -1,0 +1,40 @@
+/// ----------------------------------------------------------------------
+
+/// Colours
+
+/// ----------------------------------------------------------------------
+
+/// -------------------
+/// Global palette
+/// -------------------
+
+$colours: (
+  brand: (
+    'one':  #D7DF23, // rgb(215, 223, 35)
+    'two':  #00A14B, // rgb(0, 162, 75)
+  ),
+  ui: (
+    'one':     #F8F8F8, // rgb(248, 248, 248)
+    'two':     #F0F0F0, // rgb(240, 240, 240)
+    'three':   #8D8D8D, // rgb(141, 141, 141)
+    'four':    #434343, // rgb(67, 67, 67)
+    'five':    #222222, // rgb(34, 34, 34)
+  ),
+  state: (
+    'success':    #39B54A, // rgb(57, 181, 74)
+    'warning':    #FFDD00, // rgb(255, 221, 0)
+    'error':      #F13343, // rgb(241, 51, 67)
+    'info':       #D878EC, // rgb(216, 120, 236)
+    'muted':      #b0d1e4, // rgb(176, 209, 228)
+  ),
+);
+
+/// -------------------
+/// Gradients
+/// -------------------
+
+$gradients: (
+  one: linear-gradient(90deg, #ADDF23, get-prop($colours, 'brand', 'one'), #ADDF23),
+  two: linear-gradient(90deg, #00A14B, get-prop($colours, 'brand', 'two'), #00A14B),
+  three: linear-gradient(0deg, #FFF, rgba(255, 255, 255, 0)),
+);

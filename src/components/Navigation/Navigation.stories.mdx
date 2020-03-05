@@ -1,0 +1,149 @@
+import { MemoryRouter } from 'react-router-dom'
+import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Navigation } from '.'
+
+<Meta title='Components|Navigation' component={Navigation} />
+
+# Navigation
+
+A simple navigation with nested items.
+
+## Base
+For use within a header.
+
+<Preview>
+  <Story name='Base'>
+    <MemoryRouter>
+      <Navigation links={[
+        {
+          href: '/',
+          text: 'Home'
+        },
+        {
+          href: '/about',
+          text: 'About'
+        },
+        {
+          text: 'Mammals',
+          children: [
+            {
+              href: '/mammals/cats',
+              text: 'Cats'
+            },
+            {
+              text: 'Dogs',
+              children: [
+                {
+                  href: '/mammals/dogs/labrador',
+                  text: 'Labrador'
+                },
+                {
+                  href: '/mammals/dogs/terrier',
+                  text: 'Terrier'
+                }
+              ]
+            },
+            {
+              text: 'Horses',
+              children: [
+                {
+                  href: '/mammals/horses/thoroughbred',
+                  text: 'Thoroughbred'
+                },
+                {
+                  href: '/mammals/horses/arabian',
+                  text: 'Arabian'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          text: 'Reptiles',
+          children: [
+            {
+              href: '/reptiles/iguana',
+              text: 'Iguana'
+            },
+            {
+              href: '/reptiles/gecko',
+              text: 'Gecko'
+            }
+          ]
+        },
+      ]} />
+    </MemoryRouter>
+  </Story>
+</Preview>
+
+## Vertical
+For use within a sidebar.
+
+<Preview>
+  <Story name='Vertical'>
+    <MemoryRouter>
+      <Navigation type={'Vertical'} links={[
+        {
+          href: '/',
+          text: 'Home'
+        },
+        {
+          href: '/about',
+          text: 'About'
+        },
+        {
+          text: 'Mammals',
+          children: [
+            {
+              href: '/mammals/cats',
+              text: 'Cats'
+            },
+            {
+              text: 'Dogs',
+              children: [
+                {
+                  href: '/mammals/dogs/labrador',
+                  text: 'Labrador'
+                },
+                {
+                  href: '/mammals/dogs/terrier',
+                  text: 'Terrier'
+                },
+              ]
+            },
+            {
+              text: 'Horses',
+              children: [
+                {
+                  href: '/mammals/horses/thoroughbred',
+                  text: 'Thoroughbred'
+                },
+                {
+                  href: '/mammals/horses/arabian',
+                  text: 'Arabian'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          text: 'Reptiles',
+          children: [
+            {
+              href: '/reptiles/iguana',
+              text: 'Iguana'
+            },
+            {
+              href: '/reptiles/gecko',
+              text: 'Gecko'
+            }
+          ]
+        },
+      ]} />
+    </MemoryRouter>
+  </Story>
+</Preview>
+
+## Prop Types
+
+<Props of={Navigation} />

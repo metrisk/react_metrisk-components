@@ -1,0 +1,26 @@
+import { MemoryRouter } from 'react-router-dom'
+import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Text } from '../Text'
+import { Link } from '.'
+
+<Meta title='Components|Link' component={Link} />
+
+# Link
+An inline hyperlink using React Router.
+ 
+## Base
+For use within paragraphs or other instances where a button would not be visually appropriate.
+
+<Preview>
+  <Story name='Base'>
+    <MemoryRouter>
+      <Text>
+        Lorem ipsum <Link href={'#'}>dolor</Link> sit amet
+      </Text>
+    </MemoryRouter>
+  </Story>
+</Preview>
+
+## Prop Types
+
+<Props of={Link} />

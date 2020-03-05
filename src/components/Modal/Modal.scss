@@ -1,0 +1,113 @@
+/// ----------------------------------------------------------------------
+
+/// Modal
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Modal config
+/// -------------------
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/// -------------------
+/// Modal swatches
+/// -------------------
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(white, 0.8);
+  z-index: get-prop($z-index, 'top');
+}
+
+/// -------------------
+/// Modal swatches
+/// -------------------
+
+.modal__dialog {
+  max-width: 800px;
+  width: 100%;
+  background-color: white;
+  box-shadow: get-prop($shadows, 'one');
+  animation: fadeInTop 0.3s ease forwards;
+  border-radius: get-prop($border-radii, 'base');
+}
+
+/// -------------------
+/// Modal swatches
+/// -------------------
+
+.modal__close {
+  position: absolute;
+  right: get-prop($spacing, 'md');
+  top: get-prop($spacing, 'md');
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  opacity: 0.5;
+  transition: opacity get-prop($transition, 'ease');
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/// -------------------
+/// Modal swatches
+/// -------------------
+
+.modal__header {
+  border-bottom: get-prop($borders, 'four');
+  padding: get-prop($spacing, 'md');
+}
+
+/// -------------------
+/// Modal swatches
+/// -------------------
+
+.modal__body {
+  padding: get-prop($spacing, 'md');
+}
+
+/// -------------------
+/// Modal swatches
+/// -------------------
+
+.modal__footer {
+  padding: get-prop($spacing, 'md');
+  display: flex;
+  justify-content: space-between;
+}

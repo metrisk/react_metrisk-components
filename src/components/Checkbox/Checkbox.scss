@@ -1,0 +1,64 @@
+/// ----------------------------------------------------------------------
+
+/// Checkbox
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Checkbox swatches
+/// -------------------
+
+$checkbox-size: 1.5rem;
+
+/// -------------------
+/// Checkbox selectors
+/// -------------------
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: get-prop($colours, 'ui', 'two');
+  border-radius: get-prop($border-radii, 'base');
+  height: $checkbox-size;
+  width: $checkbox-size;
+  box-sizing: border-box;
+  transition: background-color get-prop($transition, 'linear');
+  cursor: pointer;
+
+  &:focus-within {
+    border: solid 2px get-prop($colours, 'brand', 'two');
+  }
+
+  &--checked {
+    background-color: get-prop($colours, 'ui', 'four');
+  }
+}
+
+/// -------------------
+/// Hide default input
+/// -------------------
+
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/// -------------------
+/// Checkbox icon
+/// -------------------
+
+.checkbox__icn {
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .checkbox--checked > & {
+    display: block;
+  }
+}

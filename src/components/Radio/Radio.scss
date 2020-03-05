@@ -1,0 +1,68 @@
+/// ----------------------------------------------------------------------
+
+/// Checkbox
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Checkbox swatches
+/// -------------------
+
+$radio-size: 1.5rem;
+
+/// -------------------
+/// Checkbox selectors
+/// -------------------
+
+.radio {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: get-prop($colours, 'ui', 'two');
+  border-radius: get-prop($border-radii, 'rounded');
+  height: $radio-size;
+  width: $radio-size;
+  box-sizing: border-box;
+  transition: background-color get-prop($transition, 'linear');
+  cursor: pointer;
+
+  &:focus-within {
+    border: solid 2px get-prop($colours, 'brand', 'two');
+  }
+
+  &--checked {
+    background-color: get-prop($colours, 'ui', 'four');
+  }
+}
+
+/// -------------------
+/// Hide default input
+/// -------------------
+
+.radio__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/// -------------------
+/// Checkbox icon
+/// -------------------
+
+.radio__icn {
+  position: absolute;
+  display: none;
+  width: $radio-size * 0.5;
+  height: $radio-size * 0.5;
+  top: 50%;
+  left: 50%;
+  border-radius: get-prop($border-radii, 'rounded');
+  background-color: white;
+  transform: translate(-50%, -50%);
+
+  .radio--checked > & {
+    display: block;
+  }
+}

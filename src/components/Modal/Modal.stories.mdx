@@ -1,0 +1,77 @@
+import { Fragment, useContext, useState } from 'react'
+import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { ModalContext, ModalProvider, Modal } from '.'
+import { Text } from '../Text'
+import { Button } from '../Button'
+
+<Meta title='Components|Modal' component={Modal} />
+
+# Modal
+An inline hyperlink using React Router.
+ 
+## Base
+For use within paragraphs or other instances where a button would not be visually appropriate.
+
+<Preview>
+  <Story name='Base'>
+    {() => {
+      const App = () => {
+        const { open, setOpen } = useContext(ModalContext)
+        return (
+          <Fragment>
+            <Button type={'Primary'} onClick={() => setOpen(true)}>Open Modal</Button>
+            {open && (
+              <Modal header={{ heading: 'Heading', subheading: 'Subheading'}}>
+                <Text>Lorem ipsum</Text>
+              </Modal>
+            )}
+          </Fragment>
+        )
+      }
+      return (
+        <ModalProvider>
+          <App />
+        </ModalProvider>
+      )
+    }}
+  </Story>
+</Preview>
+
+## Actions
+For use within paragraphs or other instances where a button would not be visually appropriate.
+
+<Preview>
+  <Story name='Actions'>
+    {() => {
+      const App = () => {
+        const { open, setOpen } = useContext(ModalContext)
+        return ( 
+          <Fragment>
+            <Button type={'Primary'} onClick={() => setOpen(true)}>Open Modal</Button>
+            {open && (
+              <Modal 
+                header={{ heading: 'Heading', subheading: 'Subheading'}} 
+                footer={{ 
+                  actions: [
+                    <Button key={'btn-close'} type={'Tertiary'} onClick={() => setOpen(false)}>Close</Button>,
+                    <Button key={'btn-ok'} type={'Primary'} onClick={() => setOpen(false)}>OK</Button>,
+                  ]
+                }}>
+                <Text>Lorem ipsum</Text>
+              </Modal>
+            )}
+          </Fragment>
+        )
+      }
+      return (
+        <ModalProvider>
+          <App />
+        </ModalProvider>
+      )
+    }}
+  </Story>
+</Preview>
+
+## Prop Types
+
+<Props of={Modal} />
