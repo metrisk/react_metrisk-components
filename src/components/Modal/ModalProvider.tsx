@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Fragment, useRef, useState, useEffect } from 'react'
 
 // Context
-import { ModalContext } from './index'
+import { ModalContext } from '.'
 
 const ModalProvider = ({ children }: any) => {
   const modalRef = useRef()
@@ -15,7 +15,7 @@ const ModalProvider = ({ children }: any) => {
 
   return (
     <Fragment>
-      <ModalContext.Provider value={{ ref, open, setOpen }}>{children}</ModalContext.Provider>
+      <ModalContext.Provider value={{ open, setOpen }}>{children}</ModalContext.Provider>
       <div ref={modalRef} />
     </Fragment>
   )

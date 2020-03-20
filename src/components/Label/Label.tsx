@@ -5,8 +5,10 @@ import ILabel from './types'
 // Styles
 import './Label.scss'
 
-const Label = ({ className, name, value, children }: any) => (
-  <label className={cx(className, 'label')}>{children}</label>
+const Label = ({ className, for: htmlFor, children }: any) => (
+  <label className={cx(className, 'label')} htmlFor={htmlFor}>
+    {children}
+  </label>
 )
 
 export default Label

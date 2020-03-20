@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
 import { Field } from '.'
@@ -12,7 +13,111 @@ For use as a main call to action.
 
 <Preview>
   <Story name='Primary'>
-    <Field label={'Name'} />
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Field label={'Name'} id={'name'} type={'text'} value={value} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## Custom Label
+You can pass a component to the label prop.
+
+<Preview>
+  <Story name='Label'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Field label={<div>Custom label!</div>} id={'name'} type={'text'} value={value} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## Select
+For use as a main call to action.
+
+<Preview>
+  <Story name='Select'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Field label={'Age'} id={'age'} type={'select'} value={value} options={[{ value: 'option', label: 'Option' }]} searchable onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## Checkbox
+For use as a main call to action.
+
+<Preview>
+  <Story name='Checkbox'>
+    {() => {
+      const [value, setValue] = useState(false)
+      return (
+        <Field label={'Checkbox'} id={'checkbox'} type={'checkbox'} value={value} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## Radio
+For use as a main call to action.
+
+<Preview>
+  <Story name='Radio'>
+    {() => {
+      const [value, setValue] = useState(false)
+      return (
+        <Field label={'Radio'} id={'radio'} type={'radio'} value={value} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## Custom
+You can also pass a component to the `type` prop.
+
+<Preview>
+  <Story name='Custom'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Field label={'Custom'} id={'custom'} type={<p className={'p'}>I am a custom field!</p>} value={value} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## States
+Field states. Type to see the state change.
+
+<Preview>
+  <Story name='States-Error'>
+    {() => {
+      const [value, setValue] = useState('')
+      const [state, setState] = useState(null)
+      const [msg, setMsg] = useState(null)
+      const handleChange = (value) => {
+        setValue(value)
+        if (value.length === 0) {
+          setState('Error')
+          setMsg('Please enter a value')
+        } else if (value.length > 0 && value.length < 3) {
+          setState('Warning')
+          setMsg('Please enter a longer value')
+        } else {
+          setState('Success')
+          setMsg('Hoorah!')
+        }
+      }
+      return (
+        <Field label={'Name'} id={'name'} type={'text'} value={value} state={state} msg={msg} onChange={handleChange} />
+      )
+    }}
   </Story>
 </Preview>
 

@@ -3,11 +3,13 @@ declare namespace IButton {
     className?: string
     href?: string
     type: 'Primary' | 'Secondary' | 'Tertiary' | 'Action'
+    size?: 'Small'
     icon?: {
       name: string
       position?: 'Left' | 'Right' | 'Center'
     }
     submit?: boolean
+    disabled?: boolean
     children: any
     onClick?: (e: React.SyntheticEvent) => void
   }

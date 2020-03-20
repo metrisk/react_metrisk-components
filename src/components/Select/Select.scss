@@ -11,6 +11,7 @@
 /// -------------------
 
 $select-pad: get-prop($spacing, 'md');
+$select-bg-colour: get-prop($colours, 'ui', 'one');
 
 /// -------------------
 /// Select selectors
@@ -19,22 +20,66 @@ $select-pad: get-prop($spacing, 'md');
 .select {
   display: inline-block;
   position: relative;
+
+  &:focus-within {
+    outline: none;
+  }
+  
+  .label + & {
+    margin-left: get-prop($spacing, 'md');
+  }
 }
 
 .select__input {
   @include flow-component;
-  @include interactive-component;
   display: block;
   border: none;
+  font-size: $base-font-size;
+  font-family: $font-family;
   padding-left: $select-pad;
   padding-right: $select-pad * 2.5;
   border-radius: get-prop($border-radii, 'base');
-  background-color: get-prop($colours, 'ui', 'one');
+  background-color: $select-bg-colour;
   appearance: none;
 
+  &--error {
+    border-bottom: solid 2px get-prop($colours, 'state', 'error');
+  }
+  &--warning {
+    border-bottom: solid 2px get-prop($colours, 'state', 'warning');
+  }
+  &--success {
+    border-bottom: solid 2px get-prop($colours, 'state', 'success');
+  }
+
   &:active,
-  &:focus {
+  &:focus,
+  &:focus-within {
     outline: none;
+  }
+}
+
+.select__options {
+  @include reset-list;
+  display: block;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background-color: $select-bg-colour;
+  border-radius: get-prop($border-radii, 'base');
+  max-height: 250px;
+  overflow: scroll;
+  z-index: get-prop($z-index, 'top') - 1;
+}
+
+.select__option {
+  font-size: $base-font-size;
+  font-family: $font-family;
+  padding: get-prop($spacing, 'sm');
+  cursor: pointer;
+  
+  &:hover {
+    background-color: get-prop($colours, 'ui', 'two')
   }
 }
 

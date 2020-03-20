@@ -36,6 +36,42 @@ For use as a main call to action.
   </Story>
 </Preview>
 
+## States
+For use as a main call to action.
+
+<Preview>
+  <Story name='States-Error'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Input name={'name'} value={value} state={'Error'} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name='States-Warning'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Input name={'name'} value={value} state={'Warning'} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name='States-Success'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Input name={'name'} value={value} state={'Success'} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
 ## Prop Types
 
 <Props of={Input} />

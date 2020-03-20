@@ -18,8 +18,9 @@ $input-pad: get-prop($spacing, 'md');
 
 .input {
   @include flow-component;
-  @include interactive-component;
   border: none;
+  font-size: $base-font-size;
+  font-family: $font-family;
   padding-left: $input-pad;
   padding-right: $input-pad;
   border-radius: get-prop($border-radii, 'base');
@@ -31,7 +32,22 @@ $input-pad: get-prop($spacing, 'md');
     outline: none;
   }
 
+  &--error {
+    border-bottom: solid 2px get-prop($colours, 'state', 'error');
+  }
+  &--warning {
+    border-bottom: solid 2px get-prop($colours, 'state', 'warning');
+  }
+  &--success {
+    border-bottom: solid 2px get-prop($colours, 'state', 'success');
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
   .label + & {
-    margin-left: $input-pad;
+    margin-left: get-prop($spacing, 'md');
   }
 }

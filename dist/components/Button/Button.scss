@@ -101,6 +101,16 @@ $btn-types: (
       @include apply-props(get-prop($btn-types, $type-name));
     }
   }
+
+  &--sm {
+    padding-top: $btn-pad / 4;
+    padding-bottom: $btn-pad / 4;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.8;
+  }
 }
 
 .btn__icn {

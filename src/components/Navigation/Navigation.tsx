@@ -17,11 +17,12 @@ import { NavigationList, NavigationItem, NavigationLink } from '.'
 /**
  * A  navigation that supports two nested levels
  */
-const Navigation = ({ className, links, type, children }: INavigation.IProps) => {
+const Navigation = ({ className, links, type = 'Horizontal', inverse, children }: any) => {
   const [nodes, setNodes]: any = useState({})
 
   const navClasses: INavigation.IClasses = {
-    Vertical: 'nav--v'
+    Horizontal: 'nav--horizontal',
+    Vertical: 'nav--vertical',
   }
 
   /**
@@ -41,16 +42,16 @@ const Navigation = ({ className, links, type, children }: INavigation.IProps) =>
   const renderList = (items: any, state: any, depth: number) => (
     <NavigationList type={type} depth={depth}>
       {items.map((x: any) => (
-        <NavigationItem key={`li-${x.text}`} type={type}>
+        <NavigationItem key={`li-${x.text}`} >
           {x.children ? (
             <Fragment>
-              <NavigationLink type={type} onClick={() => handleClick(x.text)}>
+              <NavigationLink {...x} onClick={() => handleClick(x.text)}>
                 {x.text}
               </NavigationLink>
-              {state[x.text] && state[x.text].open && renderList(x.children, state[x.text], state[x.text].depth)}
+              {state[x.text]?.open && renderList(x.children, state[x.text], state[x.text].depth)}
             </Fragment>
           ) : (
-            <NavigationLink type={type} href={x.href} icon={x.icon}>
+            <NavigationLink {...x}>
               {x.text}
             </NavigationLink>
           )}
@@ -68,7 +69,7 @@ const Navigation = ({ className, links, type, children }: INavigation.IProps) =>
   }, [])
 
   return (
-    <nav className={cx(className, 'nav', navClasses[type])}>
+    <nav className={cx(className, 'nav', navClasses[type], { 'nav--inverse': inverse })}>
       {renderList(links, nodes, 0)}
       {children}
     </nav>

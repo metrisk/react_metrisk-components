@@ -8,8 +8,8 @@
 /// Components
 /// -------------------
 
-$flow-height: 3rem;
-$flow-border-width: 2px;
+$flow-height: 3rem !default;
+$flow-border-width: 2px !default;
 
 @mixin flow-component {
   $padding: height-to-pad($flow-height, $flow-border-width, $base-line-height, $base-font-size);

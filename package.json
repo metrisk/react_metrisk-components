@@ -10,7 +10,7 @@
     "scaffold:stateful": "ts-node --files index.ts scaffold --name=$NAME --type=stateful",
     "test": "npm run test:unit",
     "test:unit": "ts-mocha -r tsconfig-paths/register src/**/*.test.t{s,sx}",
-    "build": "npm run test && ts-node --files index.ts init --mode=prod && build-storybook --docs",
+    "build": "npm run test && ts-node --files index.ts init --mode=prod && build-storybook --docs --output-dir ./docs",
     "build:components": "ts-node --files index.ts init --mode=prod",
     "clean": "rm package-lock.json && rm -rf node_modules && npm i"
   },

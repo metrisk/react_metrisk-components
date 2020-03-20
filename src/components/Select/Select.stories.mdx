@@ -36,6 +36,56 @@ Optional selects allow you to reselect `null`.
   </Story>
 </Preview>
 
+## Searchable
+Optional selects allow you to reselect `null`.
+
+<Preview>
+  <Story name='Searchable'>
+    {() => {
+      const [value, setValue] = useState(null)
+      return (
+        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} optional searchable onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+## States
+Optional selects allow you to reselect `null`.
+
+<Preview>
+  <Story name='States-Error'>
+    {() => {
+      const [value, setValue] = useState(null)
+      return (
+        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} state={'Error'} optional onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name='States-Warning'>
+    {() => {
+      const [value, setValue] = useState(null)
+      return (
+        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} state={'Warning'} optional onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name='States-Success'>
+    {() => {
+      const [value, setValue] = useState(null)
+      return (
+        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} state={'Success'} optional searchable onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
 ## Prop Types
 
 <Props of={Select} />

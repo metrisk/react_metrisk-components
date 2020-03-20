@@ -1,0 +1,72 @@
+/// ----------------------------------------------------------------------
+
+/// Select
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Select swatches
+/// -------------------
+
+$select-pad: get-prop($spacing, 'md');
+$select-bg-colour: get-prop($colours, 'ui', 'one');
+
+/// -------------------
+/// Select selectors
+/// -------------------
+
+.search-select {
+  display: inline-block;
+  position: relative;
+}
+
+.search-select__input {
+  @include flow-component;
+  display: block;
+  border: none;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  padding-left: $select-pad;
+  padding-right: $select-pad * 2.5;
+  border-radius: get-prop($border-radii, 'base');
+  background-color: $select-bg-colour;
+  appearance: none;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+.search-select__options {
+  display: block;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background-color: $select-bg-colour;
+  border-radius: get-prop($border-radii, 'base');
+  max-height: 250px;
+  overflow: scroll;
+  z-index: get-prop($z-index, 'top') - 1;
+}
+
+.search-select__option {
+  font-size: $base-font-size;
+  font-family: $font-family;
+  padding: get-prop($spacing, 'sm');
+  cursor: pointer;
+  
+  &:hover {
+    background-color: get-prop($colours, 'ui', 'two')
+  }
+}
+
+.search-select__icn {
+  position: absolute;
+  right: $select-pad;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

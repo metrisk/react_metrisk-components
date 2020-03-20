@@ -1,4 +1,4 @@
 /// <reference types="react" />
 import './Input.scss';
-declare const Input: ({ className, name, type, value, onChange }: any) => JSX.Element;
+declare const Input: ({ className, id, type, value, state, disabled, onChange }: any) => JSX.Element;
 export default Input;

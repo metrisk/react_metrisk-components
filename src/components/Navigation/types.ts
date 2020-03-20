@@ -3,35 +3,24 @@ declare namespace Navigation {
     className?: string
     links: any
     type?: 'Horizontal' | 'Vertical'
+    inverse?: boolean
     children?: any
   }
 
   interface IClasses {
-    [key: string]: 'nav--v'
+    [key: string]: 'nav--horizontal' | 'nav--vertical'
   }
 
   interface IListProps {
     [key: string]: any
   }
 
-  interface IListClasses {
-    [key: string]: 'nav__list--v'
-  }
-
   interface IItemProps {
     [key: string]: any
   }
 
-  interface IItemClasses {
-    [key: string]: 'nav__item--v'
-  }
-
   interface ILinkProps {
     [key: string]: any
-  }
-
-  interface ILinkClasses {
-    [key: string]: 'nav__link--v'
   }
 }
 

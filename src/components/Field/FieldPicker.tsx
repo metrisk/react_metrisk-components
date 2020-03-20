@@ -6,16 +6,19 @@ import { Checkbox } from '../Checkbox'
 import { Radio } from '../Radio'
 import { Select } from '../Select'
 
-const FieldPicker = ({ name, value, type, options, onChange }: any) => {
+const FieldPicker = ({ type, render, ...other }: any) => {
+  if (typeof type === 'object') {
+    return type
+  }
   switch (type) {
     case 'select':
-      return <Select name={name} options={options} value={value} onChange={onChange} />
+      return <Select {...other} />
     case 'checkbox':
-      return <Checkbox name={name} value={value} onChange={onChange} />
-    case 'upload':
-      return <Radio name={name} value={value} onChange={onChange} />
+      return <Checkbox {...other} />
+    case 'radio':
+      return <Radio {...other} />
     default:
-      return <Input name={name} type={type} value={value} onChange={onChange} />
+      return <Input type={type} {...other} />
   }
 }
 

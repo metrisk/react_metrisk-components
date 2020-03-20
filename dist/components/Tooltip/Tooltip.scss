@@ -1,0 +1,85 @@
+/// ----------------------------------------------------------------------
+
+/// Tooltip
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Tooltip config
+/// -------------------
+
+$offset: get-prop($spacing, 'xs');
+
+@keyframes tooltipLeft {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-$offset, -50%);
+  }
+}
+
+@keyframes tooltipRight {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate($offset, -50%);
+  }
+}
+
+@keyframes tooltipTop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -$offset);
+  }
+}
+
+@keyframes tooltipBottom {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, $offset);
+  }
+}
+
+/// -------------------
+/// Tooltip swatches
+/// -------------------
+
+.tooltip {
+  position: fixed;
+  background-color: rgba(black, 0.85);
+  border-radius: get-prop($border-radii, 'base');
+  color: white;
+  padding: get-prop($spacing, 'xs');
+
+  &--left {
+    animation: tooltipLeft 0.3s forwards ease;
+  }
+  
+  &--right {
+    animation: tooltipRight 0.3s forwards ease;
+  }
+  
+  &--top {
+    animation: tooltipTop 0.3s forwards ease;
+  }
+  
+  &--bottom {
+    animation: tooltipBottom 0.3s forwards ease;
+  }
+}

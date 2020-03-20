@@ -5,12 +5,8 @@ import INavigation from './types'
 /**
  * The unordered list to render within the  navigation
  */
-const NavigationList: React.FC<INavigation.IListProps> = ({ className, type, depth, children }) => {
-  const navListClasses: INavigation.IListClasses = {
-    Vertical: 'nav__list--v'
-  }
-
-  return <ul className={cx(className, 'nav__list', navListClasses[type], `nav__list--${depth}`)}>{children}</ul>
+const NavigationList: React.FC<INavigation.IListProps> = ({ className, depth, children }) => {
+  return <ul className={cx(className, 'nav__list', `nav__list--${depth}`)}>{children}</ul>
 }
 
 export default NavigationList

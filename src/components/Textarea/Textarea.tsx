@@ -5,13 +5,12 @@ import ITextarea from './types'
 // Styles
 import './Textarea.scss'
 
-const Textarea = ({ className, name, type, value, onChange }: any) => (
+const Textarea = ({ className, id, value, onChange }: any) => (
   <textarea
     className={cx(className, 'input')}
-    id={name}
-    name={name}
+    id={id}
     rows={6}
-    value={value}
+    value={value || ''}
     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
       onChange(e.target.value)
     }

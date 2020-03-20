@@ -14,21 +14,19 @@ import { ModalClose, ModalHeader, ModalBody, ModalFooter } from '.'
 import './Modal.scss'
 
 const Modal = ({ header, footer, children }: any) => {
-  const { ref, setOpen } = useContext(ModalContext)
+  const { setOpen } = useContext(ModalContext)
 
-  return ref
-    ? createPortal(
-        <aside className={cx('modal')}>
-          <div className={cx('modal__dialog')}>
-            <ModalClose onClick={setOpen} />
-            {header && <ModalHeader {...header} />}
-            {children && <ModalBody>{children}</ModalBody>}
-            {footer && <ModalFooter {...footer} />}
-          </div>
-        </aside>,
-        ref
-      )
-    : null
+  return createPortal(
+    <aside className={cx('modal')}>
+      <div className={cx('modal__dialog')}>
+        <ModalClose onClick={setOpen} />
+        {header && <ModalHeader {...header} />}
+        {children && <ModalBody>{children}</ModalBody>}
+        {footer && <ModalFooter {...footer} />}
+      </div>
+    </aside>,
+    document.body
+  )
 }
 
 export default Modal

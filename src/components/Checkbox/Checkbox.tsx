@@ -8,12 +8,12 @@ import { Icon } from '../Icon'
 // Styles
 import './Checkbox.scss'
 
-const Checkbox = ({ className, name, value = false, onChange }: any) => (
+const Checkbox = ({ className, id, value, onChange }: any) => (
   <label className={cx(className, 'checkbox', { 'checkbox--checked': value })}>
     <input
       className={cx('checkbox__input')}
-      id={name}
-      name={name}
+      id={id}
+      name={id}
       type={'checkbox'}
       checked={value || false}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.checked)}

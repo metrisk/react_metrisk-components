@@ -1,81 +1,36 @@
 /// ----------------------------------------------------------------------
 
-/// Checkbox
+/// Field
 
 /// ----------------------------------------------------------------------
 
 @import 'Base.scss';
 
 /// -------------------
-/// Checkbox swatches
+/// Field swatches
 /// -------------------
 
-$checkbox-size: get-prop($spacing, 'lg');
+.field {
+  margin-bottom: get-prop($spacing, 'md');
+  width: max-content;
+}
 
-// $checkbox: (
-//   'base': (
-//     position: relative,
-//     vertical-align: middle,
-//     background-color: get-prop($colours, 'ui', 'two'),
-//     border-radius: get-prop($border-radii, 'base'),
-//     transition: background-color get-prop($movement, 'transition', 'linear'),
-//     cursor: pointer
-//   ),
-//   'base-checked': (
-//     background-color: get-prop($colours, 'ui', 'five'),
-//   ),
-//   'hide': (
-//     opacity: 0,
-//     cursor: pointer
-//   ),
-//   'icn': (
-//     display: none,
-//   ),
-//   'icn-checked': (
-//     display: block
-//   ),
-//   'with-label': (
-//     margin-left: get-prop($spacing, 'md')
-//   ),
-// );
+.field__icn {
+  margin-left: get-prop($spacing, 'xs');
+}
 
-/// -------------------
-/// Checkbox selectors
-/// -------------------
+.field__msg {
+  @include apply-props(get-prop($typography, 'small'));
+  text-align: right;
+  padding-right: get-prop($spacing, 'xs') + 1rem;
 
-// .checkbox {
-//   display: block;
-// }
-
-// @include class(
-//   $selector: '.checkbox',
-//   $shape: 'block',
-//   $inline: true,
-//   $width: $checkbox-size,
-//   $height-to-pad: (
-//     $checkbox-size,
-//     0, 
-//     0,
-//   ),
-//   $swatch: map-get($checkbox, 'base'),
-//   $variants: (
-//     '--checked': (
-//       'swatch': map-get($checkbox, 'base-checked'),
-//     ),
-//     '--checked > .checkbox__icn': (
-//       'swatch': map-get($checkbox, 'icn-checked'),
-//     ),
-//   ),
-// );
-
-// @include class(
-//   $selector: '.checkbox__icn',
-//   $align: ('center'),
-//   $swatch: map-get($checkbox, 'icn'),
-// );
-
-// @include class(
-//   $selector: '.checkbox__input',
-//   $align: fill,
-//   $swatch: map-get($checkbox, 'hide'),
-// );
+  &--error {
+    color:  get-prop($colours, 'state', 'error');
+  }
+  &--warning {
+    color:  get-prop($colours, 'state', 'warning');
+  }
+  &--success {
+    color:  get-prop($colours, 'state', 'success');
+  }
+}

@@ -1,0 +1,115 @@
+/// ----------------------------------------------------------------------
+
+/// Alert
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Alert config
+/// -------------------
+
+@keyframes centerFadeInTop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/// -------------------
+/// Alert swatches
+/// -------------------
+
+.alert {
+  position: fixed;
+  box-sizing: border-box;
+  top: get-prop($spacing, 'md');
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 800px;
+  min-width: 250px;
+  background-color: white;
+  box-shadow: get-prop($shadows, 'one');
+  animation: centerFadeInTop 0.3s ease forwards;
+  border-radius: get-prop($border-radii, 'base');
+  z-index: get-prop($z-index, 'top');
+
+  &--error {
+    border-bottom: solid 2px get-prop($colours, 'state', 'error');
+  }
+  &--warning {
+    border-bottom: solid 2px get-prop($colours, 'state', 'warning');
+  }
+  &--success {
+    border-bottom: solid 2px get-prop($colours, 'state', 'success');
+  }
+}
+
+/// -------------------
+/// Alert swatches
+/// -------------------
+
+.alert__close {
+  position: absolute;
+  right: get-prop($spacing, 'md');
+  top: get-prop($spacing, 'md');
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  opacity: 0.5;
+  transition: opacity get-prop($transition, 'ease');
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/// -------------------
+/// Alert swatches
+/// -------------------
+
+.alert__icn {
+  position: absolute;
+  left: get-prop($spacing, 'md');
+  top: get-prop($spacing, 'md');
+}
+
+/// -------------------
+/// Alert swatches
+/// -------------------
+
+.alert__header {
+  border-bottom: get-prop($borders, 'four');
+  padding: get-prop($spacing, 'md');
+}
+
+/// -------------------
+/// Alert swatches
+/// -------------------
+
+.alert__body {
+  padding-left: get-prop($spacing, 'md') * 3;
+  padding-right: get-prop($spacing, 'md') * 3;
+  padding-top: get-prop($spacing, 'md');
+  padding-bottom: get-prop($spacing, 'md');
+}
+
+/// -------------------
+/// Alert swatches
+/// -------------------
+
+.alert__footer {
+  padding: get-prop($spacing, 'md');
+  display: flex;
+  justify-content: space-between;
+}

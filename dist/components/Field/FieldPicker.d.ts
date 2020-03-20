@@ -1,3 +1,2 @@
-/// <reference types="react" />
-declare const FieldPicker: ({ name, value, type, options, onChange }: any) => JSX.Element;
+declare const FieldPicker: ({ type, render, ...other }: any) => any;
 export default FieldPicker;
