@@ -1,7 +1,7 @@
 # Metrisk React Components
 
 ### Usage:
-Usage is outlined in our [Documentation]() (doesn't work yet need to set up GH Pages)
+Usage is outlined in our [Documentation](https://metrisk.github.io/react_metrisk-components/) (doesn't work yet need to set up GH Pages)
 
 ### Contribution:
 
