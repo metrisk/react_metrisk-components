@@ -1,0 +1,31 @@
+import { useState } from 'react'
+import { MemoryRouter } from 'react-router-dom'
+import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Loader } from '.'
+
+<Meta title='Components|Loader' component={Loader} />
+
+# Loader
+Lorem ipsum dolor sit amet.
+
+## Base
+Lorem ipsum dolor sit amet.
+
+<Preview>
+  <Story name='Primary'>
+    <Loader />
+  </Story>
+</Preview>
+
+## Bounce
+Lorem ipsum dolor sit amet.
+
+<Preview>
+  <Story name='Bounce'>
+    <Loader type={'Bounce'} />
+  </Story>
+</Preview>
+
+## Prop Types
+
+<Props of={Loader} />

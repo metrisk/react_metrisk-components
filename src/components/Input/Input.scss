@@ -44,7 +44,7 @@ $input-pad: get-prop($spacing, 'md');
 
   &:disabled {
     pointer-events: none;
-    opacity: 0.8;
+    opacity: 0.4;
   }
 
   .label + & {

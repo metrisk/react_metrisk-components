@@ -13,3 +13,67 @@
 body, html {
   line-height: $base-line-height;
 }
+
+/// -------------------
+/// Keyframes
+/// -------------------
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInTop {
+  0% {
+    opacity: 0;
+    margin-top: -(get-prop($spacing, 'md'));
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes expand {
+  0% {
+    overflow: hidden;
+  }
+  75% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: visible;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cycle {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -400%;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px);
+    opacity: .25;
+  }
+}

@@ -1,0 +1,76 @@
+/// ----------------------------------------------------------------------
+
+/// Loader
+
+/// ----------------------------------------------------------------------
+
+@import 'Base.scss';
+
+/// -------------------
+/// Loader config
+/// -------------------
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px);
+    opacity: .25;
+  }
+}
+
+/// -------------------
+/// Loader selectors
+/// -------------------
+
+.loader {
+  display: block;
+  width: 3rem;
+}
+
+/// -------------------
+/// Loader selectors
+/// -------------------
+
+.loader__spinner {
+  display: block;
+  animation: spin .6s infinite linear;
+}
+
+/// -------------------
+/// Loader selectors
+/// -------------------
+
+.loader__bounce {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: get-prop($border-radii, 'rounded');
+  background-color: get-prop($colours, 'brand', 'one');
+  margin-left: get-prop($spacing, 'xs') / 2;
+  margin-right: get-prop($spacing, 'xs') / 2;
+  animation: bounce .5s alternate infinite;
+
+  &:nth-of-type(1) {
+    animation-delay: 0s
+  }
+
+  &:nth-of-type(2) {
+    animation-delay: .2s
+  }
+
+  &:nth-of-type(3) {
+    animation-delay: .4s
+  }
+}
