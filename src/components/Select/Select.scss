@@ -4,17 +4,30 @@
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'apply-props';
+@use 'spacing';
+@use 'corners';
+@use 'borders';
+@use 'colours';
+@use 'typography';
+@use 'resets';
+@use 'components';
+@use 'transitions';
+@use 'z-index';
+@use 'utilities';
 
 /// -------------------
-/// Select swatches
+/// Select config
 /// -------------------
 
-$select-pad: get-prop($spacing, 'md');
-$select-bg-colour: get-prop($colours, 'ui', 'one');
+$padding-x: spacing.$sm !default;
+$bg-colour: map-get(colours.$ui, 'one') !default;
+$border-radius: corners.$base !default;
+$font-family: typography.$font-family--alt !default;
+$font-weight: typography.$font-light !default;
 
 /// -------------------
-/// Select selectors
+/// Select wrapper
 /// -------------------
 
 .select {
@@ -24,34 +37,42 @@ $select-bg-colour: get-prop($colours, 'ui', 'one');
   &:focus-within {
     outline: none;
   }
-  
-  .label + & {
-    margin-left: get-prop($spacing, 'md');
-  }
 }
 
+/// -------------------
+/// Select input 
+/// -------------------
+
 .select__input {
-  @include flow-component;
+  @include resets.style;
+  @include components.flow;
+  @include components.interactive;
   display: block;
-  border: none;
-  font-size: $base-font-size;
+  padding-left: $padding-x;
+  padding-right: $padding-x * 2.5; 
   font-family: $font-family;
-  padding-left: $select-pad;
-  padding-right: $select-pad * 2.5;
-  border-radius: get-prop($border-radii, 'base');
-  background-color: $select-bg-colour;
+  font-weight: $font-weight;
+  border-radius: $border-radius;
+  background-color: $bg-colour;
+  transition: border transitions.$ease;
   appearance: none;
 
-  &--error {
-    border-bottom: solid 2px get-prop($colours, 'state', 'error');
-  }
-  &--warning {
-    border-bottom: solid 2px get-prop($colours, 'state', 'warning');
-  }
-  &--success {
-    border-bottom: solid 2px get-prop($colours, 'state', 'success');
+  .field--error & {
+    border-bottom: solid 2px map-get(colours.$state, 'error');
   }
 
+  .field--warning & {
+    border-bottom: solid 2px map-get(colours.$state, 'warning');
+  }
+
+  .field--success & {
+    border-bottom: solid 2px map-get(colours.$state, 'success');
+  }
+
+  &:read-only {
+    cursor: pointer;
+  }
+  
   &:active,
   &:focus,
   &:focus-within {
@@ -59,34 +80,41 @@ $select-bg-colour: get-prop($colours, 'ui', 'one');
   }
 }
 
+/// -------------------
+/// False options list
+/// -------------------
+
 .select__options {
-  @include reset-list;
+  @include resets.list;
   display: block;
   position: absolute;
   top: 100%;
   width: 100%;
-  background-color: $select-bg-colour;
-  border-radius: get-prop($border-radii, 'base');
+  background-color: $bg-colour;
+  border-radius: $border-radius;
   max-height: 250px;
   overflow: scroll;
-  z-index: get-prop($z-index, 'top') - 1;
+  z-index: z-index.$top - 1;
 }
 
 .select__option {
-  font-size: $base-font-size;
+  font-size: typography.$base-font-size;
   font-family: $font-family;
-  padding: get-prop($spacing, 'sm');
+  padding: spacing.$md;
   cursor: pointer;
   
   &:hover {
-    background-color: get-prop($colours, 'ui', 'two')
+    background-color: map-get(colours.$ui, 'two');
   }
 }
 
+/// -------------------
+/// Select chevron icon 
+/// -------------------
+
 .select__icn {
-  position: absolute;
-  right: $select-pad;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
+  @include utilities.center-y;
+  right: $padding-x;
+  width: $padding-x;
+  height: $padding-x;
 }

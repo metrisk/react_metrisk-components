@@ -1,9 +1,14 @@
 import * as React from 'react'
 import cx from 'classnames'
 
-// Components
+/**
+ * Components
+ */
 import { Text } from '../Text'
 
+/**
+ * The main modal header
+ */
 const ModalHeader = ({ heading, subheading }: any) => (
   <header className={cx('modal__header')}>
     {heading && (

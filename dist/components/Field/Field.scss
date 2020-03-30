@@ -4,33 +4,46 @@
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'apply-props';
+@use 'spacing';
+@use 'colours';
+@use 'typography';
 
 /// -------------------
 /// Field swatches
 /// -------------------
 
 .field {
-  margin-bottom: get-prop($spacing, 'md');
+  margin-bottom: spacing.$md;
   width: max-content;
 }
 
+/// -------------------
+/// Validation icon
+/// -------------------
+
 .field__icn {
-  margin-left: get-prop($spacing, 'xs');
+  margin-left: spacing.$md;
 }
 
+/// -------------------
+/// Validation message
+/// -------------------
+
 .field__msg {
-  @include apply-props(get-prop($typography, 'small'));
+  @include apply-props.apply-props(typography.$small);
   text-align: right;
-  padding-right: get-prop($spacing, 'xs') + 1rem;
+  padding-right: spacing.$md + 1rem;
 
   &--error {
-    color:  get-prop($colours, 'state', 'error');
+    color: map-get(colours.$state, 'error'); 
   }
+
   &--warning {
-    color:  get-prop($colours, 'state', 'warning');
+    color: map-get(colours.$state, 'warning');
   }
+
   &--success {
-    color:  get-prop($colours, 'state', 'success');
+    color: map-get(colours.$state, 'success');
   }
 }

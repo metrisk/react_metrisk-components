@@ -1,4 +1,11 @@
 /// <reference types="react" />
+import IField from './types';
+/**
+ * Styles
+ */
 import './Field.scss';
-declare const Field: ({ className, label, state, msg, ...other }: any) => JSX.Element;
+/**
+ * Field wrapper component
+ */
+declare const Field: ({ className, label, state, msg, ...props }: IField.IProps) => JSX.Element;
 export default Field;

@@ -1,16 +1,21 @@
+import IRadio from './types'
 import * as React from 'react'
 import cx from 'classnames'
-import IRadio from './types'
 
-// Styles
+/**
+ * Styles
+ */
 import './Radio.scss'
 
-const Radio = ({ className, id, value, onChange }: any) => (
+/**
+ * A Radio button
+ */
+const Radio = ({ className, id, name, value, onChange }: IRadio.IProps) => (
   <label className={cx(className, 'radio', { 'radio--checked': value })}>
     <input
       className={cx('radio__input')}
       id={id}
-      name={id}
+      name={name}
       type={'radio'}
       checked={value || false}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.checked)}

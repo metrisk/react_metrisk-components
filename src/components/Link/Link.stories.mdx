@@ -1,22 +1,50 @@
 import { MemoryRouter } from 'react-router-dom'
 import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
-import { Text } from '../Text'
 import { Link } from '.'
+import { Text } from '../Text'
 
 <Meta title='Components|Link' component={Link} />
 
 # Link
-An inline hyperlink using React Router.
+A simple inline hyperlink using React Router.
  
 ## Base
-For use within paragraphs or other instances where a button would not be visually appropriate.
+For use within paragraphs.
 
 <Preview>
   <Story name='Base'>
     <MemoryRouter>
-      <Text>
-        Lorem ipsum <Link href={'#'}>dolor</Link> sit amet
-      </Text>
+      <Link href={'/'}>primary link</Link>
+    </MemoryRouter>
+  </Story>
+</Preview>
+
+## External
+If the link isn't using React Router, flag it as `external`.
+
+<Preview>
+  <Story name='External'>
+    <MemoryRouter>
+      <Link href={'/'} external>external link</Link>
+    </MemoryRouter>
+  </Story>
+</Preview>
+
+## Icon
+Add an icon at the start or end of the link.
+
+<Preview>
+  <Story name='Icon-Start'>
+    <MemoryRouter>
+      <Link href={'/'} icon={{ align: 'Start', name: 'External'}} external>external link</Link>
+    </MemoryRouter>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name='Icon-End'>
+    <MemoryRouter>
+      <Link href={'/'} icon={{ align: 'End', name: 'External'}} external>external link</Link>
     </MemoryRouter>
   </Story>
 </Preview>

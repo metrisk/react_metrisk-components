@@ -1,7 +1,7 @@
-import * as React from 'react';
-import Grid from './types';
+/// <reference types="react" />
+import IGrid from './types';
 /**
  * Grid item that sits within the main grid component.
  */
-declare const GridItem: React.FC<Grid.IItemProps>;
+declare const GridItem: ({ className, span, children }: IGrid.IItemProps) => JSX.Element;
 export default GridItem;

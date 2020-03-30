@@ -13,7 +13,7 @@
 /// @param {String} $size
 /// The breakpoint size - in breakpoints map
 ///
-@mixin breakpoint-up($size) {
+@mixin up($size) {
   @media (min-width: get-prop($breakpoints, $size)) {
     @content;
   }
@@ -28,7 +28,7 @@
 /// @param {String} $size
 /// The breakpoint size - in breakpoints map
 ///
-@mixin breakpoint-down($size) {
+@mixin down($size) {
   @media (max-width: get-prop($breakpoints, $size)) {
     @content;
   }

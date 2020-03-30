@@ -1,21 +1,119 @@
 /// ----------------------------------------------------------------------
 
-/// Main style index
+/// Utilities
 
 /// ----------------------------------------------------------------------
 
-// @import 'Base.scss';
+@use 'spacing';
+@use 'colours';
 
 /// -------------------
-/// Global styles
+/// Config
 /// -------------------
 
-body, html {
-  line-height: $base-line-height;
+$directions: (
+  top: 't',
+  bottom: 'b',
+  left: 'l',
+  right: 'r',
+);
+
+/// -------------------
+/// Margins
+/// -------------------
+
+.m {
+  &--0 {
+    margin: 0;
+  }
+
+  @each $size in spacing.$all {
+    $size-name: nth($size, 1);
+    $size-prop: nth($size, 2);
+    
+    &--#{$size-name} {
+      margin: $size-prop;
+    }
+  }
+
+  @each $direction in $directions {
+    $direction-name: nth($direction, 1);
+    $direction-prop: nth($direction, 2);
+
+    @each $size in spacing.$all {
+      $size-name: nth($size, 1);
+      $size-prop: nth($size, 2);
+      
+      &--#{$direction-prop}-#{$size-name} {
+        margin-#{$direction-name}: $size-prop;
+      }
+    }
+  }
+}
+
+/// -------------------
+/// Padding
+/// -------------------
+
+.p {
+  &--0 {
+    padding: 0;
+  }
+
+  @each $size in spacing.$all {
+    $size-name: nth($size, 1);
+    $size-prop: nth($size, 2);
+    
+    &--#{$size-name} {
+      padding: $size-prop;
+    }
+  }
+
+  @each $direction in $directions {
+    $direction-name: nth($direction, 1);
+    $direction-prop: nth($direction, 2);
+
+    @each $size in spacing.$all {
+      $size-name: nth($size, 1);
+      $size-prop: nth($size, 2);
+      
+      &--#{$direction-prop}-#{$size-name} {
+        padding-#{$direction-name}: $size-prop;
+      }
+    }
+  }
+}
+
+/// -------------------
+/// Backgrounds
+/// -------------------
+
+.bg {
+  @each $colour in colours.$brand {
+    $colour-name: nth($colour, 1);
+    $colour-prop: nth($colour, 2);
+    
+    &--brand-#{$colour-name} {
+      background-color: $colour-prop;
+    }
+  }
+
+  @each $colour in colours.$ui {
+    $colour-name: nth($colour, 1);
+    $colour-prop: nth($colour, 2);
+    
+    &--ui-#{$colour-name} {
+      background-color: $colour-prop;
+    }
+  }
 }
 
 /// -------------------
 /// Keyframes
+/// -------------------
+
+/// -------------------
+/// Fading
 /// -------------------
 
 @keyframes fadeIn {
@@ -27,38 +125,117 @@ body, html {
   }
 }
 
-@keyframes fadeInTop {
+@keyframes fadeInUp {
   0% {
     opacity: 0;
-    margin-top: -(get-prop($spacing, 'md'));
+    transform: translateY(1rem);
   }
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes expand {
+@keyframes fadeInDown {
   0% {
-    overflow: hidden;
-  }
-  75% {
-    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-1rem);
   }
   100% {
-    overflow: visible;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/// -------------------
+/// Zoom
+/// -------------------
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/// -------------------
+/// Swipe
+/// -------------------
+
+@keyframes swipeOutLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes swipeOutRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/// -------------------
+/// Blink
+/// -------------------
+
+@keyframes blink {
+  from, 
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/// -------------------
+/// Spin
+/// -------------------
 
 @keyframes spin {
   0% {
-    transform: rotate(0);
+    transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
   }
 }
 
-@keyframes cycle {
+/// -------------------
+/// Cycle Background
+/// -------------------
+
+@keyframes cycleBg {
   0% {
     background-position: 0;
   }
@@ -67,13 +244,65 @@ body, html {
   }
 }
 
-@keyframes bounce {
+/// -------------------
+/// Move & fade
+/// -------------------
+
+@keyframes moveFadeUp {
   0% {
     transform: translateY(0);
     opacity: 1;
   }
   100% {
-    transform: translateY(-10px);
-    opacity: .25;
+    transform: translateY(-100%);
+    opacity: 0.5;
+  }
+}
+
+/// -------------------
+/// Move & fade
+/// -------------------
+
+@keyframes centerFadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-1rem, -50%);
+  }
+}
+
+@keyframes centerFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(1rem, -50%);
+  }
+}
+
+@keyframes centerFadeInBottom {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -1rem);
+  }
+}
+
+@keyframes centerFadeInTop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 1rem);
   }
 }

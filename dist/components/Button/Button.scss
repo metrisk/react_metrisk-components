@@ -4,38 +4,50 @@
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'apply-props';
+@use 'get-prop';
+@use 'spacing';
+@use 'corners';
+@use 'colours';
+@use 'borders';
+@use 'shadows';
+@use 'gradients';
+@use 'animations';
+@use 'typography';
+@use 'transitions';
+@use 'components';
+@use 'resets';
+@use 'utilities';
+@use 'z-index';
 
 /// -------------------
 /// Button config
 /// -------------------
 
-@keyframes cycle {
-  0% {
-    background-position: 0;
-  }
-  100% {
-    background-position: -400%;
-  }
-}
+$padding-x: spacing.$xl !default;
+$border-radius: corners.$base !default;
+$font-family: typography.$font-family--alt !default;
+$font-weight: typography.$font-bold !default;
+$transition: 
+  background-color transitions.$ease, 
+  color transitions.$ease, 
+  fill transitions.$ease !default;
 
-$btn-pad: get-prop($spacing, 'md');
-$btn-border-width: 2px;
-$btn-types: (
+$types: (
   'primary': (
-    background-image: get-prop($gradients, 'one'),
+    background-image: gradients.$one,
     background-size: 200%,
       
     'hover': (
-      animation: cycle get-prop($animation, 'infinite')
+      animation: cycle 0.5s animations.$infinite-linear
     )
   ),
   'secondary': (
-    background-image: get-prop($gradients, 'one'),
+    background-image: gradients.$one,
     background-size: 200%,
     
     'hover': (
-      animation: cycle get-prop($animation, 'infinite')
+      animation: cycle 0.5s animations.$infinite-linear
     ),
       
     'before': (
@@ -47,7 +59,7 @@ $btn-types: (
       left: 0,
       right: 0,
       background-color: white,
-      z-index: get-prop($z-index, 'back'),
+      z-index: z-index.$back,
     )
   ),
   'tertiary': (
@@ -60,11 +72,13 @@ $btn-types: (
   ),
   'action': (
     background-color: white,
-    box-shadow: get-prop($shadows, 'two'),
-    width: $flow-height,
-    height: $flow-height,
+    box-shadow: shadows.$two,
+    width: components.$flow-height,
+    height: components.$flow-height,
     text-align: center,
-    border-radius: get-prop($border-radii, 'rounded'),
+    padding-left: 0,
+    padding-right: 0,
+    border-radius: corners.$round,
     overflow: hidden,
     color: transparent, // Hide the text but we still want it there for accessibility
 
@@ -72,60 +86,89 @@ $btn-types: (
       outline: none
     )
   )
-);
+) !default;
 
 /// -------------------
 /// Button selectors 
 /// -------------------
 
 .btn {
-  @include flow-component;
-  @include interactive-component;
+  @include resets.style;
+  @include components.flow;
+  @include components.interactive;
   position: relative;
   width: auto;
-  border-color: transparent;
-  border-radius: get-prop($border-radii, 'base');
-  padding-left: $btn-pad;
-  padding-right: $btn-pad;
-  color: get-prop($colours, 'ui', 'five');
-  font-family: $font-family--alt;
-  font-weight: $font-bold;
+  border-radius: $border-radius; 
+  padding-left: $padding-x;
+  padding-right: $padding-x;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  transition: $transition;
+  color: map-get(colours.$ui, 'five');
   letter-spacing: .5px;
   text-decoration: none;
-  z-index: get-prop($z-index, 'default');
+  cursor: pointer;
 
-  @each $type in $btn-types {
-    $type-name: nth($type, 1);
-    
-    &--#{$type-name} {
-      @include apply-props(get-prop($btn-types, $type-name));
-    }
+  &:focus {
+    outline: none;
+    border: borders.$one;
+    opacity: 0.8;
   }
 
-  &--sm {
-    padding-top: $btn-pad / 4;
-    padding-bottom: $btn-pad / 4;
-  }
-
-  &:disabled {
-    pointer-events: none;
-    opacity: 0.4;
-  }
-}
-
-.btn__icn {
   &--l {
-    margin-right: get-prop($spacing, 'sm');
+    padding-left: $padding-x * 1.5;
   }
   
   &--r {
-    margin-left: get-prop($spacing, 'sm');
+    padding-right: $padding-x * 1.5;
   }
 
-  &--c {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  &--l.btn--tertiary {
+    padding-left: $padding-x;
+  }
+  
+  &--r.btn--tertiary {
+    padding-right: $padding-x;
+  }
+
+  @each $type in $types {
+    $type-name: nth($type, 1);
+    
+    &--#{$type-name} {
+      @include apply-props.apply-props(map-get($types, $type-name));
+    }
+  }
+}
+
+/// -------------------
+/// Button Icon 
+/// -------------------
+
+.btn__icn {
+  @include utilities.center-y;
+  vertical-align: text-top;
+
+  .btn--l & {
+    left: $padding-x / 2;
+  }
+
+  .btn--r & {
+    right: $padding-x / 2;
+  }
+
+  .btn--c & {
+    @include utilities.center;
+  }
+
+  .btn--tertiary.btn--l & {
+    left: 0;
+  }
+
+  .btn--tertiary.btn--r & {
+    right: 0;
+  }
+
+  & > svg path {
+    fill: black;
   }
 }

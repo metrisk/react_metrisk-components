@@ -1,35 +1,48 @@
+import IField from './types'
 import * as React from 'react'
 import cx from 'classnames'
-import IField from './types'
 
-// Styles
+/**
+ * Styles
+ */
 import './Field.scss'
 
-// Components
+/**
+ * Components
+ */
 import { Label } from '../Label'
 import { Icon } from '../Icon'
 import { FieldPicker } from '.'
 
-const fieldMsgClasses: any = {
-  Error: 'field__msg--error',
-  Warning: 'field__msg--warning',
-  Success: 'field__msg--success'
+/**
+ * Validation message
+ */
+const states = {
+  Success: 'field--success',
+  Warning: 'field--warning',
+  Error: 'field--error',
 }
 
-const fieldIcons: any = {
-  Error: 'exclamation',
-  Warning: 'info',
-  Success: 'tick'
+/**
+ * Validation icons
+ */
+const icons: { [key: string]: string } = {
+  Success: 'Tick',
+  Warning: 'Info',
+  Error: 'Exclamation',
 }
 
-const Field = ({ className, label, state, msg, ...other }: any) => (
-  <div className={cx(className, 'field')}>
-    {label && (typeof label === 'object' ? label : <Label for={other.id}>{label}</Label>)}
+/**
+ * Field wrapper component
+ */
+const Field = ({ className, label, state, msg, ...props }: IField.IProps) => (
+  <div className={cx(className, 'field', states[state])}>
+    {label && (typeof label === 'object' ? label : <Label className='m m--r-md' for={props.id}>{label}</Label>)}
 
-    <FieldPicker state={state} {...other} />
+    <FieldPicker state={state} {...props} />
     
-    {state && <Icon className={cx('field__icn')} name={fieldIcons[state]} colour={state} />}
-    {msg && <p className={cx('field__msg', fieldMsgClasses[state])}>{msg}</p>}
+    {state && <Icon className={'field__icn'} name={icons[state]} colour={state} />}
+    {msg && <p className={'field__msg'}>{msg}</p>}
   </div>
 )
 

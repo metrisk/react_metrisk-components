@@ -1,19 +1,26 @@
+import ICheckbox from './types'
 import * as React from 'react'
 import cx from 'classnames'
-import ICheckbox from './types'
 
-// Components
-import { Icon } from '../Icon'
-
-// Styles
+/**
+ * Styles
+ */
 import './Checkbox.scss'
 
-const Checkbox = ({ className, id, value, onChange }: any) => (
+/**
+ * Components
+ */
+import { Icon } from '../Icon'
+
+/**
+ * A checkbox 
+ */
+const Checkbox = ({ className, id, name, value, onChange }: ICheckbox.IProps) => (
   <label className={cx(className, 'checkbox', { 'checkbox--checked': value })}>
     <input
       className={cx('checkbox__input')}
       id={id}
-      name={id}
+      name={name}
       type={'checkbox'}
       checked={value || false}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.checked)}

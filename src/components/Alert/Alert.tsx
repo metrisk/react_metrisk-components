@@ -1,49 +1,69 @@
+import IAlert from './types'
 import * as React from 'react'
 import { createPortal } from 'react-dom'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, Fragment } from 'react'
 import cx from 'classnames'
-import IAlert from './types'
 
-// Context
-import { AlertContext } from '.'
-
-// Components
-import { AlertClose, AlertBody, AlertFooter } from '.'
-import { Icon } from '../Icon'
-
-// Styles
+/**
+ * Styles
+ */
 import './Alert.scss'
 
-const alertClasses: any = {
-  Error: 'alert--error',
+/**
+ * Context
+ */
+import { OpenContext } from '../../context/OpenContext'
+
+/**
+ * Components
+ */
+import { AlertClose, AlertBody, AlertFooter } from '.'
+import { Icon } from '../Icon'
+import { Overlay } from '../Overlay'
+
+/**
+ * Alert types
+ */
+const types = {
+  Success: 'alert--success',
   Warning: 'alert--warning',
-  Success: 'alert--success'
+  Error: 'alert--error',
+  Info: 'alert--info',
 }
 
-const alertIcons: any = {
-  Success: 'tick',
-  Warning: 'exclamation',
-  Error: 'exclamation',
-  Info: 'info'
+/**
+ * Icons
+ */
+const icons = {
+  Success: 'Success',
+  Warning: 'Info',
+  Error: 'Error',
+  Info: 'Info',
 }
 
-const Alert = ({ type = 'Info', timeout, footer, children }: any) => {
-  const { setOpen } = useContext(AlertContext)
+const Alert = ({ type = 'Info', timeout, footer, children }: IAlert.IProps) => {
+  const { setOpen } = useContext(OpenContext)
 
+  /**
+   * Hide alert if timeout set
+   */
   useEffect(() => {
     if (!open || !timeout) return
     setTimeout(() => setOpen(false), timeout)
   }, [open])
 
-  return createPortal(
-    <aside className={cx('alert', alertClasses[type])}>
-      <AlertClose onClick={setOpen} />
-      <Icon className={cx('alert__icn')} name={alertIcons[type]} colour={type} />
-      {children && <AlertBody>{children}</AlertBody>}
-      {footer && <AlertFooter {...footer} />}
-    </aside>,
+  return open ? createPortal(
+    <Fragment>
+      <Overlay type={'Inverse'} />
+      <aside className={cx('alert', types[type])}>
+        <AlertClose onClick={setOpen} />
+        <Icon className={cx('alert__icn')} name={icons[type]} colour={type === 'Info' ? 'Dark' : type} />
+        {children && <AlertBody>{children}</AlertBody>}
+        {footer && <AlertFooter {...footer} />}
+      </aside>
+    </Fragment>,
     document.body
-  )
+  ) : null
 }
 
 export default Alert

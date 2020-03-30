@@ -1,20 +1,25 @@
+import ITooltip from './types'
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { useContext, useEffect, useState, useRef } from 'react'
 import cx from 'classnames'
-import ITooltip from './types'
 
-// Components
-import { Text } from '../Text'
-
-// Styles
+/**
+ * Styles
+ */
 import './Tooltip.scss'
 
-const Tooltip = ({ attachTo, trigger = 'hover', align = 'left', children }: any) => {
+/**
+ * A tooltip
+ */
+const Tooltip = ({ attachTo, trigger = 'hover', align = 'left', children }: ITooltip.IProps) => {
   const ref: any = useRef()
   const [open, setOpen] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
+  /**
+   * Get the position
+   */
   const getPosition = () => {
     if (!attachTo) return
     if (!ref.current) return
@@ -26,19 +31,19 @@ const Tooltip = ({ attachTo, trigger = 'hover', align = 'left', children }: any)
     let y = 0
   
     switch (align) {
-      case 'left':
+      case 'Left':
         x = attachRect.left - tooltipRect.width
         y = attachRect.top + attachTo.clientHeight / 2
         break
-      case 'right':
+      case 'Right':
         x = attachRect.right
         y = attachRect.top + attachTo.clientHeight / 2
         break
-      case 'top':
+      case 'Top':
         x = attachRect.left + attachTo.clientWidth / 2
         y = attachRect.top - tooltipRect.height
         break
-      case 'bottom':
+      case 'Bottom':
         x = attachRect.left + attachTo.clientWidth / 2
         y = attachRect.bottom
         break
@@ -46,29 +51,34 @@ const Tooltip = ({ attachTo, trigger = 'hover', align = 'left', children }: any)
       
     setPosition({ x, y })
   }
-
-  const handleEvent = () => {
-    getPosition()
-    setOpen((prev: boolean) => !prev)
-  }
   
+  /**
+   * Attach trigger events
+   */
   useEffect(() => {
     if (!attachTo) return
-    if (!ref.current) return
-    
+    const event = () => setOpen((prev: boolean) => !prev)
+
     if (trigger === 'hover') {
-      attachTo.addEventListener('mouseenter', handleEvent)
-      attachTo.addEventListener('mouseleave', handleEvent)
+      attachTo.addEventListener('mouseenter', event)
+      attachTo.addEventListener('mouseleave', event)
     } else {
-      attachTo.addEventListener(trigger, handleEvent)
+      attachTo.addEventListener(trigger, event)
     }
   }, [attachTo])
 
-  return createPortal(
+  /**
+   * Render tooltip
+   */
+  useEffect(() => {
+    getPosition()
+  }, [open])
+
+  return open ? createPortal(
     <aside 
       ref={ref} 
-      className={cx('tooltip', { [`tooltip--${align}`]: open})} 
-      style={{ 
+      className={cx('tooltip', { [`tooltip--${align.toLowerCase()}`]: open})} 
+      style={{
         visibility: open ? 'visible' : 'hidden', 
         left: `${position.x}px`, 
         top: `${position.y}px`
@@ -77,7 +87,7 @@ const Tooltip = ({ attachTo, trigger = 'hover', align = 'left', children }: any)
       {children}
     </aside>,
     document.body
-  )
+  ) : null
 }
 
 export default Tooltip

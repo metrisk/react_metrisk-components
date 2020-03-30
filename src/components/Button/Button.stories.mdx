@@ -5,8 +5,8 @@ import { Button } from '.'
 <Meta title='Components|Button' component={Button} />
 
 # Button
-A simple button to allow users to carry out an action.
-
+A simple buttons to allow users to carry out an action.
+ 
 ## Primary
 For use as a main call to action.
 
@@ -34,26 +34,15 @@ Tertiary buttons should be used in conjunction with primary buttons where there 
   </Story>
 </Preview>
 
-## Small
-Small buttons should be used in conjunction with primary buttons where there are two actions.
+## Icon Button
+Icon button
 
 <Preview>
-  <Story name='Small'>
+  <Story name='Icon'>
     <div>
-      <Button type={'Primary'} size={'Small'}>Small Button</Button>
-      <Button type={'Secondary'} size={'Small'}>Small Button</Button>
-    </div>
-  </Story>
-</Preview>
-
-## Icon
-Icon buttons.
-
-<Preview>
-  <Story name='PrimaryIcon'>
-    <div>
-      <Button type={'Primary'} icon={{ name: 'chevron-left', position: 'Left' }} >Primary Icon Button</Button>
-      <Button type={'Primary'} icon={{ name: 'chevron-right', position: 'Right' }} >Primary Icon Button</Button>
+      <Button type={'Primary'} icon={{ name: 'Chevron-left', align: 'Left' }}>Icon Button</Button>
+      <Button type={'Secondary'} icon={{ name: 'Chevron-right', align: 'Right' }}>Icon Button</Button>
+      <Button type={'Tertiary'} icon={{ name: 'Chevron-right', align: 'Right' }}>Icon Button</Button>
     </div>
   </Story>
 </Preview>
@@ -63,7 +52,7 @@ Action buttons should be used to indicate to the user that they can perform a da
 
 <Preview>
   <Story name='Action'>
-    <Button type={'Action'} icon={{ name: 'plus' }}>Action Button</Button>
+    <Button type={'Action'} icon={{ name: 'plus', align: 'Center' }}>Action Button</Button>
   </Story>
 </Preview>
 

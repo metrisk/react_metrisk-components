@@ -1,13 +1,11 @@
-import * as React from 'react';
+/// <reference types="react" />
 import IText from './types';
 /**
  * Styles
  */
 import './Text.scss';
 /**
- * A simple text component which renders the text tag of your choice
- *
- * @param props
+ * A text component
  */
-declare const Text: React.FC<IText.IProps>;
+declare const Text: ({ className, type, tag, align, children }: IText.IProps) => JSX.Element;
 export default Text;

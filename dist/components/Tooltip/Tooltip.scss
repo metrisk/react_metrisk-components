@@ -4,57 +4,16 @@
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'spacing';
+@use 'corners';
+@use 'animations';
 
 /// -------------------
 /// Tooltip config
 /// -------------------
 
-$offset: get-prop($spacing, 'xs');
-
-@keyframes tooltipLeft {
-  0% {
-    opacity: 0;
-    transform: translate(0, -50%);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-$offset, -50%);
-  }
-}
-
-@keyframes tooltipRight {
-  0% {
-    opacity: 0;
-    transform: translate(0, -50%);
-  }
-  100% {
-    opacity: 1;
-    transform: translate($offset, -50%);
-  }
-}
-
-@keyframes tooltipTop {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -$offset);
-  }
-}
-
-@keyframes tooltipBottom {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, $offset);
-  }
-}
+$padding-x: spacing.$md !default;
+$padding-y: spacing.$xs !default;
 
 /// -------------------
 /// Tooltip swatches
@@ -63,23 +22,23 @@ $offset: get-prop($spacing, 'xs');
 .tooltip {
   position: fixed;
   background-color: rgba(black, 0.85);
-  border-radius: get-prop($border-radii, 'base');
+  border-radius: corners.$base;
+  padding: $padding-y $padding-x;
   color: white;
-  padding: get-prop($spacing, 'xs');
 
   &--left {
-    animation: tooltipLeft 0.3s forwards ease;
+    animation: centerFadeInLeft 0.3s forwards ease;
   }
   
   &--right {
-    animation: tooltipRight 0.3s forwards ease;
+    animation: centerFadeInRight 0.3s forwards ease;
   }
   
   &--top {
-    animation: tooltipTop 0.3s forwards ease;
+    animation: centerFadeInBottom 0.3s forwards ease;
   }
   
   &--bottom {
-    animation: tooltipBottom 0.3s forwards ease;
+    animation: centerFadeInTop 0.3s forwards ease;
   }
 }

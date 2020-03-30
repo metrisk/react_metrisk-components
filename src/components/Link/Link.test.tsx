@@ -21,17 +21,11 @@ import { Link } from './'
 describe('----- Link Component -----', () => {
   it('Renders the correct HTML', () => {
     const htmlA = mount(<MemoryRouter><Link href={'/'}>Test</Link></MemoryRouter>)
-    expect(htmlA.find('a').html()).to.equal('<a class="link" href="/">Test</a>')
-
-    const htmlB = mount(<MemoryRouter><Link href={'/'}>Test</Link></MemoryRouter>)
-    expect(htmlB.find('a').html()).to.equal('<a class="link" href="/">Test</a>')
-
-    const htmlC = mount(<MemoryRouter><Link href={'/'}>Test</Link></MemoryRouter>)
-    expect(htmlC.find('a').html()).to.equal('<a class="link" href="/">Test</a>')
+    expect(htmlA.find('a').html()).to.equal('<a class="link" href="/"><span>Test</span></a>')
   })
   
   it('Simulates a click', () => {
-    const htmlB = mount(<MemoryRouter><Link type={'Primary'} href={'/'}>Test</Link></MemoryRouter>)
+    const htmlB = mount(<MemoryRouter><Link href={'/'}>Test</Link></MemoryRouter>)
     htmlB.find('a').simulate('click', { button: 0 })
   })
 })

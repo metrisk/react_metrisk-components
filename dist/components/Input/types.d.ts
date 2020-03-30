@@ -1,6 +1,11 @@
 declare namespace IInput {
     interface IProps {
-        [key: string]: any;
+        className?: string;
+        id: string;
+        name?: string;
+        type: 'text' | 'date' | 'number' | 'email' | 'url' | 'tel';
+        value: string;
+        onChange: (e: any) => void;
     }
 }
 export default IInput;

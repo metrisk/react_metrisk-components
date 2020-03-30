@@ -4,19 +4,25 @@
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'apply-props';
+@use 'colours';
+@use 'typography';
+@use 'spacing';
+@use 'components';
 
 /// -------------------
-/// Label swatches
+/// Label config
 /// -------------------
 
-$input-size: get-prop($spacing, 'lg');
+$font-family: typography.$font-family--alt !default;
+$font-weight: typography.$font-regular !default;
 
 /// -------------------
 /// Label selectors
 /// -------------------
 
 .label {
-  @include apply-props(get-prop($typography, 'intro'));
-  display: inline-block;
+  @include components.flow;
+  font-weight: $font-weight;
+  font-family: $font-family;
 }

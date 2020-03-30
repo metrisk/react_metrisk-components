@@ -18,6 +18,26 @@ module.exports = ({ config }) => {
   config.resolve.extensions.push('.ts', '.tsx');
 
   config.module.rules.push({
+    test: /\.(scss)$/,
+    use: [
+      'ignore-loader'
+    ]
+  })
+
+  config.module.rules = config.module.rules.map(data => {
+    if (/svg\|/.test(String(data.test)))
+      data.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
+    return data
+  })
+
+  config.module.rules.push({
+    test: /\.svg$/,
+    use: [
+      { loader: 'svg-inline-loader' }
+    ]
+  })
+
+  config.module.rules.push({
     test: /\.(stories|story)\.mdx$/,
     use: [
       {
@@ -40,26 +60,6 @@ module.exports = ({ config }) => {
     loader: require.resolve('@storybook/source-loader'),
     exclude: [/node_modules/],
     enforce: 'pre',
-  })
-
-  config.module.rules = config.module.rules.map(data => {
-    if (/svg\|/.test(String(data.test)))
-      data.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
-    return data;
-  });
-
-  config.module.rules.push({
-    test: /\.svg$/,
-    use: [
-      'svg-inline-loader',
-    ]
-  })
-
-  config.module.rules.push({
-    test: /\.(scss)$/,
-    use: [
-      'ignore-loader'
-    ]
   })
 
   return config

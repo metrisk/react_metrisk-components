@@ -1,10 +1,9 @@
 declare namespace IAlert {
   interface IProps {
-    [key: string]: any
-  }
-
-  interface IState {
-    [key: string]: any
+    type?: 'Success' | 'Warning' | 'Error' | 'Info'
+    timeout: number
+    footer: any
+    children: any
   }
 }
 

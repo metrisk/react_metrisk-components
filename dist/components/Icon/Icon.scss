@@ -4,46 +4,30 @@
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'apply-props';
+@use 'colours';
+@use 'typography';
+@use 'spacing';
 
 /// -------------------
-/// Icon swatches
+/// Icon config
 /// -------------------
 
-$icon-size: 1rem;
+$sizes: (
+  xs: 0.5rem,
+  sm: 0.75rem,
+  md: 1rem,
+  lg: 1.5rem,
+  xl: 2rem,
+) !default;
 
-$icon-types: (
-  'xs': (
-    width: 0.5rem,
-    height: 0.5rem,
-  ),
-  'sm': (
-    width: 0.75rem,
-    height: 0.75rem,
-  ),
-  'lg': (
-    width: 1.5rem,
-    height: 1.5rem,
-  ),
-);
-
-$icon-colours: (
-  'dark': (
-    fill: get-prop($colours, 'ui', 'five')
-  ),
-  'light': (
-    fill: white
-  ),
-  'success': (
-    fill: get-prop($colours, 'state', 'success')
-  ),
-  'warning': (
-    fill: get-prop($colours, 'state', 'warning')
-  ),
-  'error': (
-    fill: get-prop($colours, 'state', 'error')
-  ),
-);
+$colours: (
+  dark: map-get(colours.$ui, 'five'),
+  light: map-get(colours.$ui, 'one'),
+  success: map-get(colours.$state, 'success'),
+  warning: map-get(colours.$state, 'warning'),
+  error: map-get(colours.$state, 'error'),
+) !default;
 
 /// -------------------
 /// Icon selectors
@@ -51,32 +35,28 @@ $icon-colours: (
 
 .icn {
   display: inline-block;
-  vertical-align: middle;
-  width: $icon-size;
-  height: $icon-size;
 
-  @each $type in $icon-types {
-    $type-name: nth($type, 1);
+  @each $size in $sizes {
+    $size-name: nth($size, 1);
+    $size-prop: nth($size, 2);
     
-    &--#{$type-name} {
-      @include apply-props(get-prop($icon-types, $type-name));
+    &--#{$size-name} {
+      width: $size-prop;
+      height: $size-prop;
     }
   }
-}
 
-svg {
-  pointer-events: none;
-  vertical-align: top;
-  
-  & > path, 
-  & > circle, 
-  & > polygon {
-    @each $colour in $icon-colours {
-      $colour-name: nth($colour, 1);
-      
-      .icn--#{$colour-name} & {
-        @include apply-props(get-prop($icon-colours, $colour-name));
-      }
+  & > svg {
+    display: flex;
+    fill: inherit;
+  }
+
+  @each $colour in $colours {
+    $colour-name: nth($colour, 1);
+    $colour-prop: nth($colour, 2);
+    
+    &--#{$colour-name} > svg path {
+      fill: $colour-prop;
     }
   }
 }

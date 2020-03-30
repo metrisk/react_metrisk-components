@@ -4,20 +4,76 @@
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'apply-props';
+@use 'colours';
+@use 'spacing';
+@use 'transitions';
+@use 'typography';
+@use 'z-index';
 
 /// -------------------
 /// Link config
 /// -------------------
 
-$link-types: ();
+$colour: map-get(colours.$brand, 'one') !default;
+$colour--hover: map-get(colours.$brand, 'two') !default;
+$font-weight: typography.$font-bold !default;
 
 /// -------------------
 /// Link selectors
 /// -------------------
 
 .link {
-  font-size: inherit;
-  font-family: $font-family;
-  color: get-prop($colours, 'brand', 'one');
+  font-family: inherit;
+  font-weight: $font-weight;
+  display: inline-block; 
+  text-decoration: none;
+  color: $colour;
+  border-bottom: solid 2px $colour;
+  transition: transitions.$ease;
+  
+  & > span {
+    position: relative;
+    pointer-events: none;
+    z-index: z-index.$default;
+  }
+  
+  &:hover {
+    color: $colour--hover;
+    border-color: $colour--hover;
+  }
+
+  &--inverse {
+    color: white;
+  }
+}
+
+/// -------------------
+/// Link icon
+/// -------------------
+
+.link__icn {
+  vertical-align: middle;
+
+  &:first-child {
+    margin-right: spacing.$xxs;
+  }
+
+  &:last-child {
+    margin-left: spacing.$xxs;
+  }
+  
+  & svg path {
+    fill: $colour;
+    transition: transitions.$ease;
+
+    .link:hover & {
+      fill: $colour--hover;
+    }
+
+    .link--inverse & {
+      fill: white;
+    }
+
+  }
 }

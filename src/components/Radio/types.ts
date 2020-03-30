@@ -1,6 +1,10 @@
 declare namespace IRadio {
   interface IProps {
-    [key: string]: any
+    className?: string
+    id: string
+    name?: string
+    value?: boolean
+    onChange: (value: boolean) => void
   }
 }
 

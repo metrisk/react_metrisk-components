@@ -2,9 +2,14 @@ import ILoader from './types'
 import * as React from 'react'
 import cx from 'classnames'
 
-// Styles
+/**
+ * Styles
+ */
 import './Loader.scss'
 
+/**
+ * A loader
+ */
 const Loader = ({ type, coverPage }: any) => {
   const Wrapper = ({ children }: any) => {
     return (

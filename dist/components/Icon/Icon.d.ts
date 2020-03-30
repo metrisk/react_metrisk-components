@@ -1,11 +1,11 @@
-import * as React from 'react';
+/// <reference types="react" />
 import IIcon from './types';
 /**
  * Styles
  */
 import './Icon.scss';
 /**
- * Render an icon
+ * Icon
  */
-declare const Icon: React.FC<IIcon.IProps>;
+declare const Icon: ({ className, name, size, colour }: IIcon.IProps) => JSX.Element;
 export default Icon;

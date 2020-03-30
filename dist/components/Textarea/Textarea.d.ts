@@ -1,4 +1,11 @@
 /// <reference types="react" />
+import ITextarea from './types';
+/**
+ * Styles
+ */
 import './Textarea.scss';
-declare const Textarea: ({ className, id, value, onChange }: any) => JSX.Element;
+/**
+ * My component
+ */
+declare const Textarea: ({ className, id, name, value, onChange }: ITextarea.IProps) => JSX.Element;
 export default Textarea;

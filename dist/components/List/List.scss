@@ -1,0 +1,40 @@
+/// ----------------------------------------------------------------------
+
+/// List
+
+/// ----------------------------------------------------------------------
+
+@use 'apply-props';
+@use 'colours';
+@use 'typography';
+@use 'spacing';
+@use 'resets';
+
+/// -------------------
+/// List config
+/// -------------------
+
+$item-margin: spacing.$sm !default;
+
+/// -------------------
+/// List selectors
+/// -------------------
+
+.list {
+  @include resets.list;
+}
+
+/// -------------------
+/// List selectors
+/// -------------------
+
+.list__item {
+  @include apply-props.apply-props(typography.$p);
+  margin-bottom: $item-margin;
+}
+
+/// -------------------
+/// List selectors
+/// -------------------
+
+.list__link {}

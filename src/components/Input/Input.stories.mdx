@@ -1,72 +1,26 @@
 import { useState } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Text } from '../Text'
 import { Input } from '.'
 
 <Meta title='Components|Input' component={Input} />
 
 # Input
-A simple Input to allow users to carry out an action. This is a controlled component so a `value` and an `onChange` prop must be passed.
-
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia turpis mattis justo pellentesque, ac vulputate felis dictum. Integer risus enim, posuere quis elementum non, commodo molestie odio.
+ 
 ## Base
-For use as a main call to action.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia turpis mattis justo pellentesque, ac vulputate felis dictum. Integer risus enim, posuere quis elementum non, commodo molestie odio.
 
 <Preview>
-  <Story name='Primary'>
+  <Story name='Base'>
     {() => {
       const [value, setValue] = useState('')
       return (
-        <Input name={'name'} value={value} onChange={setValue} />
-      )
-    }}
-  </Story>
-</Preview>
-
-## Number
-For use as a main call to action.
-
-<Preview>
-  <Story name='Number'>
-    {() => {
-      const [value, setValue] = useState('')
-      return (
-        <Input name={'name'} type={'number'} value={value} onChange={setValue} />
-      )
-    }}
-  </Story>
-</Preview>
-
-## States
-For use as a main call to action.
-
-<Preview>
-  <Story name='States-Error'>
-    {() => {
-      const [value, setValue] = useState('')
-      return (
-        <Input name={'name'} value={value} state={'Error'} onChange={setValue} />
-      )
-    }}
-  </Story>
-</Preview>
-
-<Preview>
-  <Story name='States-Warning'>
-    {() => {
-      const [value, setValue] = useState('')
-      return (
-        <Input name={'name'} value={value} state={'Warning'} onChange={setValue} />
-      )
-    }}
-  </Story>
-</Preview>
-
-<Preview>
-  <Story name='States-Success'>
-    {() => {
-      const [value, setValue] = useState('')
-      return (
-        <Input name={'name'} value={value} state={'Success'} onChange={setValue} />
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Input id={'input'} value={value} onChange={setValue} />
+        </div>
       )
     }}
   </Story>

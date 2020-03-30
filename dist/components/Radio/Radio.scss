@@ -1,43 +1,47 @@
 /// ----------------------------------------------------------------------
 
-/// Checkbox
+/// Radio
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'colours';
+@use 'borders';
+@use 'corners';
+@use 'spacing';
+@use 'transitions';
+@use 'utilities';
 
 /// -------------------
-/// Checkbox swatches
+/// Radio swatches
 /// -------------------
 
-$radio-size: 1.5rem;
+$size: 1.5rem !default;
+$bg-colour: map-get(colours.$ui, 'two') !default;
+$bg-colour--checked: map-get(colours.$ui, 'five') !default;
+$border-radius: corners.$round !default;
 
 /// -------------------
-/// Checkbox selectors
+/// Radio selectors
 /// -------------------
 
 .radio {
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  background-color: get-prop($colours, 'ui', 'two');
-  border-radius: get-prop($border-radii, 'rounded');
-  height: $radio-size;
-  width: $radio-size;
+  background-color: $bg-colour;
+  border-radius: $border-radius;
+  height: $size;
+  width: $size;
   box-sizing: border-box;
-  transition: background-color get-prop($transition, 'linear');
+  transition: transitions.$ease;
   cursor: pointer;
 
   &:focus-within {
-    border: solid 2px get-prop($colours, 'brand', 'two');
+    border: borders.$one;
   }
 
   &--checked {
-    background-color: get-prop($colours, 'ui', 'four');
-  }
-
-  .label + & {
-    margin-left: get-prop($spacing, 'md');
+    background-color: $bg-colour--checked;
   }
 }
 
@@ -52,19 +56,16 @@ $radio-size: 1.5rem;
 }
 
 /// -------------------
-/// Checkbox icon
+/// Radio icon
 /// -------------------
 
 .radio__icn {
-  position: absolute;
+  @include utilities.center;
   display: none;
-  width: $radio-size * 0.5;
-  height: $radio-size * 0.5;
-  top: 50%;
-  left: 50%;
-  border-radius: get-prop($border-radii, 'rounded');
+  width: $size * 0.5;
+  height: $size * 0.5;
   background-color: white;
-  transform: translate(-50%, -50%);
+  border-radius: $border-radius;
 
   .radio--checked > & {
     display: block;

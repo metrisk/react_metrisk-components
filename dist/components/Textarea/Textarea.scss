@@ -4,48 +4,55 @@
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'apply-props';
+@use 'spacing';
+@use 'corners';
+@use 'borders';
+@use 'colours';
+@use 'typography';
+@use 'components';
+@use 'transitions';
+@use 'resets';
 
 /// -------------------
-/// Textarea swatches
+/// Textarea config
 /// -------------------
 
-$input-pad: get-prop($spacing, 'md');
+$padding-x: spacing.$sm !default;
+$bg-colour: map-get(colours.$ui, 'two') !default;
+$border-radius: corners.$base !default;
+$font-family: typography.$font-family--alt !default;
+$font-weight: typography.$font-light !default;
 
 /// -------------------
-/// Textarea selectors
+/// Textarea selectors 
 /// -------------------
 
 .textarea {
-  @include flow-component;
-  @include interactive-component;
-  display: block;
-  border: none;
-  font-size: $base-font-size;
+  @include resets.style;
+  @include components.flow;
+  @include components.interactive;
+  padding-left: $padding-x;
+  padding-right: $padding-x;
+  border-radius: $border-radius; 
+  background-color: $bg-colour;
   font-family: $font-family;
-  padding-left: $input-pad;
-  padding-right: $input-pad;
-  border-radius: get-prop($border-radii, 'base');
-  background-color: get-prop($colours, 'ui', 'one');
-  cursor: text;
+  font-weight: $font-weight;
+  transition: border transitions.$ease;
 
-  &:active,
   &:focus {
     outline: none;
   }
 
-
-  &--error {
-    border-bottom: solid 2px get-prop($colours, 'state', 'error');
-  }
-  &--warning {
-    border-bottom: solid 2px get-prop($colours, 'state', 'warning');
-  }
-  &--success {
-    border-bottom: solid 2px get-prop($colours, 'state', 'success');
+  .field--error & {
+    border-bottom: solid 2px map-get(colours.$state, 'error');
   }
 
-  .label + & {
-    margin-left: get-prop($spacing, 'md');
+  .field--warning & {
+    border-bottom: solid 2px map-get(colours.$state, 'warning');
+  }
+
+  .field--success & {
+    border-bottom: solid 2px map-get(colours.$state, 'success');
   }
 }

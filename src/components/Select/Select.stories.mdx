@@ -2,21 +2,25 @@ import { useState } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
 import { Select } from '.'
+import { Text } from '../Text'
 
 <Meta title='Components|Select' component={Select} />
 
 # Select
-A simple Select to allow users to carry out an action.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 
 ## Base
-For use as a main call to action.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 
 <Preview>
-  <Story name='Primary'>
+  <Story name='Base'>
     {() => {
       const [value, setValue] = useState(null)
       return (
-        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} onChange={setValue} />
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Select id={'select'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} onChange={setValue} />
+        </div>
       )
     }}
   </Story>
@@ -30,35 +34,44 @@ Optional selects allow you to reselect `null`.
     {() => {
       const [value, setValue] = useState(null)
       return (
-        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} optional onChange={setValue} />
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Select id={'select'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} optional onChange={setValue} />
+        </div>
       )
     }}
   </Story>
 </Preview>
 
 ## Searchable
-Optional selects allow you to reselect `null`.
+Searchable selects allow the user to search for an option.
 
 <Preview>
   <Story name='Searchable'>
     {() => {
       const [value, setValue] = useState(null)
       return (
-        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} optional searchable onChange={setValue} />
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Select id={'select'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} searchable onChange={setValue} />
+        </div>  
       )
     }}
   </Story>
 </Preview>
 
 ## States
-Optional selects allow you to reselect `null`.
+Validation states.
 
 <Preview>
   <Story name='States-Error'>
     {() => {
       const [value, setValue] = useState(null)
       return (
-        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} state={'Error'} optional onChange={setValue} />
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Select id={'select'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} state={'Error'} onChange={setValue} />
+        </div>
       )
     }}
   </Story>
@@ -69,7 +82,10 @@ Optional selects allow you to reselect `null`.
     {() => {
       const [value, setValue] = useState(null)
       return (
-        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} state={'Warning'} optional onChange={setValue} />
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Select id={'select'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} state={'Warning'} onChange={setValue} />
+        </div>
       )
     }}
   </Story>
@@ -80,7 +96,10 @@ Optional selects allow you to reselect `null`.
     {() => {
       const [value, setValue] = useState(null)
       return (
-        <Select name={'name'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} state={'Success'} optional searchable onChange={setValue} />
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Select id={'select'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} state={'Success'} searchable onChange={setValue} />
+        </div>
       )
     }}
   </Story>

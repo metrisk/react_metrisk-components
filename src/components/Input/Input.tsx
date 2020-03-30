@@ -1,26 +1,23 @@
+import IInput from './types'
 import * as React from 'react'
 import cx from 'classnames'
-import IInput from './types'
 
-// Styles
+/**
+ * Styles
+ */
 import './Input.scss'
 
-const inputClasses: any = {
-  Error: 'input--error',
-  Warning: 'input--warning',
-  Success: 'input--success'
-}
-
-const Input = ({ className, id, type, value, state, disabled, onChange }: any) => (
+/**
+ * A user input
+ */
+const Input = ({ className, id, name, type, value, onChange }: IInput.IProps) => (
   <input
-    className={cx(className, 'input', inputClasses[state], { 'input--disabled': disabled  })}
+    className={cx(className, 'input')}
     id={id}
+    name={name}
     type={type}
     value={value || ''}
-    disabled={disabled}
-    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-      onChange(type === 'number' ? parseInt(e.target.value) : e.target.value)
-    }
+    onChange={(e: any) => onChange(e.target.value)}
   />
 )
 

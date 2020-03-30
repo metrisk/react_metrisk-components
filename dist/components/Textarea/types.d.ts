@@ -1,6 +1,10 @@
 declare namespace ITextarea {
     interface IProps {
-        [key: string]: any;
+        className?: string;
+        id: string;
+        name?: string;
+        value: string;
+        onChange: (e: any) => void;
     }
 }
 export default ITextarea;

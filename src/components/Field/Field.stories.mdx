@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Text } from '../Text'
 import { Field } from '.'
 
 <Meta title='Components|Field' component={Field} />
 
 # Field
-A simple Field to allow users to carry out an action.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 ## Base
-For use as a main call to action.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 <Preview>
-  <Story name='Primary'>
+  <Story name='Base'>
     {() => {
       const [value, setValue] = useState('')
       return (
-        <Field label={'Name'} id={'name'} type={'text'} value={value} onChange={setValue} />
+        <Field id={'name'} label={'Name'} type={'text'} value={value} onChange={setValue} />
       )
     }}
   </Story>
@@ -30,49 +31,49 @@ You can pass a component to the label prop.
     {() => {
       const [value, setValue] = useState('')
       return (
-        <Field label={<div>Custom label!</div>} id={'name'} type={'text'} value={value} onChange={setValue} />
+        <Field id={'field'} label={<div>Custom label!</div>} type={'text'} value={value} onChange={setValue} />
       )
     }}
   </Story>
 </Preview>
 
 ## Select
-For use as a main call to action.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 <Preview>
   <Story name='Select'>
     {() => {
       const [value, setValue] = useState('')
       return (
-        <Field label={'Age'} id={'age'} type={'select'} value={value} options={[{ value: 'option', label: 'Option' }]} searchable onChange={setValue} />
+        <Field id={'field'} label={'Age'} type={'select'} value={value} options={[{ value: 'option', label: 'Option' }]} searchable onChange={setValue} />
       )
     }}
   </Story>
 </Preview>
 
 ## Checkbox
-For use as a main call to action.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 <Preview>
   <Story name='Checkbox'>
     {() => {
       const [value, setValue] = useState(false)
       return (
-        <Field label={'Checkbox'} id={'checkbox'} type={'checkbox'} value={value} onChange={setValue} />
+        <Field id={'field'} label={'Checkbox'} type={'checkbox'} value={value} onChange={setValue} />
       )
     }}
   </Story>
 </Preview>
 
 ## Radio
-For use as a main call to action.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 <Preview>
   <Story name='Radio'>
     {() => {
       const [value, setValue] = useState(false)
       return (
-        <Field label={'Radio'} id={'radio'} type={'radio'} value={value} onChange={setValue} />
+        <Field id={'field'} label={'Radio'} type={'radio'} value={value} onChange={setValue} />
       )
     }}
   </Story>
@@ -86,7 +87,7 @@ You can also pass a component to the `type` prop.
     {() => {
       const [value, setValue] = useState('')
       return (
-        <Field label={'Custom'} id={'custom'} type={<p className={'p'}>I am a custom field!</p>} value={value} onChange={setValue} />
+        <Field id={'field'} label={'Custom'} type={<p className={'p'}>I am a custom field!</p>} value={value} onChange={setValue} />
       )
     }}
   </Story>
@@ -96,7 +97,7 @@ You can also pass a component to the `type` prop.
 Field states. Type to see the state change.
 
 <Preview>
-  <Story name='States-Error'>
+  <Story name='States'>
     {() => {
       const [value, setValue] = useState('')
       const [state, setState] = useState(null)
@@ -115,7 +116,7 @@ Field states. Type to see the state change.
         }
       }
       return (
-        <Field label={'Name'} id={'name'} type={'text'} value={value} state={state} msg={msg} onChange={handleChange} />
+        <Field id={'field'} label={'Name'} type={'text'} value={value} state={state} msg={msg} onChange={handleChange} />
       )
     }}
   </Story>

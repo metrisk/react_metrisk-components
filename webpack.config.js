@@ -22,7 +22,7 @@ const config = (mode) => {
     watch: mode === 'dev' ? true : false,
     entry: `${src}/index.ts`,
     optimization: {
-      minimize: true
+      minimize: mode === 'dev' ? false : true
     },
     output: {
       path: dist,
@@ -92,7 +92,9 @@ const config = (mode) => {
               loader: 'sass-loader',
               options: {
                 includePaths: [
-                  `${src}/assets/scss/`,
+                  `${src}/assets/scss/base/`,
+                  `${src}/assets/scss/functions/`,
+                  `${src}/assets/scss/mixins/`,
                   `${src}/components/`
                 ]
               }

@@ -1,22 +1,23 @@
 import { Fragment, useContext, useState } from 'react'
 import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
-import { ModalContext, ModalProvider, Modal } from '.'
+import { OpenContext, OpenProvider } from '../../context/OpenContext'
 import { Text } from '../Text'
 import { Button } from '../Button'
+import { Modal } from '.'
 
 <Meta title='Components|Modal' component={Modal} />
 
 # Modal
-An inline hyperlink using React Router.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia turpis mattis justo pellentesque, ac vulputate felis dictum. Integer risus enim, posuere quis elementum non, commodo molestie odio.
  
 ## Base
-For use within paragraphs or other instances where a button would not be visually appropriate.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia turpis mattis justo pellentesque, ac vulputate felis dictum. Integer risus enim, posuere quis elementum non, commodo molestie odio.
 
 <Preview>
   <Story name='Base'>
     {() => {
       const App = () => {
-        const { open, setOpen } = useContext(ModalContext)
+        const { open, setOpen } = useContext(OpenContext)
         return (
           <Fragment>
             <Button type={'Primary'} onClick={() => setOpen(true)}>Open Modal</Button>
@@ -29,9 +30,9 @@ For use within paragraphs or other instances where a button would not be visuall
         )
       }
       return (
-        <ModalProvider>
+        <OpenProvider>
           <App />
-        </ModalProvider>
+        </OpenProvider>
       )
     }}
   </Story>
@@ -44,7 +45,7 @@ For use within paragraphs or other instances where a button would not be visuall
   <Story name='Actions'>
     {() => {
       const App = () => {
-        const { open, setOpen } = useContext(ModalContext)
+        const { open, setOpen } = useContext(OpenContext)
         return ( 
           <Fragment>
             <Button type={'Primary'} onClick={() => setOpen(true)}>Open Modal</Button>
@@ -64,9 +65,9 @@ For use within paragraphs or other instances where a button would not be visuall
         )
       }
       return (
-        <ModalProvider>
+        <OpenProvider>
           <App />
-        </ModalProvider>
+        </OpenProvider>
       )
     }}
   </Story>

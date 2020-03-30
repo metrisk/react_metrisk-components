@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Text } from '../Text'
 import { Checkbox } from '.'
 
 <Meta title='Components|Checkbox' component={Checkbox} />
@@ -12,11 +13,14 @@ A simple Checkbox to allow users to carry out an action. This is a controlled co
 For use to indicate a boolean value.
 
 <Preview>
-  <Story name='Primary'>
+  <Story name='Base'>
     {() => {
       const [value, setValue] = useState(false)
       return (
-        <Checkbox name={'name'} value={value} onChange={setValue} />
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Checkbox id={'checkbox'} value={value} onChange={setValue} />
+        </div>
       )
     }}
   </Story>
@@ -34,10 +38,10 @@ For use to indicate multiple boolean values.
         : prev.filter(x => x !== name))
       return (
         <div>
-          <p className='p'>Values selected: {JSON.stringify(values)}</p>
-          <Checkbox name={'favourite-animal'} value={values.includes('cat')} onChange={(value) => handleChange('cat', value)} />
-          <Checkbox name={'favourite-animal'} value={values.includes('dog')} onChange={(value) => handleChange('dog', value)} />
-          <Checkbox name={'favourite-animal'} value={values.includes('horse')} onChange={(value) => handleChange('horse', value)} />
+          <Text>Values selected: {JSON.stringify(values)}</Text>
+          <Checkbox name={'checkbox'} value={values.includes('cat')} onChange={(value) => handleChange('cat', value)} />
+          <Checkbox name={'checkbox'} value={values.includes('dog')} onChange={(value) => handleChange('dog', value)} />
+          <Checkbox name={'checkbox'} value={values.includes('horse')} onChange={(value) => handleChange('horse', value)} />
         </div>
       )
     }}

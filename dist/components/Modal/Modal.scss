@@ -4,11 +4,22 @@
 
 /// ----------------------------------------------------------------------
 
-@import 'Base.scss';
+@use 'colours';
+@use 'animations';
+@use 'transitions';
+@use 'corners';
+@use 'borders';
+@use 'shadows';
+@use 'spacing';
+@use 'utilities';
+@use 'z-index';
 
 /// -------------------
 /// Modal config
 /// -------------------
+
+$padding-x: spacing.$lg !default;
+$padding-y: spacing.$lg !default;
 
 @keyframes fadeIn {
   0% {
@@ -35,32 +46,16 @@
 /// -------------------
 
 .modal {
-  display: block;
+  @include utilities.center-x;
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  overflow: auto;
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(white, 0.8);
-  animation: fadeIn 0.3s ease forwards;
-  z-index: get-prop($z-index, 'top');
-}
-
-/// -------------------
-/// Modal swatches
-/// -------------------
-
-.modal__dialog {
+  box-sizing: border-box;
+  top: 100px;
   max-width: 800px;
   width: 100%;
   background-color: white;
-  box-shadow: get-prop($shadows, 'one');
-  animation: fadeInTop 0.3s ease forwards;
-  border-radius: get-prop($border-radii, 'base');
+  animation: centerFadeInTop 0.3s animations.$forwards-ease;
+  border-radius: corners.$base;
+  z-index: z-index.$top + 1;
 }
 
 /// -------------------
@@ -69,8 +64,8 @@
 
 .modal__close {
   position: absolute;
-  right: get-prop($spacing, 'md');
-  top: get-prop($spacing, 'md');
+  right: $padding-x;
+  top: $padding-y;
   width: 1.5rem;
   height: 1.5rem;
   font-size: 0;
@@ -78,7 +73,7 @@
   border: none;
   background: none;
   opacity: 0.5;
-  transition: opacity get-prop($transition, 'ease');
+  transition: opacity transitions.$ease;
   cursor: pointer;
 
   &:hover {
@@ -91,8 +86,8 @@
 /// -------------------
 
 .modal__header {
-  border-bottom: get-prop($borders, 'four');
-  padding: get-prop($spacing, 'md');
+  border-bottom: borders.$three;
+  padding: $padding-y $padding-x;
 }
 
 /// -------------------
@@ -100,7 +95,7 @@
 /// -------------------
 
 .modal__body {
-  padding: get-prop($spacing, 'md');
+  padding: $padding-y $padding-x;
 }
 
 /// -------------------
@@ -108,7 +103,7 @@
 /// -------------------
 
 .modal__footer {
-  padding: get-prop($spacing, 'md');
+  padding: $padding-y $padding-x;
   display: flex;
   justify-content: space-between;
 }

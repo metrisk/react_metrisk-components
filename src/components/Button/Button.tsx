@@ -1,6 +1,6 @@
+import IButton from './types'
 import * as React from 'react'
 import cx from 'classnames'
-import IButton from './types'
 
 /**
  * Styles
@@ -13,40 +13,38 @@ import './Button.scss'
 import { Icon } from '../Icon'
 import { Link as RouterLink } from 'react-router-dom'
 
-const btnClasses: IButton.IClasses = {
+/**
+ * Types
+ */
+const types = {
   Primary: 'btn--primary',
   Secondary: 'btn--secondary',
   Tertiary: 'btn--tertiary',
   Action: 'btn--action'
 }
 
-const btnIcnClasses: IButton.IIconClasses = {
-  Left: 'btn__icn--l',
-  Right: 'btn__icn--r',
-  Center: 'btn__icn--c'
+/**
+ * Icon alignments
+ */
+const alignments = {
+  Left: 'btn--l',
+  Center: 'btn--c',
+  Right: 'btn--r'
 }
 
 /**
  * A visual button that will also render as <a> if it has a href
  */
-const Button: React.FC<IButton.IProps> = ({ className, href, type, size, icon, submit, disabled, children, onClick }) => {
-  const Tag: any = href ? RouterLink : 'button'
+const Button = ({ className, href, type, icon, submit, children, onClick }: IButton.IProps) => {
+  const Tag = href ? RouterLink : 'button'
   const btnType = submit ? 'submit' : !href ? 'button' : undefined
 
-  const renderIcon = (position: IButton.IProps['icon']['position'] = 'Center') =>
-    (icon.position || 'Center') === position && <Icon className={cx('btn__icn', btnIcnClasses[position])} {...icon} />
-
   return (
-    <Tag
-      className={cx(className, 'btn', btnClasses[type], { 'btn--sm': size === 'Small' })}
-      type={btnType}
-      to={href}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {icon && renderIcon(type === 'Action' ? 'Center' : 'Left')}
+    <Tag className={cx(className, 'btn', types[type], alignments[icon?.align])} type={btnType} to={href} onClick={onClick}>
+      {icon?.align === 'Left' && <Icon className={'btn__icn'} {...icon} />}
+      {icon?.align === 'Center' && <Icon className={'btn__icn'} {...icon} />}
       {children}
-      {icon && renderIcon('Right')}
+      {icon?.align === 'Right' && <Icon className={'btn__icn'} {...icon} />}
     </Tag>
   )
 }
