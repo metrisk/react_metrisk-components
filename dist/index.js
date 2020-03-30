@@ -518,9 +518,9 @@ var types = {
  * Icons
  */
 var icons = {
-    Success: 'Success',
+    Success: 'Tick',
     Warning: 'Info',
-    Error: 'Error',
+    Error: 'Exclamation',
     Info: 'Info',
 };
 var Alert = function (_a) {

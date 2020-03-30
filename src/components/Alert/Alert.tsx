@@ -35,9 +35,9 @@ const types = {
  * Icons
  */
 const icons = {
-  Success: 'Success',
+  Success: 'Tick',
   Warning: 'Info',
-  Error: 'Error',
+  Error: 'Exclamation',
   Info: 'Info',
 }
 

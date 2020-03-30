@@ -39,15 +39,15 @@ $padding-y: spacing.$md !default;
   z-index: z-index.$top;
 
   &--error {
-    border: solid 2px map-get(colours.$state, 'error');
+    border-bottom: solid 2px map-get(colours.$state, 'error');
   }
 
   &--warning {
-    border: solid 2px map-get(colours.$state, 'warning');
+    border-bottom: solid 2px map-get(colours.$state, 'warning');
   }
 
   &--success {
-    border: solid 2px map-get(colours.$state, 'success');
+    border-bottom: solid 2px map-get(colours.$state, 'success');
   }
 }
 
