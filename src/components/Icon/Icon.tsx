@@ -34,7 +34,9 @@ const colours = {
 const Icon = ({ className, name, size = 'Medium', colour = 'Dark' }: IIcon.IProps) => {
   const icon = require(`../../assets/icons/${name.toLowerCase()}.svg`)
 
-  return <span className={cx(className, 'icn', sizes[size], colours[colour])} dangerouslySetInnerHTML={{ __html: icon }} />
+  return (
+    <span className={cx(className, 'icn', sizes[size], colours[colour])} dangerouslySetInnerHTML={{ __html: icon }} />
+  )
 }
 
 export default Icon

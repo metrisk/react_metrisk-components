@@ -13,7 +13,7 @@ import './Checkbox.scss'
 import { Icon } from '../Icon'
 
 /**
- * A checkbox 
+ * A checkbox
  */
 const Checkbox = ({ className, id, name, value, onChange }: ICheckbox.IProps) => (
   <label className={cx(className, 'checkbox', { 'checkbox--checked': value })}>

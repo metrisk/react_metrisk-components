@@ -40,7 +40,12 @@ const Button = ({ className, href, type, icon, submit, children, onClick }: IBut
   const btnType = submit ? 'submit' : !href ? 'button' : undefined
 
   return (
-    <Tag className={cx(className, 'btn', types[type], alignments[icon?.align])} type={btnType} to={href} onClick={onClick}>
+    <Tag
+      className={cx(className, 'btn', types[type], alignments[icon?.align])}
+      type={btnType}
+      to={href}
+      onClick={onClick}
+    >
       {icon?.align === 'Left' && <Icon className={'btn__icn'} {...icon} />}
       {icon?.align === 'Center' && <Icon className={'btn__icn'} {...icon} />}
       {children}

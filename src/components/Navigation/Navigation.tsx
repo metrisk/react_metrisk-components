@@ -22,7 +22,7 @@ const Navigation = ({ className, links, type = 'Horizontal', inverse, children }
 
   const navClasses: INavigation.IClasses = {
     Horizontal: 'nav--horizontal',
-    Vertical: 'nav--vertical',
+    Vertical: 'nav--vertical'
   }
 
   /**
@@ -42,7 +42,7 @@ const Navigation = ({ className, links, type = 'Horizontal', inverse, children }
   const renderList = (items: any, state: any, depth: number) => (
     <NavigationList type={type} depth={depth}>
       {items.map((x: any) => (
-        <NavigationItem key={`li-${x.text}`} >
+        <NavigationItem key={`li-${x.text}`}>
           {x.children ? (
             <Fragment>
               <NavigationLink {...x} onClick={() => handleClick(x.text)}>
@@ -51,9 +51,7 @@ const Navigation = ({ className, links, type = 'Horizontal', inverse, children }
               {state[x.text]?.open && renderList(x.children, state[x.text], state[x.text].depth)}
             </Fragment>
           ) : (
-            <NavigationLink {...x}>
-              {x.text}
-            </NavigationLink>
+            <NavigationLink {...x}>{x.text}</NavigationLink>
           )}
         </NavigationItem>
       ))}

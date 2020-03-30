@@ -42,25 +42,27 @@ const config = (mode) => {
       modules: ['node_modules']
     },
     plugins: [
-      // mode === 'dev' && new Bundle(),
+      mode === 'dev' && new Bundle(),
       mode === 'dev' && new Output(),
-      // new Prettier({
-      //   printWidth: 120,
-      //   tabWidth: 2,
-      //   useTabs: false,
-      //   semi: false,
-      //   singleQuote: true,
-      //   arrowParens: 'always',
-      //   encoding: 'utf-8',
-      //   extensions: ['.js', '.ts', '.tsx', '.jsx', '.json']
-      // }),
+      new Prettier({
+        printWidth: 120,
+        tabWidth: 2,
+        useTabs: false,
+        semi: false,
+        singleQuote: true,
+        arrowParens: 'always',
+        encoding: 'utf-8',
+        extensions: ['.js', '.ts', '.tsx', '.jsx', '.json']
+      }),
       new Css({
         filename: 'main.css',
         chunkFilename: '[id].css'
       }),
-      new Copy([
-        { from: `${src}/assets/**/*.scss`, to: dist },
-        { from: `${src}/components/**/*.scss`, to: dist }])
+      new Copy([{
+        from: `${src}/assets/**/*`,
+        to: `${dist}/assets/`,
+        flatten: true
+      }]),
     ].filter((x) => !!x),
     module: {
       rules: [

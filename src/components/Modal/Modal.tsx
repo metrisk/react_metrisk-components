@@ -26,19 +26,20 @@ import { Overlay } from '../Overlay'
 const Modal = ({ header, footer, children }: IModal.IProps) => {
   const { open, setOpen } = useContext(OpenContext)
 
-  return open ? createPortal(
-    <Fragment>
-      <Overlay onClick={() => setOpen(false)} />
-      <aside className={cx('modal')}>
-        <ModalClose onClick={setOpen} />
-        {header && <ModalHeader {...header} />}
-        {children && <ModalBody>{children}</ModalBody>}
-        {footer && <ModalFooter {...footer} />}
-      </aside>
-    </Fragment>
-    ,
-    document.body
-  ) : null
+  return open
+    ? createPortal(
+        <Fragment>
+          <Overlay onClick={() => setOpen(false)} />
+          <aside className={cx('modal')}>
+            <ModalClose onClick={setOpen} />
+            {header && <ModalHeader {...header} />}
+            {children && <ModalBody>{children}</ModalBody>}
+            {footer && <ModalFooter {...footer} />}
+          </aside>
+        </Fragment>,
+        document.body
+      )
+    : null
 }
 
 export default Modal

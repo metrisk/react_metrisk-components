@@ -28,7 +28,7 @@ const types = {
   Success: 'alert--success',
   Warning: 'alert--warning',
   Error: 'alert--error',
-  Info: 'alert--info',
+  Info: 'alert--info'
 }
 
 /**
@@ -38,7 +38,7 @@ const icons = {
   Success: 'Tick',
   Warning: 'Info',
   Error: 'Exclamation',
-  Info: 'Info',
+  Info: 'Info'
 }
 
 const Alert = ({ type = 'Info', timeout, footer, children }: IAlert.IProps) => {
@@ -52,18 +52,20 @@ const Alert = ({ type = 'Info', timeout, footer, children }: IAlert.IProps) => {
     setTimeout(() => setOpen(false), timeout)
   }, [open])
 
-  return open ? createPortal(
-    <Fragment>
-      <Overlay type={'Inverse'} />
-      <aside className={cx('alert', types[type])}>
-        <AlertClose onClick={setOpen} />
-        <Icon className={cx('alert__icn')} name={icons[type]} colour={type === 'Info' ? 'Dark' : type} />
-        {children && <AlertBody>{children}</AlertBody>}
-        {footer && <AlertFooter {...footer} />}
-      </aside>
-    </Fragment>,
-    document.body
-  ) : null
+  return open
+    ? createPortal(
+        <Fragment>
+          <Overlay type={'Inverse'} />
+          <aside className={cx('alert', types[type])}>
+            <AlertClose onClick={setOpen} />
+            <Icon className={cx('alert__icn')} name={icons[type]} colour={type === 'Info' ? 'Dark' : type} />
+            {children && <AlertBody>{children}</AlertBody>}
+            {footer && <AlertFooter {...footer} />}
+          </aside>
+        </Fragment>,
+        document.body
+      )
+    : null
 }
 
 export default Alert

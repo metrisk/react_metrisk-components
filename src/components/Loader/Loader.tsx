@@ -12,13 +12,9 @@ import './Loader.scss'
  */
 const Loader = ({ type, coverPage }: any) => {
   const Wrapper = ({ children }: any) => {
-    return (
-      <div className={cx('loader')}>
-        {children}
-      </div>
-    )
+    return <div className={cx('loader')}>{children}</div>
   }
-  
+
   switch (type) {
     case 'Bounce':
       return (
