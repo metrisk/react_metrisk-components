@@ -1,0 +1,33 @@
+import { MemoryRouter } from 'react-router-dom'
+import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Table } from '.'
+
+<Meta title='Components|Table' component={Table} />
+
+# Table
+A simple box for wrapping content. 
+
+ 
+## Base
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+
+>Grey background is for demo purpose only.
+
+<Preview>
+  <Story name='Base'>
+    <Table 
+      header={[
+        { content: 'Name' },
+        { content: 'Date' },
+      ]}
+      rows={[
+      [{ content: 'Bob' }, { content: '2019-01-01' }],
+      [{ content: 'Jane' }, { content: '2019-05-22' }],
+      [{ content: 'Joe' }, { content: '2019-03-14' }],
+    ]} />
+  </Story>
+</Preview>
+
+## Prop Types
+
+<Props of={Table} />

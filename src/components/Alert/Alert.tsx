@@ -55,7 +55,6 @@ const Alert = ({ type = 'Info', timeout, footer, children }: IAlert.IProps) => {
   return open
     ? createPortal(
         <Fragment>
-          <Overlay type={'Inverse'} />
           <aside className={cx('alert', types[type])}>
             <AlertClose onClick={setOpen} />
             <Icon className={cx('alert__icn')} name={icons[type]} colour={type === 'Info' ? 'Dark' : type} />

@@ -59,7 +59,7 @@ $types: (
       left: 0,
       right: 0,
       background-color: white,
-      z-index: z-index.$back,
+      z-index: z-index.$back - 1,
     )
   ),
   'tertiary': (
@@ -108,6 +108,7 @@ $types: (
   letter-spacing: .5px;
   text-decoration: none;
   cursor: pointer;
+  z-index: z-index.$default;
 
   &:focus {
     outline: none;

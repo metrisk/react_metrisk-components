@@ -1,0 +1,51 @@
+/// ----------------------------------------------------------------------
+
+/// Table
+
+/// ----------------------------------------------------------------------
+
+@use 'spacing';
+@use 'components';
+
+/// -------------------
+/// Table config
+/// -------------------
+
+$padding-x: spacing.$md !default;
+$padding-y: spacing.$md !default;
+
+/// -------------------
+/// Table selectors
+/// -------------------
+
+.table {
+  table-layout: fixed;
+  display: table;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+/// -------------------
+/// Table selectors
+/// -------------------
+
+.table__row {
+  @include components.interactive;
+  // table-layout: fixed;
+}
+
+/// -------------------
+/// Table selectors
+/// -------------------
+
+.table__cell {
+  // table-layout: fixed;
+}
+
+/// -------------------
+/// Table selectors
+/// -------------------
+
+.table__btn {
+  // table-layout: fixed;
+}
