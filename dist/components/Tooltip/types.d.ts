@@ -1,6 +1,6 @@
 declare namespace ITooltip {
-  interface IProps {
-    [key: string]: any
-  }
+    interface IProps {
+        [key: string]: any;
+    }
 }
-export default ITooltip
+export default ITooltip;

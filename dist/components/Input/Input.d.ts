@@ -1,11 +1,11 @@
 /// <reference types="react" />
-import IInput from './types'
+import IInput from './types';
 /**
  * Styles
  */
-import './Input.scss'
+import './Input.scss';
 /**
  * A user input
  */
-declare const Input: ({ className, id, name, type, value, onChange }: IInput.IProps) => JSX.Element
-export default Input
+declare const Input: ({ className, id, name, type, value, onChange }: IInput.IProps) => JSX.Element;
+export default Input;

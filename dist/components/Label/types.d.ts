@@ -1,8 +1,8 @@
 declare namespace ILabel {
-  interface IProps {
-    className?: string
-    for?: string
-    children: any
-  }
+    interface IProps {
+        className?: string;
+        for?: string;
+        children: any;
+    }
 }
-export default ILabel
+export default ILabel;

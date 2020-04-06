@@ -1,10 +1,10 @@
 declare namespace IRadio {
-  interface IProps {
-    className?: string
-    id: string
-    name?: string
-    value?: boolean
-    onChange: (value: boolean) => void
-  }
+    interface IProps {
+        className?: string;
+        id: string;
+        name?: string;
+        value?: boolean;
+        onChange: (value: boolean) => void;
+    }
 }
-export default IRadio
+export default IRadio;
