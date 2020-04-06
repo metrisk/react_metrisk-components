@@ -28,7 +28,7 @@ $padding-y: spacing.$md !default;
   @include utilities.center-x;
   position: fixed;
   box-sizing: border-box;
-  top: 50px;
+  top: 1rem;
   width: calc(100% - 2rem);
   max-width: 800px;
   min-width: 250px;

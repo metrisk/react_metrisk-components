@@ -63,6 +63,7 @@ $border-radius: corners.$base !default;
   @include utilities.center;
   display: none;
 
+  .checkbox__input:checked + &,
   .checkbox--checked > & {
     display: block;
   }

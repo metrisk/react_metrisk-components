@@ -44,7 +44,7 @@ const config = (mode) => {
     plugins: [
       mode === 'dev' && new Bundle(),
       mode === 'dev' && new Output(),
-      new Prettier({
+      mode !== 'prod' && new Prettier({
         printWidth: 120,
         tabWidth: 2,
         useTabs: false,

@@ -10,7 +10,8 @@ declare namespace IButton {
       align: 'Left' | 'Center' | 'Right'
     }
     submit?: boolean
-    children: string
+    disabled?: boolean
+    children: any
     onClick?: (e: React.SyntheticEvent) => void
   }
 }

@@ -76,6 +76,82 @@ For use within a header.
   </Story>
 </Preview>
 
+## Brand
+For use within a header.
+
+<Preview>
+  <Story name='Brand'>
+    <MemoryRouter>
+      <Navigation
+        brand={{
+          href: '/',
+          img: {
+            src: '/assets/logo.png',
+            alt: 'My Company Logo'
+          }
+        }}
+       links={[
+        {
+          href: '/',
+          text: 'Home'
+        },
+        {
+          href: '/about',
+          text: 'About'
+        },
+        {
+          text: 'Mammals',
+          children: [
+            {
+              href: '/mammals/cats',
+              text: 'Cats'
+            },
+            {
+              text: 'Dogs',
+              children: [
+                {
+                  href: '/mammals/dogs/labrador',
+                  text: 'Labrador'
+                },
+                {
+                  href: '/mammals/dogs/terrier',
+                  text: 'Terrier'
+                }
+              ]
+            },
+            {
+              text: 'Horses',
+              children: [
+                {
+                  href: '/mammals/horses/thoroughbred',
+                  text: 'Thoroughbred'
+                },
+                {
+                  href: '/mammals/horses/arabian',
+                  text: 'Arabian'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          text: 'Reptiles',
+          children: [
+            {
+              href: '/reptiles/iguana',
+              text: 'Iguana'
+            },
+            {
+              href: '/reptiles/gecko',
+              text: 'Gecko'
+            }
+          ]
+        },
+      ]} />
+    </MemoryRouter>
+  </Story>
+</Preview>
+
 ## Vertical
 For use within a sidebar.
 

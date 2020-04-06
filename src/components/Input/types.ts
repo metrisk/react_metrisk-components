@@ -3,6 +3,7 @@ declare namespace IInput {
     className?: string
     id: string
     name?: string
+    disabled?: boolean
     type: 'text' | 'date' | 'number' | 'email' | 'url' | 'tel'
     value: string
     onChange: (e: any) => void

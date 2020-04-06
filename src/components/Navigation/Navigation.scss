@@ -8,14 +8,17 @@
 @use 'colours';
 @use 'transitions';
 @use 'animations';
+@use 'breakpoint';
 @use 'typography';
 @use 'resets';
+@use 'z-index';
 
 /// -------------------
 /// Navigation config
 /// -------------------
 
 $nav-left: spacing.$md * 4;
+$nav-height: 60px;
 
 @keyframes fadeInNav {
   0% {
@@ -44,9 +47,14 @@ $nav-left: spacing.$md * 4;
 /// -------------------
 
 .nav {
+  position: relative;
+  z-index: z-index.$top;
 
   &--horizontal {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $nav-height;
   }
 
   &--vertical {
@@ -60,40 +68,103 @@ $nav-left: spacing.$md * 4;
   }
 }
 
+/// -------------------
+/// Navigation selectors
+/// -------------------
+
+.nav__toggle {
+  @include resets.style;
+  padding: spacing.$sm;
+  cursor: pointer;
+
+  .nav--vertical & {
+    display: none;
+  }
+
+  @include breakpoint.up('sm') {
+    display: none;
+  }
+}
+
+/// -------------------
+/// Navigation selectors
+/// -------------------
+
+.nav__brand {
+  max-width: 60px;
+}
+
+/// -------------------
+/// Navigation selectors
+/// -------------------
+
+.nav__logo {
+  width: 100%;
+  height: auto;
+}
+
+/// -------------------
+/// Navigation selectors
+/// -------------------
+
 .nav__list {
   @include resets.list;
   transform-origin: top;
   animation: navList 0.3s forwards ease;
 
   .nav--horizontal & {
-    display: flex;
+    position: absolute;
+    width: 100%;
+    top: $nav-height;
+    max-height: 0;
+    overflow: hidden;
+    background-color: white;
+    transition: max-height 0.3s ease;
+    
+    &--open {
+      max-height: 500px;
+    }
+    
+    @include breakpoint.up('sm') {
+      position: relative;
+      display: flex;
+      top: unset;
+      width: auto;
+      max-height: none;
+      overflow: visible;
+    }
   }
 
   .nav--horizontal & & {
-    display: flex;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    position: relative;
+    top: 0;
+    margin-left: spacing.$md;
+    
+    @include breakpoint.up('sm') {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      margin-left: 0;
+      left: 0;
+    }
   }
 
   .nav--vertical & & {
     margin-left: spacing.$md;
   }
 }
+/// -------------------
+/// Navigation item
+/// -------------------
 
 .nav__item {
   .nav--horizontal & {
     position: relative;
   }
-
-  .nav--vertical & {
-    
-  }
-
-  .nav--inverse & {
-    
-  }
 }
+/// -------------------
+/// Navigation link
+/// -------------------
 
 .nav__link {
   @include resets.style;
@@ -109,6 +180,12 @@ $nav-left: spacing.$md * 4;
   
   &:hover {
     color: map-get(colours.$brand, 'two');
+  }
+
+  .nav--horizontal & {
+    @include breakpoint.down('sm') {
+      padding: spacing.$sm;
+    }
   }
   
   .nav--vertical & {

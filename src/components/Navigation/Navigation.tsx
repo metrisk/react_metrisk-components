@@ -13,12 +13,15 @@ import './Navigation.scss'
  * Components
  */
 import { NavigationList, NavigationItem, NavigationLink } from '.'
+import { Icon } from '../Icon'
+import { Link as RouterLink } from 'react-router-dom'
 
 /**
  * A  navigation that supports two nested levels
  */
-const Navigation = ({ className, links, type = 'Horizontal', inverse, children }: any) => {
+const Navigation = ({ className, brand, links, type = 'Horizontal', inverse, children }: any) => {
   const [nodes, setNodes]: any = useState({})
+  const [open, setOpen]: any = useState(false)
 
   const navClasses: INavigation.IClasses = {
     Horizontal: 'nav--horizontal',
@@ -40,7 +43,7 @@ const Navigation = ({ className, links, type = 'Horizontal', inverse, children }
    * The array of links to process
    */
   const renderList = (items: any, state: any, depth: number) => (
-    <NavigationList type={type} depth={depth}>
+    <NavigationList type={type} depth={depth} open={open}>
       {items.map((x: any) => (
         <NavigationItem key={`li-${x.text}`}>
           {x.children ? (
@@ -68,6 +71,16 @@ const Navigation = ({ className, links, type = 'Horizontal', inverse, children }
 
   return (
     <nav className={cx(className, 'nav', navClasses[type], { 'nav--inverse': inverse })}>
+      <button className="nav__toggle" onClick={() => setOpen(!open)}>
+        <Icon name='hamburger' />
+      </button>
+
+      {brand && (
+        <RouterLink className="nav__brand" to={brand.href || '/'}>
+          <img className="nav__logo" src={brand.img.src} alt={brand.img.alt} />
+        </RouterLink>
+      )}
+
       {renderList(links, nodes, 0)}
       {children}
     </nav>

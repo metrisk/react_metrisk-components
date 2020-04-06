@@ -43,6 +43,11 @@ $font-weight: typography.$font-light !default;
   &:focus {
     outline: none;
   }
+  
+  &:disabled {
+    opacity: 0.25;
+    pointer-events: none;
+  }
 
   .field--error & {
     border-bottom: solid 2px map-get(colours.$state, 'error');

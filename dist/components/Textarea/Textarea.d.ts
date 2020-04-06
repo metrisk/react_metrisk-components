@@ -1,11 +1,11 @@
 /// <reference types="react" />
-import ITextarea from './types';
+import ITextarea from './types'
 /**
  * Styles
  */
-import './Textarea.scss';
+import './Textarea.scss'
 /**
  * My component
  */
-declare const Textarea: ({ className, id, name, value, onChange }: ITextarea.IProps) => JSX.Element;
-export default Textarea;
+declare const Textarea: ({ className, id, name, value, onChange }: ITextarea.IProps) => JSX.Element
+export default Textarea

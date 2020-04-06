@@ -62,6 +62,14 @@ body {
     text-align: right;
   }
 
+  &--bold {
+    font-weight: typography.$font-bold;
+  }
+
+  &--inverse {
+    color: white;
+  } 
+
   &--alpha {
     @include apply-props.apply-props(typography.$alpha);
   }

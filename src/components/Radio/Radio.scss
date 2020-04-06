@@ -67,6 +67,7 @@ $border-radius: corners.$round !default;
   background-color: white;
   border-radius: $border-radius;
 
+  .radio__input:checked > &,
   .radio--checked > & {
     display: block;
   }

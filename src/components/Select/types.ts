@@ -4,6 +4,7 @@ declare namespace ISelect {
     id: string
     searchable?: boolean
     optional?: boolean
+    disabled?: boolean
     placeholder?: string
     options: {
       value: string

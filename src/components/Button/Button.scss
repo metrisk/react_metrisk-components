@@ -116,6 +116,12 @@ $types: (
     opacity: 0.8;
   }
 
+  &--disabled,
+  &:disabled {
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
   &--l {
     padding-left: $padding-x * 1.5;
   }
