@@ -2,9 +2,9 @@
 /**
  * Styles
  */
-import './Loader.scss';
+import './Loader.scss'
 /**
  * A loader
  */
-declare const Loader: ({ type, coverPage }: any) => JSX.Element;
-export default Loader;
+declare const Loader: ({ type, coverPage }: any) => JSX.Element
+export default Loader

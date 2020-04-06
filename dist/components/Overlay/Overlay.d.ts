@@ -1,11 +1,11 @@
 /// <reference types="react" />
-import IOverlay from './types';
+import IOverlay from './types'
 /**
  * Styles
  */
-import './Overlay.scss';
+import './Overlay.scss'
 /**
  * An overlay
  */
-declare const Overlay: ({ className, type, onClick }: IOverlay.IProps) => JSX.Element;
-export default Overlay;
+declare const Overlay: ({ className, type, onClick }: IOverlay.IProps) => JSX.Element
+export default Overlay
