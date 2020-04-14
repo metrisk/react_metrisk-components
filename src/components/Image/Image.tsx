@@ -17,7 +17,8 @@ import { Loader } from '../Loader'
  */
 const types = {
   Rounded: 'img--rounded',
-  Round: 'img--round'
+  Round: 'img--round',
+  Diamond: 'img--diamond'
 }
 
 /**
@@ -26,7 +27,8 @@ const types = {
 const aspects = {
   '1x1': 'img--1x1',
   '4x3': 'img--4x3',
-  '16x9': 'img--16x9'
+  '16x9': 'img--16x9',
+  '7x3': 'img--7x3'
 }
 
 /**

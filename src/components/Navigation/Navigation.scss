@@ -18,7 +18,7 @@
 /// -------------------
 
 $nav-left: spacing.$md * 4;
-$nav-height: 60px;
+$nav-height: auto;
 
 @keyframes fadeInNav {
   0% {
@@ -58,7 +58,6 @@ $nav-height: 60px;
   }
 
   &--vertical {
-    background: white;
     padding: 0;
     background-color: map-get(colours.$ui, 'one');
   }
@@ -126,6 +125,7 @@ $nav-height: 60px;
     }
     
     @include breakpoint.up('sm') {
+      background-color: transparent;
       position: relative;
       display: flex;
       top: unset;
@@ -170,10 +170,12 @@ $nav-height: 60px;
   @include resets.style;
   display: inline-block;
   box-sizing: border-box;
+  line-height: 1;
   font-size: typography.$base-font-size;
   font-family: typography.$font-family--alt;
-  padding: spacing.$md;
+  padding: spacing.$lg spacing.$md;
   text-decoration: none;
+  white-space: nowrap;
   color: map-get(colours.$ui, 'five');
   cursor: pointer;
   transition: background-color 0.3s ease;

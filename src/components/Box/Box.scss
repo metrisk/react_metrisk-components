@@ -22,6 +22,7 @@ $padding-y: spacing.$md !default;
   position: relative;
   box-sizing: border-box;
   padding: $padding-y $padding-x;
+  align-self: stretch;
   
   &--start-y {
     align-items: start

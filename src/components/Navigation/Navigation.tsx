@@ -72,7 +72,7 @@ const Navigation = ({ className, brand, links, type = 'Horizontal', inverse, chi
   return (
     <nav className={cx(className, 'nav', navClasses[type], { 'nav--inverse': inverse })}>
       <button className="nav__toggle" onClick={() => setOpen(!open)}>
-        <Icon name='hamburger' />
+        <Icon name="hamburger" />
       </button>
 
       {brand && (
