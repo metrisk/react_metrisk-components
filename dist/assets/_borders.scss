@@ -1,0 +1,12 @@
+/// ----------------------------------------------------------------------
+
+/// Borders
+
+/// ----------------------------------------------------------------------
+
+@use 'colours';
+
+$one: solid 2px map-get(colours.$brand, 'one') !default;
+$two: solid 2px map-get(colours.$brand, 'two') !default;
+$three: solid 1px map-get(colours.$ui, 'two') !default;
+$four: solid 1px map-get(colours.$ui, 'five') !default;

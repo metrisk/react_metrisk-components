@@ -1,0 +1,65 @@
+/// ----------------------------------------------------------------------
+
+/// Components
+
+/// ----------------------------------------------------------------------
+
+@use 'typography';
+@use 'spacing';
+@use 'shadows';
+@use 'transitions';
+@use 'height-to-pad';
+ 
+/// -------------------
+/// Flow
+/// -------------------
+///
+/// Flow style components which should match with adjacent components and
+/// visually work together, such as buttons & form inputs.
+///
+$flow-height: 3rem !default;
+$flow-border-width: 2px !default;
+$flow-line-height: typography.$base-line-height !default;
+$flow-font-size: typography.$base-font-size !default;
+
+@mixin flow {
+  $padding: height-to-pad.height-to-pad($flow-height, $flow-border-width, $flow-line-height, $flow-font-size);
+  
+  display: inline-block;
+  box-sizing: border-box;
+  border: $flow-border-width solid transparent;
+  line-height: $flow-line-height;
+  font-size: $flow-font-size;
+  padding-top: map-get($padding, 'top');
+  padding-bottom: map-get($padding, 'bottom');
+}
+
+/// -------------------
+/// Block
+/// -------------------
+///
+/// Block style components which contain other components
+///
+$block-padding:  spacing.$md !default;
+
+@mixin block {
+  display: block;
+  padding: $block-padding;
+  box-sizing: border-box;
+}
+
+/// -------------------
+/// Interactive
+/// -------------------
+///
+/// Interactive style
+///
+@mixin interactive {
+  cursor: pointer;
+  
+  &:hover {
+    box-shadow: shadows.$one;
+    transition: transitions.$ease;
+    transform: translate(1px, -1px);
+  }
+}
