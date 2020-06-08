@@ -1,6 +1,6 @@
 import { MemoryRouter } from 'react-router-dom'
 import { Meta, Story, Canvas, Preview, Props } from '@storybook/addon-docs/blocks'
-import { List } from '.'
+import { List, ListItem, ListLink } from '.'
 
 <Meta title='Components|List' component={List} />
 
@@ -12,11 +12,11 @@ Some description here.
 
 <Preview>
   <Story name='Base'>
-    <List items={[
-      { text: 'Item 1' },
-      { text: 'Item 2' },
-      { text: 'Item 3' },
-    ]} />
+    <List>
+      <ListItem>Item 1</ListItem>
+      <ListItem>Item 2</ListItem>
+      <ListItem>Item 3</ListItem>
+    </List>
   </Story>
 </Preview>
 
@@ -26,24 +26,11 @@ Some description here.
 <Preview>
   <Story name='Links'>
     <MemoryRouter>
-      <List items={[
-        {
-          href: '/',
-          text: 'Item 1'
-        },
-        {
-          href: '/',
-          text: 'Item 2'
-        },
-        {
-          href: '/',
-          icon: {
-            align: 'Start',
-            name: 'download'
-          },
-          text: 'Item 3'
-        },
-      ]} />
+      <List>
+        <ListItem><ListLink href={'/'}>Item 1</ListLink></ListItem>
+        <ListItem><ListLink href={'/'}>Item 2</ListLink></ListItem>
+        <ListItem><ListLink href={'/'} icon={{align: 'Start', name: 'download'}}>Item 3</ListLink></ListItem>
+      </List>
     </MemoryRouter>
   </Story>
 </Preview>

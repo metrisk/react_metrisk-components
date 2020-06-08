@@ -7,5 +7,5 @@ import './List.scss';
 /**
  * List of items
  */
-declare const List: ({ className, items }: IList.IProps) => JSX.Element;
+declare const List: ({ className, children }: IList.IProps) => JSX.Element;
 export default List;
