@@ -10,7 +10,7 @@ import './Input.scss'
 /**
  * A user input
  */
-const Input = ({ className, id, name, type, value, onChange, controlled = true }: IInput.IProps) => {
+const Input = ({ className, id, name, type, value, onChange, uncontrolled }: IInput.IProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(event.target.value)
@@ -23,7 +23,7 @@ const Input = ({ className, id, name, type, value, onChange, controlled = true }
       id={id}
       name={name}
       type={type}
-      value={value || (controlled ? '' : undefined)}
+      value={value || (uncontrolled ? undefined : '')}
       onChange={handleChange}
     />
   )

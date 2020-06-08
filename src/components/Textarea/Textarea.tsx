@@ -10,15 +10,23 @@ import './Textarea.scss'
 /**
  * My component
  */
-const Textarea = ({ className, id, name, value, onChange }: ITextarea.IProps) => (
-  <textarea
-    className={cx(className, 'textarea')}
-    id={id}
-    name={name}
-    rows={6}
-    value={value || ''}
-    onChange={(e: any) => onChange(e.target.value)}
-  />
-)
+const Textarea = ({ className, id, name, value, uncontrolled, onChange }: ITextarea.IProps) => {
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (onChange) {
+      onChange(event.target.value)
+    }
+  }
+
+  return (
+    <textarea
+      className={cx(className, 'textarea')}
+      id={id}
+      name={name}
+      rows={6}
+      value={value || (uncontrolled ? undefined : '')}
+      onChange={handleChange}
+    />
+  )
+}
 
 export default Textarea
