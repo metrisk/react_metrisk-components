@@ -69,20 +69,22 @@ const Image = ({ className, type, aspect, src, alt, fallback }: IImage.IProps) =
   )
 
   return (
-    <Suspense fallback={fallback || <Fallback alt={alt} />}>
-      <SimpleCache.Consumer>
-        {(cache: any) => {
-          const data: any = resource.read(cache, src)
+    <div className={cx(className, 'img', types[type], aspects[aspect])}>
+      <Suspense fallback={fallback || <Fallback alt={alt} />}>
+        <SimpleCache.Consumer>
+          {(cache: any) => {
+            const data: any = resource.read(cache, src)
 
-          return (
-            <picture className={cx(className, 'img', types[type], aspects[aspect])}>
-              <source media="(min-width: 500px)" srcSet={data} />
-              <img className={'img__item'} src={data} alt={alt} />
-            </picture>
-          )
-        }}
-      </SimpleCache.Consumer>
-    </Suspense>
+            return (
+              <picture>
+                <source media="(min-width: 500px)" srcSet={data} />
+                <img className={'img__item'} src={data} alt={alt} />
+              </picture>
+            )
+          }}
+        </SimpleCache.Consumer>
+      </Suspense>
+    </div>
   )
 }
 

@@ -61,10 +61,13 @@
 /// ------------------
 
 .img__loader {
+  position: absolute;
   display: flex;
   flex-grow: 1;
-  height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -83,14 +86,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  min-width: 100px;
-  min-height: 100px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
   color: map-get(colours.$ui, 'three');
-
-  span {
-    
-  }
 
   div {
     user-select: none;
