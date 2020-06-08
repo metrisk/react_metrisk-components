@@ -22,7 +22,7 @@ const Input = ({ className, id, name, type, value, onChange, controlled = true }
     id={id}
     name={name}
     type={type}
-    value={value || (controlled ? '' : null)}
+    value={value || (controlled ? '' : undefined)}
     onChange={handleChange}
   />
 }
