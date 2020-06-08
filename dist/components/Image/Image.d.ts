@@ -7,5 +7,5 @@ import './Image.scss';
 /**
  * My component
  */
-declare const Image: ({ className, type, aspect, src, alt }: IImage.IProps) => JSX.Element;
+declare const Image: ({ className, type, aspect, src, alt, fallback }: IImage.IProps) => JSX.Element;
 export default Image;
