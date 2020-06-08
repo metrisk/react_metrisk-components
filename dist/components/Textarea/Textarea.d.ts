@@ -7,5 +7,5 @@ import './Textarea.scss';
 /**
  * My component
  */
-declare const Textarea: ({ className, id, name, value, onChange }: ITextarea.IProps) => JSX.Element;
+declare const Textarea: ({ className, id, name, value, uncontrolled, onChange }: ITextarea.IProps) => JSX.Element;
 export default Textarea;
