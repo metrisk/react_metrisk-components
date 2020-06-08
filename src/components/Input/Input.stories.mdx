@@ -26,6 +26,22 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia turpi
   </Story>
 </Preview>
 
+## Uncontrolled Input
+
+<Preview>
+  <Story name='Uncontrolled'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Input id={'input'} controlled={false} />
+        </div>
+      )
+    }}
+  </Story>
+</Preview>
+
 ## Prop Types
 
 <Props of={Input} />

@@ -10,15 +10,21 @@ import './Input.scss'
 /**
  * A user input
  */
-const Input = ({ className, id, name, type, value, onChange }: IInput.IProps) => (
-  <input
+const Input = ({ className, id, name, type, value, onChange, controlled = true }: IInput.IProps) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(event.target.value)
+    }
+  }
+
+  return <input
     className={cx(className, 'input')}
     id={id}
     name={name}
     type={type}
-    value={value || ''}
-    onChange={(e: any) => onChange(e.target.value)}
+    value={value || (controlled ? '' : null)}
+    onChange={handleChange}
   />
-)
+}
 
 export default Input
