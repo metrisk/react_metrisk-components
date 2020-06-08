@@ -58,7 +58,7 @@ const Fallback = ({ alt }: { alt: string }) => {
 /**
  * My component
  */
-const Image = ({ className, type, aspect, src, alt, fallback }: IImage.IProps) => {
+const Image = ({ className, type, aspect, src, alt, fallback, background = true }: IImage.IProps) => {
   const resource = createResource(
     (source: string) =>
       new Promise((resolve) => {
@@ -69,7 +69,7 @@ const Image = ({ className, type, aspect, src, alt, fallback }: IImage.IProps) =
   )
 
   return (
-    <div className={cx(className, 'img', types[type], aspects[aspect])}>
+    <div className={cx(className, 'img', types[type], aspects[aspect], background && 'img--background')}>
       <Suspense fallback={fallback || <Fallback alt={alt} />}>
         <SimpleCache.Consumer>
           {(cache: any) => {

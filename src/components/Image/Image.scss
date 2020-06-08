@@ -26,6 +26,9 @@
   padding-top: 100%; 
   overflow: hidden;
 
+  &--background {
+    background: map-get(colours.$ui, 'one');
+  }
 
   &--rounded {
     border-radius: corners.$base;

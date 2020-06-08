@@ -6,6 +6,7 @@ declare namespace IImage {
     src: string
     alt: string
     fallback: any
+    background: boolean
   }
 }
 
