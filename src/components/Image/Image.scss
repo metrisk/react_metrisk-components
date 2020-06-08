@@ -15,12 +15,6 @@
 @use 'utilities';
 
 /// -------------------
-/// Image config
-/// -------------------
-
-$bg-colour: map-get(colours.$ui, 'one');
-
-/// -------------------
 /// Image selectors
 /// ------------------
 
@@ -31,9 +25,7 @@ $bg-colour: map-get(colours.$ui, 'one');
   width: 100%;
   padding-top: 100%; 
   overflow: hidden;
-  background-size: 200%;
-  background-image: gradients.$three;
-  animation: cycleBg 4s animations.$infinite-linear;
+
 
   &--rounded {
     border-radius: corners.$base;
@@ -84,4 +76,24 @@ $bg-colour: map-get(colours.$ui, 'one');
 .img__item {
   @include utilities.center;
   width: 100%;
+}
+
+.img__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 100px;
+  min-height: 100px;
+  color: map-get(colours.$ui, 'three');
+
+  span {
+    
+  }
+
+  div {
+    user-select: none;
+    font-size: 2em;
+  }
 }

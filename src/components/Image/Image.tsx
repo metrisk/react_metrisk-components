@@ -1,6 +1,6 @@
 import IImage from './types'
 import * as React from 'react'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import { createResource, SimpleCache } from 'simple-cache-provider'
 import cx from 'classnames'
 
@@ -33,11 +33,27 @@ const aspects = {
   '7x3': 'img--7x3'
 }
 
-const Fallback = () => (
-  <span className={'img__loader'}>
-    <Loader type="Circle" />
-  </span>
-)
+const secondsUntilFail = 15
+
+const Fallback = ({ alt }: { alt: string }) => {
+  const [error, setError] = useState(false)
+  setTimeout(() => setError(true), secondsUntilFail * 1000)
+
+  if (error) {
+    return (
+      <div className="img__error">
+        <div aria-hidden={true}>?</div>
+        <span>{alt}</span>
+      </div>
+    )
+  }
+
+  return (
+    <span className={'img__loader'}>
+      <Loader type="Circle" />
+    </span>
+  )
+}
 
 /**
  * My component
@@ -53,10 +69,11 @@ const Image = ({ className, type, aspect, src, alt, fallback }: IImage.IProps) =
   )
 
   return (
-    <Suspense fallback={fallback || <Fallback />}>
+    <Suspense fallback={fallback || <Fallback alt={alt} />}>
       <SimpleCache.Consumer>
         {(cache: any) => {
           const data: any = resource.read(cache, src)
+
           return (
             <picture className={cx(className, 'img', types[type], aspects[aspect])}>
               <source media="(min-width: 500px)" srcSet={data} />
