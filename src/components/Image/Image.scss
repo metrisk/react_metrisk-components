@@ -69,8 +69,12 @@ $bg-colour: map-get(colours.$ui, 'one');
 /// ------------------
 
 .img__loader {
-  @include utilities.center;
-  color: white;
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 /// -------------------
@@ -80,5 +84,4 @@ $bg-colour: map-get(colours.$ui, 'one');
 .img__item {
   @include utilities.center;
   width: 100%;
-  background-color: white;
 }

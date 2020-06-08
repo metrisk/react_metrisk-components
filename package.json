@@ -35,7 +35,8 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router": "^5.1.0",
-    "react-router-dom": "^5.1.0"
+    "react-router-dom": "^5.1.0",
+    "simple-cache-provider": "^0.10.0"
   },
   "devDependencies": {
     "@storybook/addon-docs": "^5.3.9",
@@ -57,7 +58,7 @@
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
-    "cypress": "^4.2.0",
+    "cypress": "^4.7.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "fs-extra": "^8.1.0",
@@ -83,7 +84,7 @@
     "typescript": "^3.6.2",
     "webpack": "^4.39.3",
     "webpack-bundle-analyzer": "^3.4.1",
-    "webpack-dev-server": "^3.8.0",
+    "webpack-dev-server": "^3.11.0",
     "write-file-webpack-plugin": "^4.5.1"
   }
 }
