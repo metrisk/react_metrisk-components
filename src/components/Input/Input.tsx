@@ -17,14 +17,16 @@ const Input = ({ className, id, name, type, value, onChange, controlled = true }
     }
   }
 
-  return <input
-    className={cx(className, 'input')}
-    id={id}
-    name={name}
-    type={type}
-    value={value || (controlled ? '' : undefined)}
-    onChange={handleChange}
-  />
+  return (
+    <input
+      className={cx(className, 'input')}
+      id={id}
+      name={name}
+      type={type}
+      value={value || (controlled ? '' : undefined)}
+      onChange={handleChange}
+    />
+  )
 }
 
 export default Input
