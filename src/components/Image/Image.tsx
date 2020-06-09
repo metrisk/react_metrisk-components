@@ -1,8 +1,10 @@
 import IImage from './types'
 import * as React from 'react'
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { createResource, SimpleCache } from 'simple-cache-provider'
 import cx from 'classnames'
+
+import { canUseDOM } from '../../lib/canUseDOM'
 
 /**
  * Styles
@@ -13,6 +15,7 @@ import './Image.scss'
  * Components
  */
 import { Loader } from '../Loader'
+import SsrSuspense from './SsrSuspense'
 
 /**
  * Image classes
@@ -68,22 +71,32 @@ const Image = ({ className, type, aspect, src, alt, fallback, background = true 
       })
   )
 
-  return (
-    <div className={cx(className, 'img', types[type], aspects[aspect], background && 'img--background')}>
-      <Suspense fallback={fallback || <Fallback alt={alt} />}>
+  const renderSuspense = () => {
+    return (
+      <SsrSuspense fallback={fallback || <Fallback alt={alt} />}>
         <SimpleCache.Consumer>
           {(cache: any) => {
             const data: any = resource.read(cache, src)
 
-            return (
-              <picture>
-                <source media="(min-width: 500px)" srcSet={data} />
-                <img className={'img__item'} src={data} alt={alt} />
-              </picture>
-            )
+            return renderImage(data)
           }}
         </SimpleCache.Consumer>
-      </Suspense>
+      </SsrSuspense>
+    )
+  }
+
+  const renderImage = (src: any) => {
+    return (
+      <picture>
+        <source media="(min-width: 500px)" srcSet={src} />
+        <img className={'img__item'} src={src} alt={alt} />
+      </picture>
+    )
+  }
+
+  return (
+    <div className={cx(className, 'img', types[type], aspects[aspect], background && 'img--background')}>
+      {canUseDOM ? renderSuspense() : renderImage(src)}
     </div>
   )
 }
