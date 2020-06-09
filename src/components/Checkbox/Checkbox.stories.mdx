@@ -53,10 +53,8 @@ For use to indicate multiple boolean values.
 <Preview>
   <Story name='Uncontrolled'>
     {() => {
-      const [value, setValue] = useState(false)
       return (
         <div>
-          <Text>Value: {`${value}`}</Text>
           <Checkbox id={'checkbox'} uncontrolled>Label</Checkbox>
         </div>
       )
