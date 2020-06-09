@@ -48,6 +48,22 @@ For use to indicate multiple boolean values.
   </Story>
 </Preview>
 
+## Uncontrolled
+
+<Preview>
+  <Story name='Uncontrolled'>
+    {() => {
+      const [value, setValue] = useState(false)
+      return (
+        <div>
+          <Text>Value: {`${value}`}</Text>
+          <Checkbox id={'checkbox'} uncontrolled>Label</Checkbox>
+        </div>
+      )
+    }}
+  </Story>
+</Preview>
+
 ## Prop Types
 
 <Props of={Checkbox} />
