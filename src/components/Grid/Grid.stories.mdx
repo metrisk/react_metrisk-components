@@ -108,6 +108,23 @@ Grids can also be nested to create more complex layouts.
   </Story>
 </Preview>
 
+## Grid Alignment
+
+<Preview>
+  <Story name='Alignment'>
+    <div>
+      <Grid align={{ x: 'Center', y: 'Center' }} gutter>
+        <GridItem align={{ x: 'Center', y: 'Center' }} span={5}>
+          Centered
+        </GridItem>
+        <GridItem span={7} align={{ x: 'End', y: 'End' }}>
+          Bottom Right. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit risus est, nec finibus odio blandit eget. Nullam metus tortor, condimentum non mollis mollis, interdum vel elit. Nunc suscipit nec lectus quis congue. Nunc pulvinar nec quam ac mattis. Nunc cursus eu neque in sagittis. Praesent a blandit mi. Pellentesque dapibus ullamcorper massa, quis consequat dolor blandit nec. Suspendisse mollis lectus odio, non iaculis quam commodo sit amet. Etiam imperdiet, mauris sed lobortis sodales, felis erat porttitor erat, sed efficitur lacus mauris id augue. Integer at nisi ac ligula hendrerit malesuada id vel justo. Morbi ac justo lorem. Cras at tincidunt sapien, quis lacinia justo. Sed sed tempus nibh, eget porta sem. Etiam pharetra commodo ex venenatis egestas. Donec consequat non felis faucibus accumsan. Morbi arcu risus, venenatis suscipit tristique nec, dapibus sagittis elit.
+        </GridItem>
+      </Grid>
+    </div>
+  </Story>
+</Preview>
+
 ## Grid Prop Types
 <Props of={Grid} />
 

@@ -27,6 +27,30 @@ $gutter: spacing.$xl !default;
     grid-gap: $gutter;
     grid-row-gap: $gutter;
   }
+
+  &--start-y {
+    align-items: start
+  }
+  
+  &--center-y {
+    align-items: center
+  }
+  
+  &--end-y {
+    align-items: end
+  }
+  
+  &--start-x {
+    justify-content: start
+  }
+  
+  &--center-x {
+    justify-content: center
+  }
+  
+  &--end-x {
+    justify-content: end
+  }
 }
 
 /// -------------------
@@ -43,5 +67,29 @@ $gutter: spacing.$xl !default;
         grid-column: span $i;
       }
     }
+  }
+
+  &--start-y {
+    align-items: start
+  }
+  
+  &--center-y {
+    align-items: center
+  }
+  
+  &--end-y {
+    align-items: end
+  }
+  
+  &--start-x {
+    justify-content: start
+  }
+  
+  &--center-x {
+    justify-content: center
+  }
+  
+  &--end-x {
+    justify-content: end
   }
 }
