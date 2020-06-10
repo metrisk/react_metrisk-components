@@ -26,14 +26,13 @@ $border-radius: corners.$base !default;
 
 .checkbox {
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: flex-start;
   cursor: pointer;
 }
 
 .checkbox__wrapper {
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
   height: $size;
   width: $size;
 }
@@ -85,6 +84,4 @@ $border-radius: corners.$base !default;
 
 .checkbox__label {
   margin-left: .5em;
-  vertical-align: middle;
-  display: inline-block;
 }
