@@ -61,7 +61,7 @@ const Fallback = ({ alt }: { alt: string }) => {
 /**
  * My component
  */
-const Image = ({ className, type, aspect, src, alt, fallback, background = true }: IImage.IProps) => {
+const Image = ({ className, type, aspect, src, alt, fallback = null, background = true }: IImage.IProps) => {
   const resource = createResource(
     (source: string) =>
       new Promise((resolve) => {
