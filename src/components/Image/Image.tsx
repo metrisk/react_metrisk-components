@@ -58,9 +58,6 @@ const Fallback = ({ alt }: { alt: string }) => {
   )
 }
 
-/**
- * My component
- */
 const Image = ({ className, type, aspect, src, alt, fallback = null, background = true }: IImage.IProps) => {
   const resource = createResource(
     (source: string) =>
@@ -71,12 +68,16 @@ const Image = ({ className, type, aspect, src, alt, fallback = null, background 
       })
   )
 
-  const renderSuspense = () => {
+  const renderSuspense = (source: string) => {
+    if (!source) {
+      return fallback || <Fallback alt={alt} />
+    }
+
     return (
       <SsrSuspense fallback={fallback || <Fallback alt={alt} />}>
         <SimpleCache.Consumer>
           {(cache: any) => {
-            const data: any = resource.read(cache, src)
+            const data: any = resource.read(cache, source)
 
             return renderImage(data)
           }}
@@ -85,18 +86,18 @@ const Image = ({ className, type, aspect, src, alt, fallback = null, background 
     )
   }
 
-  const renderImage = (src: any) => {
+  const renderImage = (source: string) => {
     return (
       <picture>
-        <source media="(min-width: 500px)" srcSet={src} />
-        <img className={'img__item'} src={src} alt={alt} />
+        <source media="(min-width: 500px)" srcSet={source} />
+        <img className={'img__item'} src={source} alt={alt} />
       </picture>
     )
   }
 
   return (
     <div className={cx(className, 'img', types[type], aspects[aspect], background && 'img--background')}>
-      {canUseDOM ? renderSuspense() : renderImage(src)}
+      {canUseDOM ? renderSuspense(src) : renderImage(src)}
     </div>
   )
 }
