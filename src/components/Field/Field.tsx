@@ -39,7 +39,7 @@ const Field = ({ className, state, msg, ...props }: IField.IProps) => {
   const renderLabel = () => {
     const { label } = props
 
-    if (!label) return null
+    if (!label || props.type === 'checkbox') return null
 
     if (React.isValidElement(label)) return label
 
