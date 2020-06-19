@@ -47,7 +47,7 @@ const Field = ({ className, state, msg, displayMsg = true, ...props }: IField.IP
 
     return (
       <Label
-        className={cx('m m--r-md', props.inline && 'label--inline', state === 'Error' && `label${states[state]}`)}
+        className={cx(props.inline && 'label--inline m m--r-md', state === 'Error' && `label${states[state]}`)}
         for={props.id}
       >
         {props.label}
@@ -56,7 +56,7 @@ const Field = ({ className, state, msg, displayMsg = true, ...props }: IField.IP
   }
 
   return (
-    <div className={cx(className, 'field', states[state] && `field${states[state]}`)}>
+    <div className={cx(className, 'field', displayMsg && 'field--no-msg', states[state] && `field${states[state]}`)}>
       {renderLabel()}
       <div className="field__wrapper">
         <FieldPicker state={state} {...props} />
