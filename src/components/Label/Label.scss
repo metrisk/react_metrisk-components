@@ -22,7 +22,12 @@ $font-weight: typography.$font-regular !default;
 /// -------------------
 
 .label {
-  @include components.flow;
+  display: block;
+  padding-bottom: spacing.$xs;
   font-weight: $font-weight;
   font-family: $font-family;
+
+  &--inline {
+    @include components.flow;
+  }
 }
