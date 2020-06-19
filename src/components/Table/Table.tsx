@@ -40,11 +40,13 @@ const Table = ({ className, header = [], rows }: ITable.IProps) => {
           </TableRow>
         </thead>
       )}
+      <tbody>
       {rows.map((x, i) => (
         <TableRow key={`table-row-${i}`}>
           {renderCells(x)}
         </TableRow>
       ))}
+      </tbody>
     </table>
   )
 }
