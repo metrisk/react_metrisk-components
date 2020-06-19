@@ -19,7 +19,7 @@ const FieldPicker = ({ type, render, ...props }: any) => {
     case 'select':
       return <Select {...props} />
     case 'checkbox':
-      return <Checkbox {...props} />
+      return <Checkbox {...props}>{props.label}</Checkbox>
     case 'radio':
       return <Radio {...props} />
     default:
