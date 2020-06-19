@@ -9,6 +9,7 @@ declare namespace IField {
     label?: string
     state?: 'Success' | 'Warning' | 'Error'
     msg?: string
+    inline?: false
     children?: any
     onChange?: () => void
   }

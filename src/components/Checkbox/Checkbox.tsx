@@ -12,7 +12,7 @@ import './Checkbox.scss'
  */
 import { Icon } from '../Icon'
 
-const Checkbox = ({ className, id, name, value, uncontrolled, children, onChange }: ICheckbox.IProps) => {
+const Checkbox = ({ className, id, name, value, uncontrolled, state, children, onChange }: ICheckbox.IProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(event.target.checked)
@@ -21,7 +21,7 @@ const Checkbox = ({ className, id, name, value, uncontrolled, children, onChange
 
   const renderLabel = () => {
     if (children) {
-      return <span className="checkbox__label">{children}</span>
+      return <span className={cx('checkbox__label', state === 'Error' && 'checkbox__label--error')}>{children}</span>
     }
 
     return null

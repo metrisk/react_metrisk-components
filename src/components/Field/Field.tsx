@@ -32,6 +32,8 @@ const icons: { [key: string]: string } = {
   Error: 'Exclamation'
 }
 
+const noLabelTypes = ['checkbox', 'radio']
+
 /**
  * Field wrapper component
  */
@@ -39,25 +41,29 @@ const Field = ({ className, state, msg, ...props }: IField.IProps) => {
   const renderLabel = () => {
     const { label } = props
 
-    if (!label || props.type === 'checkbox') return null
+    if (!label || noLabelTypes.indexOf(props.type) !== -1) return null
 
     if (React.isValidElement(label)) return label
 
     return (
-      <Label className={cx('m m--r-md', `label${states[state]}`)} for={props.id}>
+      <Label
+        className={cx('m m--r-md', props.inline && 'label--inline', state === 'Error' && `label${states[state]}`)}
+        for={props.id}
+      >
         {props.label}
       </Label>
     )
   }
 
   return (
-    <div className={cx(className, 'field', `field${states[state]}`)}>
+    <div className={cx(className, 'field', states[state] && `field${states[state]}`)}>
       {renderLabel()}
-
-      <FieldPicker state={state} {...props} />
+      <div className="field__wrapper">
+        <FieldPicker state={state} {...props} />
+      </div>
 
       {state && <Icon className={'field__icn'} name={icons[state]} colour={state} />}
-      {msg && <p className={cx('field__msg', `field__msg${states[state]}`)}>{msg}</p>}
+      {msg && <span className={cx('field__msg', states[state] && `field__msg${states[state]}`)}>{msg}</span>}
     </div>
   )
 }

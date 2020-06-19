@@ -116,7 +116,11 @@ Field states. Type to see the state change.
         }
       }
       return (
-        <Field id={'field'} label={'Name'} type={'text'} value={value} state={state} msg={msg} onChange={handleChange} />
+        <div>
+          <Field id={'field'} label={'Name'} type={'text'} value={value} state={state} msg={msg} onChange={handleChange} />
+          <Field id={'checkbox-field'} label={'Name'} type={'checkbox'} value={value} state={state} msg={msg} />
+          <Field id={'checkbox-field'} label={'Name'} type={'radio'} value={value} state={state} msg={msg} />
+        </div>
       )
     }}
   </Story>
