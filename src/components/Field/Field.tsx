@@ -37,7 +37,7 @@ const noLabelTypes = ['checkbox', 'radio']
 /**
  * Field wrapper component
  */
-const Field = ({ className, state, msg, ...props }: IField.IProps) => {
+const Field = ({ className, state, msg, displayMsg = true, ...props }: IField.IProps) => {
   const renderLabel = () => {
     const { label } = props
 
@@ -63,7 +63,11 @@ const Field = ({ className, state, msg, ...props }: IField.IProps) => {
       </div>
 
       {state && <Icon className={'field__icn'} name={icons[state]} colour={state} />}
-      {msg && <span className={cx('field__msg', states[state] && `field__msg${states[state]}`)}>{msg}</span>}
+      {
+        displayMsg && <span className={cx('field__msg', msg && 'field__msg--active', states[state] && `field__msg${states[state]}`)}>
+          {msg}
+        </span>
+      }
     </div>
   )
 }

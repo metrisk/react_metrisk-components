@@ -11,6 +11,7 @@ declare namespace IField {
     msg?: string
     inline?: false
     children?: any
+    displayMsg?: boolean
     onChange?: () => void
   }
 }

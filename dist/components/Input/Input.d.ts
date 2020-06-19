@@ -7,5 +7,5 @@ import './Input.scss';
 /**
  * A user input
  */
-declare const Input: ({ className, id, name, type, value, onChange, uncontrolled }: IInput.IProps) => JSX.Element;
+declare const Input: ({ className, id, name, type, value, autoComplete, onChange, uncontrolled, ...props }: IInput.IProps) => JSX.Element;
 export default Input;
