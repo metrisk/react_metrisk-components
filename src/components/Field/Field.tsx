@@ -56,7 +56,7 @@ const Field = ({ className, state, msg, displayMsg = true, ...props }: IField.IP
   }
 
   return (
-    <div className={cx(className, 'field', displayMsg && 'field--no-msg', states[state] && `field${states[state]}`)}>
+    <div className={cx(className, 'field', !displayMsg && 'field--no-msg', states[state] && `field${states[state]}`)}>
       {renderLabel()}
       <div className="field__wrapper">
         <FieldPicker state={state} {...props} />
