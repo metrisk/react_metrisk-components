@@ -11,15 +11,12 @@ import { Select } from '../Select'
 /**
  * Field picker
  */
-const FieldPicker = ({ type, render, ...props }: any) => {
-  if (typeof type === 'object') {
-    return type
-  }
+const FieldPicker = ({ type, label, render, ...props }: any) => {
   switch (type) {
     case 'select':
       return <Select {...props} />
     case 'checkbox':
-      return <Checkbox {...props}>{props.label}</Checkbox>
+      return <Checkbox {...props}>{label}</Checkbox>
     case 'radio':
       return <Radio {...props} />
     default:

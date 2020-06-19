@@ -35,22 +35,31 @@ const icons: { [key: string]: string } = {
 /**
  * Field wrapper component
  */
-const Field = ({ className, label, state, msg, ...props }: IField.IProps) => (
-  <div className={cx(className, 'field', states[state])}>
-    {label &&
-      (typeof label === 'object' && props.type !== 'checkbox' ? (
-        label
-      ) : (
-        <Label className="m m--r-md" for={props.id}>
-          {label}
-        </Label>
-      ))}
+const Field = ({ className, state, msg, ...props }: IField.IProps) => {
+  const renderLabel = () => {
+    const { label } = props
 
-    <FieldPicker state={state} {...props} />
+    if (!label) return null
 
-    {state && <Icon className={'field__icn'} name={icons[state]} colour={state} />}
-    {msg && <p className={'field__msg'}>{msg}</p>}
-  </div>
-)
+    if (React.isValidElement(label)) return label
+
+    return (
+      <Label className="m m--r-md" for={props.id}>
+        {props.label}
+      </Label>
+    )
+  }
+
+  return (
+    <div className={cx(className, 'field', states[state])}>
+      {renderLabel()}
+
+      <FieldPicker state={state} {...props} />
+
+      {state && <Icon className={'field__icn'} name={icons[state]} colour={state} />}
+      {msg && <p className={'field__msg'}>{msg}</p>}
+    </div>
+  )
+}
 
 export default Field
