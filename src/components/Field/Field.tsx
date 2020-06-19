@@ -15,12 +15,12 @@ import { Icon } from '../Icon'
 import { FieldPicker } from '.'
 
 /**
- * Validation message
+ * Field states
  */
 const states = {
-  Success: 'field--success',
-  Warning: 'field--warning',
-  Error: 'field--error'
+  Success: '--success',
+  Warning: '--warning',
+  Error: '--error'
 }
 
 /**
@@ -44,20 +44,20 @@ const Field = ({ className, state, msg, ...props }: IField.IProps) => {
     if (React.isValidElement(label)) return label
 
     return (
-      <Label className="m m--r-md" for={props.id}>
+      <Label className={cx('m m--r-md', `label${states[state]}`)} for={props.id}>
         {props.label}
       </Label>
     )
   }
 
   return (
-    <div className={cx(className, 'field', states[state])}>
+    <div className={cx(className, 'field', `field${states[state]}`)}>
       {renderLabel()}
 
       <FieldPicker state={state} {...props} />
 
       {state && <Icon className={'field__icn'} name={icons[state]} colour={state} />}
-      {msg && <p className={'field__msg'}>{msg}</p>}
+      {msg && <p className={cx('field__msg', `field__msg${states[state]}`)}>{msg}</p>}
     </div>
   )
 }

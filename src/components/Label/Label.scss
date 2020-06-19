@@ -30,4 +30,16 @@ $font-weight: typography.$font-regular !default;
   &--inline {
     @include components.flow;
   }
+
+  &--error {
+    color: map-get(colours.$state, 'error'); 
+  }
+
+  &--warning {
+    color: map-get(colours.$state, 'warning');
+  }
+
+  &--success {
+    color: map-get(colours.$state, 'success');
+  }
 }
