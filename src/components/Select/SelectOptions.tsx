@@ -5,17 +5,23 @@ import cx from 'classnames'
 /**
  * Render a filtered list or the original list of options
  */
-const SelectOptions = ({ open, options, optional, handleClick }: ISelect.IOptionsProps) => {
+const SelectOptions = ({ open, options, optional, handleClick, handleBlur }: ISelect.IOptionsProps) => {
   return (
     <ul className={cx('select__options')} style={{ display: open ? 'block' : 'none' }}>
       {optional && (
-        <li className={cx('select__option')} value={''} onClick={() => handleClick(null)}>
+        <li className={cx('select__option')} value={''} onClick={() => handleClick(null)} tabIndex={0}>
           -- Select --
         </li>
       )}
 
       {options.map((x: any) => (
-        <li key={`option-${x.value}`} className={cx('select__option')} onClick={() => handleClick(x.label)}>
+        <li
+          key={`option-${x.value}`}
+          className={cx('select__option')}
+          onClick={() => handleClick(x.value)}
+          onBlur={handleBlur}
+          tabIndex={0}
+        >
           {x.label}
         </li>
       ))}

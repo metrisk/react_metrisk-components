@@ -20,6 +20,7 @@ import { Icon } from '../Icon'
 const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.IProps) => {
   const [tempValue, setTempValue] = useState(null)
   const [open, setOpen] = useState(false)
+  const [focused, setFocused] = useState(false)
 
   /**
    * Handle change
@@ -35,6 +36,22 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
     }
   }
 
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
+  const handleFocus = () => {
+    setFocused(true)
+  }
+
+  const handleBlur = (event: React.FocusEvent) => {
+    const related: any = event.relatedTarget
+
+    if (related?.classList && related.classList.contains('select__option')) return
+    setOpen(false)
+    setFocused(false)
+  }
+
   /**
    * Handle when an option is selected
    */
@@ -48,7 +65,7 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
     : options
 
   return (
-    <span className={cx('select')} onFocus={() => setOpen(true)} onBlur={() => setOpen(false)} tabIndex={-1}>
+    <span className={cx('select')} tabIndex={-1}>
       <input
         className={cx('select__input')}
         id={id}
@@ -56,11 +73,19 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
         value={tempValue || ''}
         readOnly={!searchable}
         placeholder={searchable ? 'Type to search...' : '-- Select --'}
-        onFocus={() => setOpen(true)}
+        onClick={handleOpen}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         onChange={(e) => handleChange(e.target.value)}
       />
 
-      <SelectOptions open={open} options={filtered} optional={optional} handleClick={handleClick} />
+      <SelectOptions
+        open={open}
+        options={filtered}
+        optional={optional}
+        handleClick={handleClick}
+        handleBlur={handleBlur}
+      />
       <Icon className={cx('select__icn')} name={open ? 'chevron-up' : 'chevron-down'} colour="Dark" size="Small" />
     </span>
   )
