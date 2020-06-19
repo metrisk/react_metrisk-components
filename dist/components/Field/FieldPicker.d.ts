@@ -1,5 +1,6 @@
+/// <reference types="react" />
 /**
  * Field picker
  */
-declare const FieldPicker: ({ type, render, ...props }: any) => any;
+declare const FieldPicker: ({ type, label, render, ...props }: any) => JSX.Element;
 export default FieldPicker;

@@ -7,5 +7,5 @@ import './Field.scss';
 /**
  * Field wrapper component
  */
-declare const Field: ({ className, label, state, msg, ...props }: IField.IProps) => JSX.Element;
+declare const Field: ({ className, state, msg, ...props }: IField.IProps) => JSX.Element;
 export default Field;
