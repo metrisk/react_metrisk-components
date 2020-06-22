@@ -24,6 +24,7 @@
 .field__wrapper {
   display: inline-block;
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 /// -------------------
@@ -42,7 +43,7 @@
 .field__msg {
   display: block;
   @include apply-props.apply-props(typography.$small);
-  text-align: right;
+  text-align: left;
   padding-right: spacing.$md + 1rem;
   opacity: 0;
   min-height: spacing.$mdp;

@@ -26,6 +26,7 @@ $font-weight: typography.$font-regular !default;
   padding-bottom: spacing.$xs;
   font-weight: $font-weight;
   font-family: $font-family;
+  white-space: normal;
 
   &--inline {
     @include components.flow;

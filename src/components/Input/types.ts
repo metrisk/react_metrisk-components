@@ -6,7 +6,7 @@ declare namespace IInput {
     disabled?: boolean
     type: 'text' | 'date' | 'number' | 'email' | 'url' | 'tel'
     value: string
-    autoComplete?: 'on'|'off'
+    autoComplete?: 'on' | 'off'
     uncontrolled?: boolean
     onChange: (e: any) => void
   }

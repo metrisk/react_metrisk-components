@@ -63,11 +63,11 @@ const Field = ({ className, state, msg, displayMsg = true, ...props }: IField.IP
       </div>
 
       {state && <Icon className={'field__icn'} name={icons[state]} colour={state} />}
-      {
-        displayMsg && <span className={cx('field__msg', msg && 'field__msg--active', states[state] && `field__msg${states[state]}`)}>
+      {displayMsg && (
+        <span className={cx('field__msg', msg && 'field__msg--active', states[state] && `field__msg${states[state]}`)}>
           {msg}
         </span>
-      }
+      )}
     </div>
   )
 }
