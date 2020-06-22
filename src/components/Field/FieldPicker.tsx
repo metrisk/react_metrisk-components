@@ -12,7 +12,6 @@ import { Select } from '../Select'
  * Field picker
  */
 const FieldPicker = ({ type, label, render, ...props }: any) => {
-  console.log(props)
   if (React.isValidElement(type)) {
     return type
   }
