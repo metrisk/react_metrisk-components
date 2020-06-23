@@ -29,6 +29,7 @@ $border-radius: corners.$round !default;
   display: inline-block;
   vertical-align: middle;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .radio__wrapper {
