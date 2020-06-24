@@ -12,6 +12,7 @@ declare namespace IField {
         inline?: false;
         children?: any;
         displayMsg?: boolean;
+        fullWidth?: boolean;
         onChange?: () => void;
     }
 }
