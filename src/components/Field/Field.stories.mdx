@@ -37,6 +37,19 @@ You can pass a component to the label prop.
   </Story>
 </Preview>
 
+## Full Width Field
+
+<Preview>
+  <Story name='FullWidth'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <Field id={'field-full'} label={'Full'} type={'text'} value={value} onChange={setValue} fullWidth />
+      )
+    }}
+  </Story>
+</Preview>
+
 ## Select
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
@@ -45,7 +58,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     {() => {
       const [value, setValue] = useState('')
       return (
-        <Field id={'field'} label={'Age'} type={'select'} value={value} options={[{ value: 'option', label: 'Option' }]} searchable onChange={setValue} />
+        <Field id={'field-select'} label={'Age'} type={'select'} value={value} options={[{ value: 'option', label: 'Option' }]} searchable onChange={setValue} />
       )
     }}
   </Story>
@@ -59,7 +72,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     {() => {
       const [value, setValue] = useState(false)
       return (
-        <Field id={'field'} label={'Checkbox'} type={'checkbox'} value={value} onChange={setValue} />
+        <Field id={'field-check'} label={'Checkbox'} type={'checkbox'} value={value} onChange={setValue} />
       )
     }}
   </Story>
@@ -87,7 +100,7 @@ You can also pass a component to the `type` prop.
     {() => {
       const [value, setValue] = useState('')
       return (
-        <Field id={'field'} label={'Custom'} type={<p className={'p'}>I am a custom field!</p>} value={value} onChange={setValue} />
+        <Field id={'field-radio'} label={'Custom'} type={<p className={'p'}>I am a custom field!</p>} value={value} onChange={setValue} />
       )
     }}
   </Story>
@@ -117,9 +130,9 @@ Field states. Type to see the state change.
       }
       return (
         <div>
-          <Field id={'field'} label={'Name'} type={'text'} value={value} state={state} msg={msg} onChange={handleChange} autoComplete="off" />
-          <Field id={'checkbox-field'} label={'Name'} type={'checkbox'} value={value} state={state} msg={msg} />
-          <Field id={'checkbox-field'} label={'Name'} type={'radio'} value={value} state={state} msg={msg} />
+          <Field id={'field-state'} label={'Name'} type={'text'} value={value} state={state} msg={msg} onChange={handleChange} autoComplete="off" />
+          <Field id={'checkbox-field-state'} label={'Name'} type={'checkbox'} value={value} state={state} msg={msg} />
+          <Field id={'radio-field-state'} label={'Name'} type={'radio'} value={value} state={state} msg={msg} />
         </div>
       )
     }}

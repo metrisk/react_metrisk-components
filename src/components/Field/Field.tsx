@@ -37,7 +37,7 @@ const noLabelTypes = ['checkbox', 'radio']
 /**
  * Field wrapper component
  */
-const Field = ({ className, state, msg, displayMsg = true, ...props }: IField.IProps) => {
+const Field = ({ className, state, msg, displayMsg = true, fullWidth, ...props }: IField.IProps) => {
   const renderLabel = () => {
     const { label } = props
 
@@ -56,10 +56,18 @@ const Field = ({ className, state, msg, displayMsg = true, ...props }: IField.IP
   }
 
   return (
-    <div className={cx(className, 'field', !displayMsg && 'field--no-msg', states[state] && `field${states[state]}`)}>
+    <div
+      className={cx(
+        className,
+        'field',
+        !displayMsg && 'field--no-msg',
+        states[state] && `field${states[state]}`,
+        fullWidth && 'field--full'
+      )}
+    >
       {renderLabel()}
-      <div className="field__wrapper">
-        <FieldPicker state={state} {...props} />
+      <div className={cx('field__wrapper', fullWidth && 'field__wrapper--full')}>
+        <FieldPicker state={state} fullWidth={fullWidth} {...props} />
       </div>
 
       {state && <Icon className={'field__icn'} name={icons[state]} colour={state} />}

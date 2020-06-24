@@ -40,6 +40,10 @@ $font-weight: typography.$font-light !default;
   font-weight: $font-weight;
   transition: border transitions.$ease;
 
+  &--full {
+    width: 100%;
+  }
+
   &:focus {
     outline: none;
   }
