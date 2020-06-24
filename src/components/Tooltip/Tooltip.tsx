@@ -1,7 +1,7 @@
 import ITooltip from './types'
 import * as React from 'react'
 import { createPortal } from 'react-dom'
-import { useContext, useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import cx from 'classnames'
 
 /**
@@ -12,7 +12,7 @@ import './Tooltip.scss'
 /**
  * A tooltip
  */
-const Tooltip = ({ attachTo, trigger = 'hover', align = 'left', children }: ITooltip.IProps) => {
+const Tooltip = ({ attachTo, trigger = 'hover', align = 'left', className, children }: ITooltip.IProps) => {
   const ref: any = useRef()
   const [open, setOpen] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -78,7 +78,7 @@ const Tooltip = ({ attachTo, trigger = 'hover', align = 'left', children }: IToo
     ? createPortal(
         <aside
           ref={ref}
-          className={cx('tooltip', { [`tooltip--${align.toLowerCase()}`]: open })}
+          className={cx('tooltip', className, { [`tooltip--${align.toLowerCase()}`]: open })}
           style={{
             visibility: open ? 'visible' : 'hidden',
             left: `${position.x}px`,

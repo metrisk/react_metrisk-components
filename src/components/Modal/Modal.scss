@@ -7,6 +7,7 @@
 @use 'colours';
 @use 'animations';
 @use 'transitions';
+@use 'breakpoint';
 @use 'corners';
 @use 'borders';
 @use 'shadows';
@@ -48,14 +49,23 @@ $padding-y: spacing.$lg !default;
 .modal {
   @include utilities.center-x;
   position: fixed;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
-  top: 100px;
+  top: 1rem;
   max-width: 800px;
   width: 100%;
+  max-height: calc(100vh - 4rem);
   background-color: white;
   animation: centerFadeInTop 0.3s animations.$forwards-ease;
   border-radius: corners.$base;
   z-index: z-index.$top + 1;
+  overflow: hidden;
+
+  @include breakpoint.up('md') {
+    top: 100px;
+    max-height: calc(100vh - 200px);
+  }
 }
 
 /// -------------------
@@ -88,6 +98,7 @@ $padding-y: spacing.$lg !default;
 .modal__header {
   border-bottom: borders.$three;
   padding: $padding-y $padding-x;
+  flex-shrink: 0;
 }
 
 /// -------------------
@@ -96,6 +107,8 @@ $padding-y: spacing.$lg !default;
 
 .modal__body {
   padding: $padding-y $padding-x;
+  flex-grow: 1;
+  overflow: auto;
 }
 
 /// -------------------
