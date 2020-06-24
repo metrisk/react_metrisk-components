@@ -7,5 +7,5 @@ import './Tooltip.scss';
 /**
  * A tooltip
  */
-declare const Tooltip: ({ attachTo, trigger, align, children }: ITooltip.IProps) => React.ReactPortal;
+declare const Tooltip: ({ attachTo, trigger, align, className, children }: ITooltip.IProps) => React.ReactPortal;
 export default Tooltip;
