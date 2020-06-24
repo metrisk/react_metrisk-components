@@ -51,6 +51,7 @@ const Field = ({ className, state, msg, displayMsg = true, fullWidth, ...props }
         for={props.id}
       >
         {props.label}
+        {props.required && ' *'}
       </Label>
     )
   }

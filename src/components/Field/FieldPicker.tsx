@@ -16,13 +16,19 @@ const FieldPicker = ({ type, label, render, ...props }: any) => {
     return type
   }
 
+  const renderLabel = () => {
+    if (React.isValidElement(label)) return label
+
+    return `${label}${props.required ? ' *' : ''}`
+  }
+
   switch (type) {
     case 'select':
       return <Select {...props} />
     case 'checkbox':
-      return <Checkbox {...props}>{label}</Checkbox>
+      return <Checkbox {...props}>{renderLabel()}</Checkbox>
     case 'radio':
-      return <Radio {...props}>{label}</Radio>
+      return <Radio {...props}>{renderLabel()}</Radio>
     default:
       return <Input type={type} {...props} />
   }
