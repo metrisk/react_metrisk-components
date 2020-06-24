@@ -6,6 +6,7 @@ declare namespace IField {
         type?: any;
         value?: any;
         disabled?: boolean;
+        required?: boolean;
         label?: string;
         state?: 'Success' | 'Warning' | 'Error';
         msg?: string;
