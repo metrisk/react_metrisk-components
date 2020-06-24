@@ -6,8 +6,10 @@ declare namespace IInput {
         disabled?: boolean;
         type: 'text' | 'date' | 'number' | 'email' | 'url' | 'tel';
         value: string;
+        placeholder: string;
         autoComplete?: 'on' | 'off';
         uncontrolled?: boolean;
+        fullWidth: boolean;
         onChange: (e: any) => void;
     }
 }
