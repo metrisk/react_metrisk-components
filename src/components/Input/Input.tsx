@@ -10,7 +10,18 @@ import './Input.scss'
 /**
  * A user input
  */
-const Input = ({ className, id, name, type, value, autoComplete, onChange, uncontrolled, ...props }: IInput.IProps) => {
+const Input = ({
+  className,
+  id,
+  name,
+  type,
+  value,
+  autoComplete,
+  onChange,
+  uncontrolled,
+  fullWidth,
+  ...props
+}: IInput.IProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(event.target.value)
@@ -19,13 +30,14 @@ const Input = ({ className, id, name, type, value, autoComplete, onChange, uncon
 
   return (
     <input
-      className={cx(className, 'input')}
+      className={cx(className, 'input', fullWidth && 'input--full')}
       id={id}
       name={name}
       type={type}
       value={value || (uncontrolled ? undefined : '')}
       onChange={handleChange}
       autoComplete={autoComplete}
+      {...props}
     />
   )
 }
