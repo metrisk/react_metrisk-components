@@ -73,6 +73,7 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
         value={tempValue || ''}
         readOnly={!searchable}
         placeholder={searchable ? 'Type to search...' : '-- Select --'}
+        autoComplete="off"
         onClick={handleOpen}
         onFocus={handleFocus}
         onBlur={handleBlur}

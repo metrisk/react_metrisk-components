@@ -93,7 +93,7 @@ $font-weight: typography.$font-light !default;
   background-color: $bg-colour;
   border-radius: $border-radius;
   max-height: 250px;
-  overflow: scroll;
+  overflow: auto;
   z-index: z-index.$top - 1;
 }
 
