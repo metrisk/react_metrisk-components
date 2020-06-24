@@ -25,10 +25,10 @@ $border-radius: corners.$base !default;
 /// -------------------
 
 .checkbox {
+  display: inline-flex;
   position: relative;
   align-items: flex-start;
   cursor: pointer;
-  white-space: nowrap;
 }
 
 .checkbox__wrapper {
@@ -88,7 +88,6 @@ $border-radius: corners.$base !default;
   margin-left: .5em;
   display: inline-block;
   vertical-align: middle;
-  white-space: normal;
 
   &--error {
     color: map-get(colours.$state, 'error'); 

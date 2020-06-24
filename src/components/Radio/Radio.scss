@@ -26,10 +26,9 @@ $border-radius: corners.$round !default;
 
 .radio {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   vertical-align: middle;
   cursor: pointer;
-  white-space: nowrap;
 }
 
 .radio__wrapper {
@@ -90,7 +89,6 @@ $border-radius: corners.$round !default;
   margin-left: .5em;
   display: inline-block;
   vertical-align: middle;
-  white-space: normal;
 
   &--error {
     color: map-get(colours.$state, 'error'); 
