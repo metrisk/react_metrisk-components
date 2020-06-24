@@ -23,6 +23,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   </Story>
 </Preview>
 
+<Preview>
+  <Story name='Required'>
+    {() => {
+      const [value, setValue] = useState('')
+      return (
+        <div>
+          <Field id={'name-required'} label={'Name'} type={'text'} value={value} onChange={setValue} required />
+          <Field id={'name-check-required'} label={'Name'} type={'checkbox'} value={value} onChange={setValue} required />
+          <Field id={'name-radio-required'} label={'Name'} type={'radio'} value={value} onChange={setValue} required />
+        </div>
+      )
+    }}
+  </Story>
+</Preview>
+
 ## Custom Label
 You can pass a component to the label prop.
 
