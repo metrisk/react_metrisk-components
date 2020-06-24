@@ -1,0 +1,69 @@
+on: pull_request
+name: Test PRs
+jobs:
+  unittests:
+    name: Running the unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: npm cache
+        id: npm-cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/setup-node@v1
+      - name: Install Deps if no cache
+        if: steps.npm-cache.outputs.cache-hit != true
+        run: npm ci
+      - name: Execute the tests
+        run: npm run test:unit
+  windowscypresstests:
+    name: Windows Cypress Tests
+    strategy:
+      matrix:
+        browser: ['chrome', 'edge', 'firefox']
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: npm cache
+        id: npm-cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Install Deps if no cache
+        if: steps.npm-cache.outputs.cache-hit != true
+        run: npm ci
+      - name: Cypress tests for ${{ matrix.browser }} on Windows
+        uses: cypress-io/github-action@v1
+        with:
+          start: npm run dev
+          wait-on: http://localhost:3002
+          browser: ${{ matrix.browser }}
+  othercypresstests:
+    name: Cypress Tests
+    strategy:
+      matrix:
+        browser: ['chrome', 'firefox']
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: npm cache
+        id: npm-cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Install Deps if no cache
+        if: steps.npm-cache.outputs.cache-hit != true
+        run: npm ci
+      - name: Cypress tests for ${{ matrix.browser }} on ${{ matrix.os }}
+        uses: cypress-io/github-action@v1
+        with:
+          start: npm run dev
+          wait-on: http://localhost:3002
+          browser: ${{ matrix.browser }}
