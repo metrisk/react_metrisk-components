@@ -34,6 +34,10 @@ const Modal = ({ header, footer, children }: IModal.IProps) => {
     }
   }, [open])
 
+  useEffect(() => {
+    return () => document.body.classList.remove('has-modal')
+  }, [])
+
   return open
     ? createPortal(
         <Fragment>
