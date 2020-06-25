@@ -11,6 +11,7 @@ declare namespace ISelect {
       label: string
     }[]
     value: string
+    fullWidth?: boolean
     onChange: (e: any) => void
   }
 
