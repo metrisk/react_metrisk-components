@@ -34,6 +34,10 @@ $font-weight: typography.$font-light !default;
   display: inline-block;
   position: relative;
 
+  &--full {
+    width: 100%;
+  }
+
   &:focus-within {
     outline: none;
   }
@@ -48,6 +52,7 @@ $font-weight: typography.$font-light !default;
   @include components.flow;
   @include components.interactive;
   display: block;
+  width: 100%;
   padding-left: $padding-x;
   padding-right: $padding-x * 2.5; 
   font-family: $font-family;
@@ -95,6 +100,7 @@ $font-weight: typography.$font-light !default;
   max-height: 250px;
   overflow: auto;
   z-index: z-index.$top - 1;
+  white-space: normal;
 }
 
 .select__option {

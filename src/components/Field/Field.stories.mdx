@@ -59,7 +59,12 @@ You can pass a component to the label prop.
     {() => {
       const [value, setValue] = useState('')
       return (
-        <Field id={'field-full'} label={'Full'} type={'text'} value={value} onChange={setValue} fullWidth />
+        <div>
+          <Field id={'field-full'} label={'Full'} type={'text'} value={value} onChange={setValue} fullWidth />
+          <Field id={'field-select-full'} label={'Full'} type={'select'} value={value} options={[
+            { label: 'One', value: 1 }
+          ]} onChange={setValue} fullWidth />
+        </div>
       )
     }}
   </Story>

@@ -17,7 +17,7 @@ import { Icon } from '../Icon'
 /**
  * Determine which select type to render
  */
-const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.IProps) => {
+const Select = ({ id, options, value, optional, searchable, fullWidth, onChange }: ISelect.IProps) => {
   const [tempValue, setTempValue] = useState(null)
   const [open, setOpen] = useState(false)
   const [focused, setFocused] = useState(false)
@@ -65,7 +65,7 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
     : options
 
   return (
-    <span className={cx('select')} tabIndex={-1}>
+    <span className={cx('select', fullWidth && 'select--full')} tabIndex={-1}>
       <input
         className={cx('select__input')}
         id={id}
