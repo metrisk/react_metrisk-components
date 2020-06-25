@@ -27,7 +27,7 @@ $border-radius: corners.$round !default;
 .radio {
   position: relative;
   display: inline-flex;
-  vertical-align: middle;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -36,7 +36,6 @@ $border-radius: corners.$round !default;
   position: relative;
   height: $size;
   width: $size;
-  vertical-align: middle;
 }
 
 .radio__button {
@@ -88,7 +87,6 @@ $border-radius: corners.$round !default;
 .radio__label {
   margin-left: .5em;
   display: inline-block;
-  vertical-align: middle;
 
   &--error {
     color: map-get(colours.$state, 'error'); 

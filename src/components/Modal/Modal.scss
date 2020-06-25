@@ -46,25 +46,30 @@ $padding-y: spacing.$lg !default;
 /// Modal swatches
 /// -------------------
 
+.modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  z-index: z-index.$top;
+}
+
 .modal {
   @include utilities.center-x;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
+  position: absolute;
   box-sizing: border-box;
   top: 1rem;
   max-width: 800px;
   width: 100%;
-  max-height: calc(100vh - 4rem);
   background-color: white;
   animation: centerFadeInTop 0.3s animations.$forwards-ease;
   border-radius: corners.$base;
   z-index: z-index.$top + 1;
-  overflow: hidden;
 
   @include breakpoint.up('md') {
     top: 100px;
-    max-height: calc(100vh - 200px);
   }
 }
 
@@ -98,7 +103,6 @@ $padding-y: spacing.$lg !default;
 .modal__header {
   border-bottom: borders.$three;
   padding: $padding-y $padding-x;
-  flex-shrink: 0;
 }
 
 /// -------------------
@@ -107,8 +111,6 @@ $padding-y: spacing.$lg !default;
 
 .modal__body {
   padding: $padding-y $padding-x;
-  flex-grow: 1;
-  overflow: auto;
 }
 
 /// -------------------
@@ -119,4 +121,13 @@ $padding-y: spacing.$lg !default;
   padding: $padding-y $padding-x;
   display: flex;
   justify-content: space-between;
+}
+
+/// -------------------
+/// Modal utilities
+/// -------------------
+
+.has-modal {
+  overflow: hidden;
+  max-height: 100vh;
 }
