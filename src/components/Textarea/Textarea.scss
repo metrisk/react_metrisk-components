@@ -32,27 +32,21 @@ $font-weight: typography.$font-light !default;
   @include resets.style;
   @include components.flow;
   @include components.interactive;
+  display: block;
   padding-left: $padding-x;
   padding-right: $padding-x;
   border-radius: $border-radius; 
   background-color: $bg-colour;
   font-family: $font-family;
   font-weight: $font-weight;
-  transition: border transitions.$ease;
+  width: 100%;
 
   &:focus {
     outline: none;
   }
 
-  .field--error & {
-    border-bottom: solid 2px map-get(colours.$state, 'error');
-  }
-
-  .field--warning & {
-    border-bottom: solid 2px map-get(colours.$state, 'warning');
-  }
-
-  .field--success & {
-    border-bottom: solid 2px map-get(colours.$state, 'success');
+  &:disabled {
+    opacity: 0.25;
+    pointer-events: none;
   }
 }

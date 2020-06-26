@@ -1,6 +1,8 @@
-import ITextarea from './types'
 import * as React from 'react'
+import { useState } from 'react'
 import cx from 'classnames'
+
+import ITextarea from './types'
 
 /**
  * Styles
@@ -11,6 +13,16 @@ import './Textarea.scss'
  * My component
  */
 const Textarea = ({ className, id, name, value, uncontrolled, onChange }: ITextarea.IProps) => {
+  const [focus, setFocus] = useState(false)
+
+  const handleFocus = () => {
+    setFocus(true)
+  }
+
+  const handleBlur = () => {
+    setFocus(false)
+  }
+
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {
       onChange(event.target.value)
@@ -18,14 +30,18 @@ const Textarea = ({ className, id, name, value, uncontrolled, onChange }: ITexta
   }
 
   return (
-    <textarea
-      className={cx(className, 'textarea')}
-      id={id}
-      name={name}
-      rows={6}
-      value={value || (uncontrolled ? undefined : '')}
-      onChange={handleChange}
-    />
+    <div className={cx('input-base', focus && 'input-base--focus')}>
+      <textarea
+        className={cx(className, 'textarea')}
+        id={id}
+        name={name}
+        rows={6}
+        value={value || (uncontrolled ? undefined : '')}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      />
+    </div>
   )
 }
 

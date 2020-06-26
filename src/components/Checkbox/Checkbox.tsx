@@ -10,9 +10,20 @@ import './Checkbox.scss'
 /**
  * Components
  */
+import { Label } from '../Label'
 import { Icon } from '../Icon'
 
-const Checkbox = ({ className, id, name, value, uncontrolled, state, children, onChange }: ICheckbox.IProps) => {
+const Checkbox = ({
+  className,
+  id,
+  name,
+  value,
+  uncontrolled,
+  state,
+  children,
+  onChange,
+  ...props
+}: ICheckbox.IProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(event.target.checked)
@@ -27,9 +38,9 @@ const Checkbox = ({ className, id, name, value, uncontrolled, state, children, o
     return null
   }
 
-  return (
-    <label className={cx(className, 'checkbox', { 'checkbox--checked': value })}>
-      <span className="checkbox__wrapper">
+  const renderCheckbox = () => {
+    return (
+      <span className={cx('checkbox', { 'checkbox--disabled': props.disabled })}>
         <input
           className={cx('checkbox__input')}
           id={id}
@@ -37,6 +48,7 @@ const Checkbox = ({ className, id, name, value, uncontrolled, state, children, o
           type={'checkbox'}
           checked={value || (uncontrolled ? undefined : false)}
           onChange={handleChange}
+          {...props}
         />
         <span className="checkbox__box">
           <Icon
@@ -46,10 +58,21 @@ const Checkbox = ({ className, id, name, value, uncontrolled, state, children, o
             size={'Small'}
           />
         </span>
+        <span className="checkbox__focus"></span>
       </span>
-      {renderLabel()}
-    </label>
-  )
+    )
+  }
+
+  if (children) {
+    return (
+      <Label className={cx({ 'label--disabled': props.disabled })} control>
+        {renderCheckbox()}
+        {renderLabel()}
+      </Label>
+    )
+  }
+
+  return renderCheckbox()
 }
 
 export default Checkbox
