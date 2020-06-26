@@ -14,7 +14,6 @@ const SelectOptions = ({
   handleClick,
   handleBlur
 }: ISelect.IOptionsProps) => {
-  console.log(value, options)
 
   return (
     <ul

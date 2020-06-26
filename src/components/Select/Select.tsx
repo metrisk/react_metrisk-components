@@ -73,7 +73,6 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
    * Handle when an option is selected
    */
   const handleClick = (value: string, event: React.MouseEvent) => {
-    console.log(value, 'clickedvalue')
     handleChange(value)
     setOpen(false)
   }
@@ -81,8 +80,6 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
   const filtered = searchable
     ? options.filter((x: any) => x.label?.toLowerCase().includes(tempValue?.toLowerCase() || ''))
     : options
-
-  console.log('value', value)
 
   return (
     <div className={cx('select-base', focused && 'select-base--focus')}>
