@@ -12,6 +12,7 @@
 @use 'typography';
 @use 'resets';
 @use 'components';
+@use 'shadows';
 @use 'transitions';
 @use 'z-index';
 @use 'utilities';
@@ -30,13 +31,14 @@ $font-weight: typography.$font-light !default;
 /// Select wrapper
 /// -------------------
 
+.select-base {
+  @include components.base;
+}
+
 .select {
   display: inline-block;
   position: relative;
-
-  &--full {
-    width: 100%;
-  }
+  width: 100%;
 
   &:focus-within {
     outline: none;
@@ -59,19 +61,10 @@ $font-weight: typography.$font-light !default;
   font-weight: $font-weight;
   border-radius: $border-radius;
   background-color: $bg-colour;
-  transition: border transitions.$ease;
   appearance: none;
 
-  .field--error & {
-    border-bottom: solid 2px map-get(colours.$state, 'error');
-  }
-
-  .field--warning & {
-    border-bottom: solid 2px map-get(colours.$state, 'warning');
-  }
-
-  .field--success & {
-    border-bottom: solid 2px map-get(colours.$state, 'success');
+  &:focus {
+    outline: none;
   }
 
   &:read-only {
@@ -93,7 +86,7 @@ $font-weight: typography.$font-light !default;
   @include resets.list;
   display: block;
   position: absolute;
-  top: 100%;
+  top: 0;
   width: 100%;
   background-color: $bg-colour;
   border-radius: $border-radius;
@@ -101,6 +94,11 @@ $font-weight: typography.$font-light !default;
   overflow: auto;
   z-index: z-index.$top - 1;
   white-space: normal;
+  box-shadow: shadows.$one;
+
+  &--searchable {
+    top: 100%;
+  }
 }
 
 .select__option {
@@ -111,6 +109,15 @@ $font-weight: typography.$font-light !default;
   
   &:hover {
     background-color: map-get(colours.$ui, 'two');
+  }
+
+  &--selected {
+    background-color: map-get(colours.$ui, 'five');
+    color: map-get(colours.$ui, 'one');
+
+    &:hover {
+      background-color: map-get(colours.$ui, 'four');
+    }
   }
 }
 
@@ -123,4 +130,5 @@ $font-weight: typography.$font-light !default;
   right: $padding-x;
   width: $padding-x;
   height: $padding-x;
+  pointer-events: none;
 }

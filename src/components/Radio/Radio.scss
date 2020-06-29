@@ -4,6 +4,7 @@
 
 /// ----------------------------------------------------------------------
 
+@use 'animations';
 @use 'colours';
 @use 'borders';
 @use 'corners';
@@ -25,17 +26,41 @@ $border-radius: corners.$round !default;
 /// -------------------
 
 .radio {
-  position: relative;
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
-}
-
-.radio__wrapper {
-  display: inline-block;
+  justify-content: center;
+  vertical-align: middle;
   position: relative;
+  align-items: center;
   height: $size;
   width: $size;
+  padding: 10px;
+  transition: background transitions.$ease;
+  border-radius: 50%;
+
+  &:hover {
+    background: transparentize(map-get(colours.$state, 'focus'), 0.8);
+  }
+
+  &--disabled {
+    &:hover {
+      background: none;
+    }
+
+    .radio__focus {
+      background: none;
+    }
+  }
+}
+
+.radio__focus {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparentize(map-get(colours.$state, 'focus'), 0.6);
+  border-radius: $border-radius;
+  animation: scaleFocus 2s animations.$alternate-ease
 }
 
 .radio__button {
@@ -47,6 +72,7 @@ $border-radius: corners.$round !default;
   transition: transitions.$ease;
   border-radius: $border-radius;
   background-color: $bg-colour;
+  z-index: 2;
 }
 
 /// -------------------
@@ -64,6 +90,14 @@ $border-radius: corners.$round !default;
   &:checked + .radio__button {
     background-color: $bg-colour--checked;
   }
+
+  &:focus ~ .radio__focus {
+    display: block;
+  }
+
+  &:disabled + .radio__button {
+    opacity: 0.5;
+  }
 }
 
 /// -------------------
@@ -73,6 +107,7 @@ $border-radius: corners.$round !default;
 .radio__icn {
   @include utilities.center;
   display: none;
+  pointer-events: none;
 
   .radio__input:checked + .radio__button &,
   .radio--checked > & {

@@ -18,8 +18,10 @@ For use to indicate a boolean value.
       const [value, setValue] = useState(false)
       return (
         <div>
-          <Text>Value: {`${value}`}</Text>
-          <Checkbox id={'checkbox'} value={value} onChange={setValue}>Boolean Checkbox</Checkbox>
+          <Checkbox id={'checkbox'} value={value} onChange={setValue}>Checkbox</Checkbox>
+          <Checkbox id={'checkbox-disabled'} disabled>Disabled</Checkbox>
+          <Checkbox id={'checkbox-disabled-checked'} value={true} disabled>Disabled</Checkbox>
+          <Checkbox id={'checkbox-uncontrolled'} uncontrolled>Uncontrolled</Checkbox>
         </div>
       )
     }}
@@ -42,20 +44,6 @@ For use to indicate multiple boolean values.
           <Checkbox name={'checkbox'} value={values.includes('cat')} onChange={(value) => handleChange('cat', value)}>Cat</Checkbox>
           <Checkbox name={'checkbox'} value={values.includes('dog')} onChange={(value) => handleChange('dog', value)}>Dog</Checkbox>
           <Checkbox name={'checkbox'} value={values.includes('horse')} onChange={(value) => handleChange('horse', value)}>Horse</Checkbox>
-        </div>
-      )
-    }}
-  </Story>
-</Preview>
-
-## Uncontrolled
-
-<Preview>
-  <Story name='Uncontrolled'>
-    {() => {
-      return (
-        <div>
-          <Checkbox id={'checkbox'} uncontrolled>Label</Checkbox>
         </div>
       )
     }}

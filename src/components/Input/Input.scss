@@ -13,6 +13,7 @@
 @use 'components';
 @use 'transitions';
 @use 'resets';
+@use 'shadows';
 
 /// -------------------
 /// Input config
@@ -28,6 +29,10 @@ $font-weight: typography.$font-light !default;
 /// Input selectors 
 /// -------------------
 
+.input-base {
+  @include components.base;
+}
+
 .input {
   @include resets.style;
   @include components.flow;
@@ -39,10 +44,7 @@ $font-weight: typography.$font-light !default;
   font-family: $font-family;
   font-weight: $font-weight;
   transition: border transitions.$ease;
-
-  &--full {
-    width: 100%;
-  }
+  width: 100%;
 
   &:focus {
     outline: none;
@@ -51,17 +53,5 @@ $font-weight: typography.$font-light !default;
   &:disabled {
     opacity: 0.25;
     pointer-events: none;
-  }
-
-  .field--error & {
-    border-bottom: solid 2px map-get(colours.$state, 'error');
-  }
-
-  .field--warning & {
-    border-bottom: solid 2px map-get(colours.$state, 'warning');
-  }
-
-  .field--success & {
-    border-bottom: solid 2px map-get(colours.$state, 'success');
   }
 }

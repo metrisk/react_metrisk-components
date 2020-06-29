@@ -19,7 +19,9 @@ For use to indicate a boolean value.
       return (
         <div>
           <Text>Value: {`${value}`}</Text>
-          <Radio id={'radio'} value={value} onChange={setValue} />
+          <Radio id={'radio'} value={value} onChange={setValue}>Radio</Radio>
+          <Radio id={'radio-disabled'} disabled uncontrolled>Disabled</Radio>
+          <Radio id={'radio-disabled-checked'} value={true} disabled uncontrolled>Disabled</Radio>
         </div> 
       )
     }}

@@ -7,5 +7,5 @@ import './Radio.scss';
 /**
  * A Radio button
  */
-declare const Radio: ({ className, id, name, value, uncontrolled, state, onChange, children }: IRadio.IProps) => JSX.Element;
+declare const Radio: ({ className, id, name, value, uncontrolled, state, onChange, children, ...props }: IRadio.IProps) => JSX.Element;
 export default Radio;

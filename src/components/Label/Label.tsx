@@ -10,8 +10,8 @@ import './Label.scss'
 /**
  * A label
  */
-const Label = ({ className, for: htmlFor, children }: ILabel.IProps) => (
-  <label className={cx(className, 'label')} htmlFor={htmlFor}>
+const Label = ({ className, for: htmlFor, control, children }: ILabel.IProps) => (
+  <label className={cx(className, 'label', { 'label--control': control })} htmlFor={htmlFor}>
     {children}
   </label>
 )

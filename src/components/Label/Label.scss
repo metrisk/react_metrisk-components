@@ -28,6 +28,17 @@ $font-weight: typography.$font-regular !default;
   font-family: $font-family;
   white-space: normal;
 
+  &--control {
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  &--disabled {
+    cursor: default;
+  }
+
   &--inline {
     @include components.flow;
   }
