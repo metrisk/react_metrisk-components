@@ -68,7 +68,7 @@ const Field = ({ className, state, msg, displayMsg = true, fullWidth, ...props }
     >
       {renderLabel()}
       <div className={cx('field__wrapper', fullWidth && 'field__wrapper--full')}>
-        <FieldPicker state={state} fullWidth={fullWidth} {...props} />
+        <FieldPicker state={state} {...props} />
       </div>
 
       {displayMsg && (
