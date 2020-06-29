@@ -14,7 +14,6 @@ const SelectOptions = ({
   handleClick,
   handleBlur
 }: ISelect.IOptionsProps) => {
-
   return (
     <ul
       className={cx('select__options', searchable && 'select__options--searchable')}
