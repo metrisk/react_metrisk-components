@@ -33,8 +33,12 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
       onChange(isOption.value)
       setTempValue(isOption.label)
     } else {
-      onChange(null)
-      setTempValue(null)
+      if (searchable) {
+        setTempValue(value)
+      } else {
+        onChange(null)
+        setTempValue(null)
+      }
     }
   }
 
