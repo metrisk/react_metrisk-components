@@ -8,7 +8,7 @@ declare namespace ICheckbox {
     uncontrolled?: boolean
     state?: string
     children?: any
-    onChange: (value: boolean) => void
+    onChange?: (value: boolean) => void
   }
 }
 
