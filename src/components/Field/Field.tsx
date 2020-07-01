@@ -72,7 +72,12 @@ const Field = ({ className, state, msg, displayMsg = true, fullWidth, ...props }
       </div>
 
       {displayMsg && (
-        <span className={cx('field__msg', msg && 'field__msg--active', states[state] && `field__msg${states[state]}`)}>
+        <span
+          className={cx('field__msg', states[state] && `field__msg${states[state]}`, {
+            'field--state': states[state],
+            'field__msg--active': msg
+          })}
+        >
           {msg}
         </span>
       )}

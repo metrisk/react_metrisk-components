@@ -39,12 +39,12 @@ $font-weight: typography.$font-light !default;
   @include components.interactive;
   padding-left: $padding-x;
   padding-right: $padding-x;
-  border-radius: $border-radius; 
   background-color: $bg-colour;
   font-family: $font-family;
   font-weight: $font-weight;
   transition: border transitions.$ease;
   width: 100%;
+  margin: 0;
 
   &:focus {
     outline: none;

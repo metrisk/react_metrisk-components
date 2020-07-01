@@ -30,6 +30,9 @@ $font-weight: typography.$font-light !default;
 /// -------------------
 /// Select wrapper
 /// -------------------
+.select-root {
+  position: relative;
+}
 
 .select-base {
   @include components.base;
@@ -59,7 +62,6 @@ $font-weight: typography.$font-light !default;
   padding-right: $padding-x * 2.5; 
   font-family: $font-family;
   font-weight: $font-weight;
-  border-radius: $border-radius;
   background-color: $bg-colour;
   appearance: none;
 
@@ -98,6 +100,8 @@ $font-weight: typography.$font-light !default;
 
   &--searchable {
     top: 100%;
+
+    border-radius: 0 0 $border-radius $border-radius;
   }
 }
 
