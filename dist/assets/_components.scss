@@ -58,6 +58,8 @@ $block-padding:  spacing.$md !default;
 
 @mixin base {
   position: relative;
+  border-radius: corners.$base;
+  overflow: hidden;
 
   &:before {
     left: 0;
@@ -72,7 +74,7 @@ $block-padding:  spacing.$md !default;
     border-radius: corners.$base;
     z-index: 2;
     border-bottom: 2px solid rgba(0,0,0,0.05);
-    border-top: 2px solid rgba(255,255,255,0.05);
+    border-top: 0px solid rgba(0,0,0,0.1);
   }
 
   &:after {
@@ -96,6 +98,8 @@ $block-padding:  spacing.$md !default;
   }
 
   &--focus {
+    border-radius: corners.$base corners.$base 0 0;
+
     &:hover:before {
       transform: scaleX(0);
     }
@@ -119,6 +123,12 @@ $block-padding:  spacing.$md !default;
 
   .field--success &:before {
     border-bottom: solid 2px map-get(colours.$state, 'success');
+  }
+
+  .field--state {
+    &:hover {
+      border-radius: corners.$base corners.$base 0 0;
+    }
   }
 }
 
