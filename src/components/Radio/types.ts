@@ -7,7 +7,7 @@ declare namespace IRadio {
     disabled?: boolean
     uncontrolled?: boolean
     state?: string
-    onChange: (value: boolean) => void
+    onChange?: (value: boolean) => void
     children: any
   }
 }
