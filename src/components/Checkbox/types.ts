@@ -1,7 +1,7 @@
 declare namespace ICheckbox {
   interface IProps {
     className?: string
-    id: string
+    id?: string
     name?: string
     value?: boolean
     disabled?: boolean
