@@ -33,61 +33,6 @@ $transition:
   color transitions.$ease, 
   fill transitions.$ease !default;
 
-$types: (
-  'primary': (
-    background-image: gradients.$one,
-    background-size: 200%,
-      
-    'hover': (
-      animation: cycle 0.5s animations.$infinite-linear
-    )
-  ),
-  'secondary': (
-    background-image: gradients.$one,
-    background-size: 200%,
-    
-    'hover': (
-      animation: cycle 0.5s animations.$infinite-linear
-    ),
-      
-    'before': (
-      content: '',
-      display: block,
-      position: absolute,
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      background-color: white,
-      z-index: z-index.$back - 1,
-    )
-  ),
-  'tertiary': (
-    padding-left: 0,
-    padding-right: 0,
-    
-    'hover': (
-      box-shadow: none
-    )
-  ),
-  'action': (
-    background-color: white,
-    box-shadow: shadows.$two,
-    width: components.$flow-height,
-    height: components.$flow-height,
-    text-align: center,
-    padding-left: 0,
-    padding-right: 0,
-    border-radius: corners.$round,
-    overflow: hidden,
-    color: transparent, // Hide the text but we still want it there for accessibility
-
-    'focus': (
-      outline: none
-    )
-  )
-) !default;
-
 /// -------------------
 /// Button selectors 
 /// -------------------
@@ -109,11 +54,34 @@ $types: (
   text-decoration: none;
   cursor: pointer;
   z-index: z-index.$default;
+  overflow: hidden;
+
+  &:hover {
+    &:before {
+      opacity: 1;
+      transform: rotate(45deg) scale(8);
+    }
+  }
+    
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 40%;
+    right: 40%;
+    background-color: rgba(0,0,0,0.2);
+    z-index: z-index.$back - 1;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    transition: all 1s ease;
+  }
 
   &:focus {
     outline: none;
-    border: borders.$one;
     opacity: 0.8;
+    box-shadow: 0 0 0 3px map-get(colours.$state, 'focus');
   }
 
   &--disabled,
@@ -122,28 +90,59 @@ $types: (
     pointer-events: none;
   }
 
+  &--primary {
+    background-color: map-get(colours.$button, 'primary');
+    background-size: 200%;
+
+    &:before {
+      background-color: rgba(255,255,255,0.5);
+    }
+  }
+
+  &--secondary {
+    background-color: map-get(colours.$ui, 'two');
+    background-size: 200%;
+
+    &:before {
+      background-color: map-get(colours.$ui, 'five');
+    }
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &--action {
+    background-color: white;
+    box-shadow: shadows.$two;
+    width: components.$flow-height;
+    height: components.$flow-height;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: corners.$round;
+    overflow: hidden;
+    color: transparent; // Hide the text but we still want it there for accessibility
+    
+    &:before {
+      background-color: map-get(colours.$ui, 'five');
+    }
+
+    &:hover .btn__icn>svg path {
+      fill: #fff;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   &--l {
     padding-left: $padding-x * 1.5;
   }
   
   &--r {
     padding-right: $padding-x * 1.5;
-  }
-
-  &--l.btn--tertiary {
-    padding-left: $padding-x;
-  }
-  
-  &--r.btn--tertiary {
-    padding-right: $padding-x;
-  }
-
-  @each $type in $types {
-    $type-name: nth($type, 1);
-    
-    &--#{$type-name} {
-      @include apply-props.apply-props(map-get($types, $type-name));
-    }
   }
 }
 
@@ -165,14 +164,6 @@ $types: (
 
   .btn--c & {
     @include utilities.center;
-  }
-
-  .btn--tertiary.btn--l & {
-    left: 0;
-  }
-
-  .btn--tertiary.btn--r & {
-    right: 0;
   }
 
   & > svg path {
