@@ -70,7 +70,8 @@ $border-radius: corners.$base !default;
   height: 100%;
   background: transparentize(map-get(colours.$state, 'focus'), 0.6);
   border-radius: $border-radius;
-  animation: scaleFocus 2s animations.$alternate-ease
+  animation: scaleFocus 2s animations.$alternate-ease;
+  pointer-events: none;
 }
 
 .checkbox__box {
@@ -96,6 +97,7 @@ $border-radius: corners.$base !default;
   width: 100%;
   height: 100%;
   margin: 0;
+  z-index: 4;
 
   &:checked + .checkbox__box {
     background-color: $bg-colour--checked;
