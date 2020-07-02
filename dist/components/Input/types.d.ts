@@ -9,7 +9,7 @@ declare namespace IInput {
         placeholder: string;
         autoComplete?: 'on' | 'off';
         uncontrolled?: boolean;
-        onChange: (e: any) => void;
+        onChange?: (e: any) => void;
     }
 }
 export default IInput;
