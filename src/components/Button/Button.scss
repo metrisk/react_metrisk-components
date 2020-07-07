@@ -90,6 +90,11 @@ $transition:
     pointer-events: none;
   }
 
+  &--full {
+    width: 100%;
+    justify-content: center;
+  }
+
   &--primary {
     background-color: map-get(colours.$button, 'primary');
     background-size: 200%;

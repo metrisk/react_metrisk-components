@@ -102,4 +102,4 @@ const Image = ({ className, type, aspect, src, alt, fallback = null, background 
   )
 }
 
-export default Image
+export default React.memo(Image, (prevProps, nextProps) => prevProps.src === nextProps.src)
