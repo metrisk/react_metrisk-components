@@ -19,7 +19,6 @@ import { OpenContext } from '../../context/OpenContext'
  */
 import { AlertClose, AlertBody, AlertFooter } from '.'
 import { Icon } from '../Icon'
-import { Overlay } from '../Overlay'
 
 /**
  * Alert types
