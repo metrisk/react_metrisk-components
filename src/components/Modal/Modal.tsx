@@ -2,7 +2,7 @@ import IModal from './types'
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { useContext, useEffect, Fragment } from 'react'
-import cx from 'classnames'
+import * as FocusTrap from 'focus-trap-react'
 
 /**
  * Styles
@@ -41,14 +41,16 @@ const Modal = ({ header, footer, children }: IModal.IProps) => {
   return open
     ? createPortal(
         <Fragment>
-          <Overlay onClick={() => setOpen(false)} />
+          <Overlay />
           <div className="modal-container">
-            <aside className="modal">
-              <ModalClose onClick={setOpen} />
-              {header && <ModalHeader {...header} />}
-              {children && <ModalBody>{children}</ModalBody>}
-              {footer && <ModalFooter {...footer} />}
-            </aside>
+            <FocusTrap>
+              <aside className="modal" aria-modal="true" tabIndex={-1} role="dialog">
+                <ModalClose onClick={setOpen} />
+                {header && <ModalHeader {...header} />}
+                {children && <ModalBody>{children}</ModalBody>}
+                {footer && <ModalFooter {...footer} />}
+              </aside>
+            </FocusTrap>
           </div>
         </Fragment>,
         document.body
