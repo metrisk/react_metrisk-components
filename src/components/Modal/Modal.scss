@@ -47,29 +47,27 @@ $padding-y: spacing.$lg !default;
 /// -------------------
 
 .modal-container {
-  position: absolute;
+  position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
   overflow: auto;
   z-index: z-index.$top;
+  display: flex;
 }
 
 .modal {
-  @include utilities.center-x;
-  position: absolute;
+  position: relative;
   box-sizing: border-box;
-  top: 1rem;
+  margin: auto 1rem;
   max-width: 800px;
   width: 100%;
-  background-color: white;
-  animation: centerFadeInTop 0.3s animations.$forwards-ease;
-  border-radius: corners.$base;
+  animation: fadeInTop 0.3s animations.$forwards-ease;
   z-index: z-index.$top + 1;
 
-  @include breakpoint.up('md') {
-    top: 100px;
+  @include breakpoint.up('sm') {
+    margin: auto;
   }
 }
 
@@ -103,6 +101,8 @@ $padding-y: spacing.$lg !default;
 .modal__header {
   border-bottom: borders.$three;
   padding: $padding-y $padding-x;
+  background-color: white;
+  border-radius: corners.$base corners.$base 0 0;
 }
 
 /// -------------------
@@ -111,6 +111,17 @@ $padding-y: spacing.$lg !default;
 
 .modal__body {
   padding: $padding-y $padding-x;
+  background-color: white;
+
+  &:first-child {
+    border-top-left-radius: corners.$base;
+    border-top-right-radius: corners.$base;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: corners.$base;
+    border-bottom-right-radius: corners.$base;
+  }
 }
 
 /// -------------------
@@ -121,6 +132,9 @@ $padding-y: spacing.$lg !default;
   padding: $padding-y $padding-x;
   display: flex;
   justify-content: space-between;
+  border-top: 1px solid #f0f0f0;
+  background-color: white;
+  border-radius: 0 0 corners.$base corners.$base;
 }
 
 /// -------------------
