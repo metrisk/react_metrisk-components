@@ -84,6 +84,7 @@ $border-radius: corners.$base !default;
   border-radius: $border-radius;
   background-color: $bg-colour;
   z-index: 2;
+  flex-shrink: 0;
 }
 
 /// -------------------
