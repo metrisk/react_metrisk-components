@@ -113,6 +113,7 @@ $nav-height: 70px;
     position: absolute;
     width: 100%;
     top: $nav-height;
+    left: 0;
     max-height: 0;
     overflow: hidden;
     background-color: white;
@@ -126,7 +127,7 @@ $nav-height: 70px;
       background-color: transparent;
       position: relative;
       display: flex;
-      top: unset;
+      top: 0;
       width: auto;
       max-height: none;
       overflow: visible;
@@ -143,7 +144,6 @@ $nav-height: 70px;
       position: absolute;
       top: 100%;
       margin-left: 0;
-      left: 0;
     }
   }
 
@@ -168,7 +168,7 @@ $nav-height: 70px;
 
 .nav__link {
   @include resets.style;
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
   line-height: 1;
   font-size: typography.$base-font-size;
@@ -209,5 +209,9 @@ $nav-height: 70px;
 
   .nav--inverse.nav--vertical .nav__item:nth-child(2n) & {
     background-color: rgba(white, 0.025);
+  }
+
+  @include breakpoint.up('sm') {
+    display: inline-block;
   }
 }
