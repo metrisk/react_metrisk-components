@@ -7,6 +7,7 @@ const secondsUntilFail = 15
 
 const ImageFallback = ({ alt }: { alt: string }) => {
   const [error, setError] = useState(false)
+  const safeAlt = typeof alt === 'string' ? alt : null
 
   useEffect(() => {
     const failTimeout = setTimeout(() => setError(true), secondsUntilFail * 1000)
@@ -18,7 +19,7 @@ const ImageFallback = ({ alt }: { alt: string }) => {
     return (
       <div className="img__error">
         <div aria-hidden={true}>?</div>
-        <span>{alt}</span>
+        <span>{safeAlt}</span>
       </div>
     )
   }
