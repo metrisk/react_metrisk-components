@@ -1,6 +1,5 @@
 import IImage from './types'
 import * as React from 'react'
-import { useState } from 'react'
 import { createResource, SimpleCache } from 'simple-cache-provider'
 import cx from 'classnames'
 
@@ -14,8 +13,8 @@ import './Image.scss'
 /**
  * Components
  */
-import { Loader } from '../Loader'
 import SsrSuspense from './SsrSuspense'
+import Fallback from './ImageFallback'
 
 /**
  * Image classes
@@ -34,28 +33,6 @@ const aspects = {
   '4x3': 'img--4x3',
   '16x9': 'img--16x9',
   '7x3': 'img--7x3'
-}
-
-const secondsUntilFail = 15
-
-const Fallback = ({ alt }: { alt: string }) => {
-  const [error, setError] = useState(false)
-  setTimeout(() => setError(true), secondsUntilFail * 1000)
-
-  if (error) {
-    return (
-      <div className="img__error">
-        <div aria-hidden={true}>?</div>
-        <span>{alt}</span>
-      </div>
-    )
-  }
-
-  return (
-    <span className={'img__loader'}>
-      <Loader type="Circle" />
-    </span>
-  )
 }
 
 const Image = ({ className, type, aspect, src, alt, fallback = null, background = true }: IImage.IProps) => {
