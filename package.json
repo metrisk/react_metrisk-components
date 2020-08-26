@@ -1,5 +1,5 @@
 {
-  "name": "react_metrisk-components",
+  "name": "@metrisk/react_metrisk-components",
   "version": "1.0.0",
   "description": "A collection of React pure components, built with TypeScript",
   "main": "./dist/index.js",
@@ -88,5 +88,11 @@
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-dev-server": "^3.11.0",
     "write-file-webpack-plugin": "^4.5.1"
+  },
+  "bugs": {
+    "url": "https://github.com/metrisk/react_metrisk-components/issues"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
