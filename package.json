@@ -23,7 +23,7 @@
     "react",
     "typescript"
   ],
-  "author": "Milly Billins @ Metrisk Ltd",
+  "author": "Metrisk Ltd",
   "license": "ISC",
   "homepage": "https://github.com/metrisk/react_metrisk-components#readme",
   "dependencies": {
