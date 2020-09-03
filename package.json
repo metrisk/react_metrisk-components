@@ -94,5 +94,8 @@
   },
   "directories": {
     "doc": "docs"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

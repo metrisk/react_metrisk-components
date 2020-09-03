@@ -1,6 +1,6 @@
 import ISelect from './types'
 import * as React from 'react'
-import { useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import cx from 'classnames'
 
 /**
@@ -24,14 +24,26 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
   const element = useRef(null)
   const input = useRef(null)
 
+  useEffect(() => {
+    const option = getOptionByValue(value)
+
+    if (option && option.label !== tempValue) {
+      setTempValue(option.label)
+    }
+  }, [value])
+
+  const getOptionByValue = (optionValue: string) => {
+    return options.find((x: any) => x.value === optionValue)
+  }
+
   /**
    * Handle change
    */
   const handleChange = (value: any) => {
-    const isOption = value && options.find((x: any) => x.value === value)
-    if (isOption) {
-      onChange(isOption.value)
-      setTempValue(isOption.label)
+    const option = getOptionByValue(value)
+    if (option) {
+      onChange(option.value)
+      setTempValue(option.label)
     } else {
       if (searchable) {
         setTempValue(value)
