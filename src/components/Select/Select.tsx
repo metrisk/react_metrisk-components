@@ -25,14 +25,12 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
   const input = useRef(null)
 
   useEffect(() => {
-    if (value) {
-      const option = getOptionByValue(value)
+    const option = getOptionByValue(value)
 
-      if (option) {
-        setTempValue(option.label)
-      }
+    if (option && option.label !== tempValue) {
+      setTempValue(option.label)
     }
-  }, [])
+  }, [value])
 
   const getOptionByValue = (optionValue: string) => {
     return options.find((x: any) => x.value === optionValue)
