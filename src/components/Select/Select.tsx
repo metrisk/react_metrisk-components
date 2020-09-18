@@ -60,6 +60,9 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
 
   const handleFocus = () => {
     setFocused(true)
+    if (searchable) {
+      setTempValue(null)
+    }
   }
 
   const withinElement = (event: any) => {
@@ -79,6 +82,12 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
     if (withinElement(event) && element.current === event.relatedTarget) {
       input.current.focus()
       return
+    }
+
+    if (value) {
+      const option = getOptionByValue(value)
+
+      if (option) setTempValue(option.label)
     }
 
     setOpen(false)
