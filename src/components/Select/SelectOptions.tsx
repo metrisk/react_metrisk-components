@@ -1,6 +1,7 @@
-import ISelect from './types'
 import * as React from 'react'
 import cx from 'classnames'
+
+import ISelect from './types'
 
 /**
  * Render a filtered list or the original list of options
