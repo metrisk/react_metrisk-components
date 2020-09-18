@@ -87,8 +87,6 @@ $font-weight: typography.$font-light !default;
 .select__options {
   @include resets.list;
   display: block;
-  position: absolute;
-  top: 0;
   width: 100%;
   background-color: $bg-colour;
   border-radius: $border-radius;

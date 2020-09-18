@@ -2,6 +2,7 @@ import ISelect from './types'
 import * as React from 'react'
 import { useEffect, useState, useRef } from 'react'
 import cx from 'classnames'
+import { usePopper } from 'react-popper'
 
 /**
  * Styles
@@ -23,6 +24,17 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
   const [focused, setFocused] = useState(false)
   const element = useRef(null)
   const input = useRef(null)
+  const popperRef = useRef(null)
+  const { styles, attributes } = usePopper(element.current, popperRef.current, {
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, searchable ? 0 : -45]
+        }
+      }
+    ]
+  })
 
   useEffect(() => {
     const option = getOptionByValue(value)
@@ -127,15 +139,17 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
           <Icon className={cx('select__icn')} name={open ? 'chevron-up' : 'chevron-down'} colour="Dark" size="Small" />
         </div>
       </div>
-      <SelectOptions
-        open={open}
-        options={filtered}
-        optional={optional}
-        handleClick={handleClick}
-        handleBlur={handleBlur}
-        searchable={searchable}
-        value={value}
-      />
+      <div ref={popperRef} style={{ ...styles.popper, width: '100%', zIndex: 1000 }} {...attributes.popper}>
+        <SelectOptions
+          open={open}
+          options={filtered}
+          optional={optional}
+          handleClick={handleClick}
+          handleBlur={handleBlur}
+          searchable={searchable}
+          value={value}
+        />
+      </div>
     </div>
   )
 }
