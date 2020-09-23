@@ -27,10 +27,9 @@ const Loader = ({ type, coverPage }: any) => {
     default:
       return (
         <Wrapper>
-          <span
-            className={cx('loader__spinner')}
-            dangerouslySetInnerHTML={{ __html: require(`../../assets/icons/loader.svg`) }}
-          />
+          <svg className="loader__spinner" viewBox="0 0 50 50">
+            <circle className="loader__spinner-path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
         </Wrapper>
       )
   }
