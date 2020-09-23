@@ -11,6 +11,7 @@ declare namespace ISelect {
             label: string;
         }[];
         value: string;
+        popper: any;
         onChange: (e: any) => void;
     }
     interface IOptionsProps {

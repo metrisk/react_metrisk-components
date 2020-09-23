@@ -12,7 +12,15 @@ import { Link as RouterLink } from 'react-router-dom'
 /**
  * The link to render within the  navigation
  */
-const NavigationLink: React.FC<INavigation.ILinkProps> = ({ className, component, href, icon, children, onClick }) => {
+const NavigationLink: React.FC<INavigation.ILinkProps> = ({
+  className,
+  component,
+  href,
+  target,
+  icon,
+  children,
+  onClick
+}) => {
   const renderChildren = (
     <Fragment>
       {children}
@@ -24,13 +32,13 @@ const NavigationLink: React.FC<INavigation.ILinkProps> = ({ className, component
     if (component) {
       const Tag: any = component
       return (
-        <Tag className={cx(className, 'nav__link')} to={href}>
+        <Tag className={cx(className, 'nav__link')} to={href} target={target}>
           {renderChildren}
         </Tag>
       )
     } else {
       return (
-        <RouterLink className={cx(className, 'nav__link')} to={href}>
+        <RouterLink className={cx(className, 'nav__link')} to={href} target={target}>
           {renderChildren}
         </RouterLink>
       )
