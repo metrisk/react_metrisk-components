@@ -18,7 +18,7 @@ import { Icon } from '../Icon'
 /**
  * Determine which select type to render
  */
-const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.IProps) => {
+const Select = ({ id, options, value, optional, searchable, popper, onChange }: ISelect.IProps) => {
   const [tempValue, setTempValue] = useState(null)
   const [open, setOpen] = useState(false)
   const [focused, setFocused] = useState(false)
@@ -33,7 +33,8 @@ const Select = ({ id, options, value, optional, searchable, onChange }: ISelect.
           offset: [0, searchable ? 0 : -45]
         }
       }
-    ]
+    ],
+    ...popper
   })
 
   useEffect(() => {
