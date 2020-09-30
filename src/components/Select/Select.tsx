@@ -45,6 +45,15 @@ const Select = ({ id, options, value, optional, searchable, popper, onChange }: 
     }
   }, [value])
 
+  useEffect(() => {
+    const option = getOptionByValue(value)
+
+    if (!option) {
+      onChange(null)
+      setTempValue(null)
+    }
+  }, [options])
+
   const getOptionByValue = (optionValue: string) => {
     return options.find((x: any) => x.value === optionValue)
   }
