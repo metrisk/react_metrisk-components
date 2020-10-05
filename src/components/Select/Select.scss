@@ -98,7 +98,6 @@ $font-weight: typography.$font-light !default;
 
   &--searchable {
     top: 100%;
-
     border-radius: 0 0 $border-radius $border-radius;
   }
 }
@@ -108,6 +107,7 @@ $font-weight: typography.$font-light !default;
   font-family: $font-family;
   padding: spacing.$md;
   cursor: pointer;
+  transition: opacity .5s ease;
   
   &:hover {
     background-color: map-get(colours.$ui, 'two');
@@ -120,6 +120,10 @@ $font-weight: typography.$font-light !default;
     &:hover {
       background-color: map-get(colours.$ui, 'four');
     }
+  }
+
+  &--transitioning {
+    opacity: 0;
   }
 }
 
