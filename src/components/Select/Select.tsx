@@ -13,6 +13,7 @@ import './Select.scss'
  * Components
  */
 import SelectOptions from './SelectOptions'
+import VirtualisedSelectOptions from './VirtualisedSelectOptions'
 import { Icon } from '../Icon'
 
 /**
@@ -20,6 +21,12 @@ import { Icon } from '../Icon'
  */
 const Select = ({ id, options, value, optional, searchable, popper, onChange }: ISelect.IProps) => {
   const [tempValue, setTempValue] = useState(null)
+  const normalisedTempValue = tempValue
+    ? tempValue
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9]/g, '')
+        .trim()
+    : null
   const [open, setOpen] = useState(false)
   const [focused, setFocused] = useState(false)
   const element = useRef(null)
@@ -36,6 +43,7 @@ const Select = ({ id, options, value, optional, searchable, popper, onChange }: 
     ],
     ...popper
   })
+  const OptionsComponent = options.length > 50 ? VirtualisedSelectOptions : SelectOptions
 
   useEffect(() => {
     const option = getOptionByValue(value)
@@ -49,8 +57,8 @@ const Select = ({ id, options, value, optional, searchable, popper, onChange }: 
     const option = getOptionByValue(value)
 
     if (!option) {
-      onChange(null)
-      setTempValue(null)
+      value !== null && onChange(null)
+      setTempValue !== null && setTempValue(null)
     }
   }, [options])
 
@@ -110,6 +118,8 @@ const Select = ({ id, options, value, optional, searchable, popper, onChange }: 
       const option = getOptionByValue(value)
 
       if (option) setTempValue(option.label)
+    } else {
+      setTempValue(null)
     }
 
     setOpen(false)
@@ -124,9 +134,15 @@ const Select = ({ id, options, value, optional, searchable, popper, onChange }: 
     setOpen(false)
   }
 
-  const filtered = searchable
-    ? options.filter((x: any) => x.label?.toLowerCase().includes(tempValue?.toLowerCase() || ''))
-    : options
+  const filteredOptions =
+    searchable && normalisedTempValue !== ''
+      ? options.filter((x: any) =>
+          x.label
+            ?.toLowerCase()
+            .replace(/[^a-zA-Z0-9]/g, '')
+            .includes(normalisedTempValue || '')
+        )
+      : options
 
   return (
     <div className="select-root">
@@ -150,9 +166,9 @@ const Select = ({ id, options, value, optional, searchable, popper, onChange }: 
         </div>
       </div>
       <div ref={popperRef} style={{ ...styles.popper, width: '100%', zIndex: 1000 }} {...attributes.popper}>
-        <SelectOptions
+        <OptionsComponent
           open={open}
-          options={filtered}
+          options={filteredOptions}
           optional={optional}
           handleClick={handleClick}
           handleBlur={handleBlur}

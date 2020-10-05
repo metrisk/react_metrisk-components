@@ -59,16 +59,17 @@ Optional selects allow you to reselect `null`.
 </Preview>
 
 ## Searchable
-Searchable selects allow the user to search for an option.
+Searchable selects allow the user to search for an option, large amounts of options will be virtualised
 
 <Preview>
   <Story name='Searchable'>
     {() => {
       const [value, setValue] = useState(null)
+      const options = [...Array(100).keys()].map((item) => ({label: `Option ${item}`, value: `option-${item}`}))
       return (
         <div>
           <Text>Value: {`${value}`}</Text>
-          <Select id={'select'} options={[{ label: 'Option 1', value: 'option-1' },{ label: 'Option 2', value: 'option-2' }]} value={value} searchable onChange={setValue} />
+          <Select id={'select'} options={options} value={value} searchable onChange={setValue} />
         </div>  
       )
     }}
