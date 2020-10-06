@@ -50,7 +50,7 @@ Optional selects allow you to reselect `null`.
             value={value}
             optional
             onChange={setValue}
-            popper={{ placement: 'top' }}
+            popper={{ placement: 'bottom' }}
           />
         </div>
       )
@@ -65,11 +65,17 @@ Searchable selects allow the user to search for an option, large amounts of opti
   <Story name='Searchable'>
     {() => {
       const [value, setValue] = useState(null)
-      const options = [...Array(100).keys()].map((item) => ({label: `Option ${item}`, value: `option-${item}`}))
+      const options = [...Array(1000).keys()].map((item, index) => {
+        if (index % 2) {
+          return {label: `Option ${item}`, value: `option-${item}`}
+        } else {
+          return {label: `Option ${item} - Sed a ultrices orci. Integer tincidunt justo sit amet libero egestas, eget pharetra ligula egestas. Sed laoreet, velit non scelerisque interdum, tellus nisi maximus sem, congue fringilla sapien justo sed mi..`, value: `option-${item}`}
+        }
+      })
       return (
         <div>
           <Text>Value: {`${value}`}</Text>
-          <Select id={'select'} options={options} value={value} searchable onChange={setValue} />
+          <Select id={'select'} options={options} value={value} searchable searchableLimit={250} onChange={setValue} />
         </div>  
       )
     }}

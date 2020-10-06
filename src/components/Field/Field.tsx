@@ -11,7 +11,6 @@ import './Field.scss'
  * Components
  */
 import { Label } from '../Label'
-import { Icon } from '../Icon'
 import { FieldPicker } from '.'
 
 /**

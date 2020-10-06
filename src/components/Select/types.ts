@@ -3,6 +3,7 @@ declare namespace ISelect {
     className?: string
     id: string
     searchable?: boolean
+    searchableLimit?: number
     optional?: boolean
     disabled?: boolean
     placeholder?: string
