@@ -1,6 +1,6 @@
 {
   "name": "@metrisk/react_metrisk-components",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "A collection of React pure components, built with TypeScript",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -27,14 +27,11 @@
   "license": "ISC",
   "homepage": "https://github.com/metrisk/react_metrisk-components#readme",
   "dependencies": {
-    "@john-osullivan/react-window-dynamic-fork": "^1.9.0-alpha.1",
     "@popperjs/core": "^2.4.4",
     "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.0",
-    "@types/react-virtualized-auto-sizer": "^1.0.0",
-    "@types/react-window": "^1.8.2",
     "classnames": "^2.2.6",
     "focus-trap-react": "^7.0.1",
     "react": "^16.9.0",
@@ -42,7 +39,6 @@
     "react-popper": "^2.2.3",
     "react-router": "^5.1.0",
     "react-router-dom": "^5.1.0",
-    "react-window": "^1.8.5",
     "simple-cache-provider": "^0.10.0"
   },
   "devDependencies": {

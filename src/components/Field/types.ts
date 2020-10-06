@@ -14,7 +14,9 @@ declare namespace IField {
     children?: any
     displayMsg?: boolean
     fullWidth?: boolean
-    onChange?: () => void
+    searchable?: boolean
+    searchableLimit?: number
+    onChange?: (value: string) => void
   }
 }
 

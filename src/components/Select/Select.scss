@@ -91,6 +91,7 @@ $font-weight: typography.$font-light !default;
   background-color: $bg-colour;
   border-radius: $border-radius;
   max-height: 250px;
+  min-height: 50px;
   overflow: auto;
   z-index: z-index.$top - 1;
   white-space: normal;
@@ -105,9 +106,14 @@ $font-weight: typography.$font-light !default;
 .select__option {
   font-size: typography.$base-font-size;
   font-family: $font-family;
-  padding: spacing.$md;
   cursor: pointer;
   transition: opacity .5s ease;
+  box-sizing: border-box;
+
+  &-content {
+    display: block;
+    padding: spacing.$md;
+  }
   
   &:hover {
     background-color: map-get(colours.$ui, 'two');

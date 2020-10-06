@@ -13,13 +13,12 @@ import './Select.scss'
  * Components
  */
 import SelectOptions from './SelectOptions'
-import VirtualisedSelectOptions from './VirtualisedSelectOptions'
 import { Icon } from '../Icon'
 
 /**
  * Determine which select type to render
  */
-const Select = ({ id, options, value, optional, searchable, popper, onChange }: ISelect.IProps) => {
+const Select = ({ id, options, value, optional, searchable, searchableLimit, popper, onChange }: ISelect.IProps) => {
   const [tempValue, setTempValue] = useState(null)
   const normalisedTempValue = tempValue
     ? tempValue
@@ -43,7 +42,6 @@ const Select = ({ id, options, value, optional, searchable, popper, onChange }: 
     ],
     ...popper
   })
-  const OptionsComponent = options.length > 50 ? VirtualisedSelectOptions : SelectOptions
 
   useEffect(() => {
     const option = getOptionByValue(value)
@@ -143,6 +141,7 @@ const Select = ({ id, options, value, optional, searchable, popper, onChange }: 
             .includes(normalisedTempValue || '')
         )
       : options
+  const filteredAndLimitedOptions = searchable && searchableLimit ? filteredOptions.slice(0, searchableLimit + 1) : filteredOptions
 
   return (
     <div className="select-root">
@@ -166,13 +165,14 @@ const Select = ({ id, options, value, optional, searchable, popper, onChange }: 
         </div>
       </div>
       <div ref={popperRef} style={{ ...styles.popper, width: '100%', zIndex: 1000 }} {...attributes.popper}>
-        <OptionsComponent
+        <SelectOptions
           open={open}
-          options={filteredOptions}
+          options={filteredAndLimitedOptions}
           optional={optional}
           handleClick={handleClick}
           handleBlur={handleBlur}
           searchable={searchable}
+          limited={filteredOptions.length > (searchableLimit + 1)}
           value={value}
         />
       </div>

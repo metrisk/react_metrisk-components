@@ -12,8 +12,9 @@ const SelectOptions = ({
   optional,
   value,
   searchable,
+  limited,
   handleClick,
-  handleBlur
+  handleBlur,
 }: ISelect.IOptionsProps) => {
   return (
     <ul
@@ -21,8 +22,8 @@ const SelectOptions = ({
       style={{ display: open ? 'block' : 'none' }}
     >
       {optional && (
-        <li className={cx('select__option')} value={''} onClick={() => handleClick(null)} tabIndex={0}>
-          -- Select --
+        <li className={cx('select__option')} onClick={() => handleClick(null)} tabIndex={0}>
+          <span className="select__option-content">-- Select --</span>
         </li>
       )}
 
@@ -34,9 +35,15 @@ const SelectOptions = ({
           onBlur={handleBlur}
           tabIndex={0}
         >
-          {x.label}
+          <span className="select__option-content">{x.label}</span>
         </li>
       ))}
+
+      {limited && (
+        <li className={cx('select__option')} tabIndex={0}>
+          <span className="select__option-content">-- Type To Search All Options --</span>
+        </li>
+      )}
     </ul>
   )
 }
