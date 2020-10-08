@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useEffect, useRef } from 'react'
 import cx from 'classnames'
 
 import ISelect from './types'
@@ -14,16 +15,31 @@ const SelectOptions = ({
   searchable,
   limited,
   handleClick,
-  handleBlur,
+  handleBlur
 }: ISelect.IOptionsProps) => {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (ref?.current) {
+      ref.current.scrollTop = 0
+    }
+  }, [options])
+
   return (
     <ul
+      ref={ref}
       className={cx('select__options', searchable && 'select__options--searchable')}
       style={{ display: open ? 'block' : 'none' }}
     >
       {optional && (
         <li className={cx('select__option')} onClick={() => handleClick(null)} tabIndex={0}>
           <span className="select__option-content">-- Select --</span>
+        </li>
+      )}
+
+      {searchable && options.length === 0 && (
+        <li className={cx('select__option')} tabIndex={0}>
+          <span className="select__option-content">-- No Results Found --</span>
         </li>
       )}
 

@@ -141,7 +141,8 @@ const Select = ({ id, options, value, optional, searchable, searchableLimit, pop
             .includes(normalisedTempValue || '')
         )
       : options
-  const filteredAndLimitedOptions = searchable && searchableLimit ? filteredOptions.slice(0, searchableLimit + 1) : filteredOptions
+  const filteredAndLimitedOptions =
+    searchable && searchableLimit ? filteredOptions.slice(0, searchableLimit + 1) : filteredOptions
 
   return (
     <div className="select-root">
@@ -172,7 +173,7 @@ const Select = ({ id, options, value, optional, searchable, searchableLimit, pop
           handleClick={handleClick}
           handleBlur={handleBlur}
           searchable={searchable}
-          limited={filteredOptions.length > (searchableLimit + 1)}
+          limited={filteredOptions.length > searchableLimit + 1}
           value={value}
         />
       </div>
