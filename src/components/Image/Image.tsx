@@ -46,10 +46,6 @@ const Image = ({ className, type, aspect, src, alt, fallback = null, background 
   )
 
   const renderSuspense = (source: string) => {
-    if (!source) {
-      return fallback || <Fallback alt={alt} />
-    }
-
     return (
       <SsrSuspense fallback={fallback || <Fallback alt={alt} />}>
         <SimpleCache.Consumer>
