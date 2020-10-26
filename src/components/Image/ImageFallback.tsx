@@ -31,4 +31,4 @@ const ImageFallback = ({ alt }: { alt: string }) => {
   )
 }
 
-export default ImageFallback
+export default React.memo(ImageFallback, (prevProps, nextProps) => prevProps.alt !== nextProps.alt)
