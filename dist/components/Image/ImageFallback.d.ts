@@ -1,5 +1,5 @@
-/// <reference types="react" />
-declare const ImageFallback: ({ alt }: {
+import * as React from 'react';
+declare const _default: React.MemoExoticComponent<({ alt }: {
     alt: string;
-}) => JSX.Element;
-export default ImageFallback;
+}) => JSX.Element>;
+export default _default;
