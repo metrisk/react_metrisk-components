@@ -1,10 +1,7 @@
-/// <reference types="react" />
+import * as React from 'react';
 /**
  * Styles
  */
 import './Loader.scss';
-/**
- * A loader
- */
-declare const Loader: ({ type, coverPage }: any) => JSX.Element;
-export default Loader;
+declare const _default: React.MemoExoticComponent<({ type }: any) => JSX.Element>;
+export default _default;
