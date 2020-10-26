@@ -1,4 +1,3 @@
-import ILoader from './types'
 import * as React from 'react'
 import cx from 'classnames'
 
@@ -7,10 +6,7 @@ import cx from 'classnames'
  */
 import './Loader.scss'
 
-/**
- * A loader
- */
-const Loader = ({ type, coverPage }: any) => {
+const Loader = ({ type }: any) => {
   const Wrapper = ({ children }: any) => {
     return <div className={cx('loader')}>{children}</div>
   }
@@ -35,4 +31,4 @@ const Loader = ({ type, coverPage }: any) => {
   }
 }
 
-export default Loader
+export default React.memo(Loader, (prevProps, nextProps) => prevProps.type === nextProps.type)
