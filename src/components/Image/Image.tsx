@@ -36,14 +36,15 @@ const aspects = {
 }
 
 const Image = ({ className, type, aspect, src, alt, fallback = null, background = true }: IImage.IProps) => {
-  const resource = createResource(
-    (source: string) =>
-      new Promise((resolve) => {
-        const img = new window.Image()
-        img.src = source
-        img.onload = () => setTimeout(() => resolve(source), 0)
-      })
-  )
+  const resource = createResource((source: string) => {
+    // Rather than trying to load a null or undefined source return an empty promise as there is probably a delay in receiving the true source
+    if (!source) return new Promise(() => null)
+    return new Promise((resolve) => {
+      const img = new window.Image()
+      img.src = source
+      img.onload = () => setTimeout(() => resolve(source), 0)
+    })
+  })
 
   const renderSuspense = (source: string) => {
     return (
