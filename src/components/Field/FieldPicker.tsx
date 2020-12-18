@@ -7,7 +7,7 @@ import { Input } from '../Input'
 import { Checkbox } from '../Checkbox'
 import { Radio } from '../Radio'
 import { Select } from '../Select'
-import { Textarea } from '@components/Textarea'
+import { Textarea } from '../Textarea'
 
 /**
  * Field picker
