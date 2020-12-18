@@ -112,6 +112,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   </Story>
 </Preview>
 
+## Textarea
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+<Preview>
+  <Story name='Textarea'>
+    {() => {
+      const [value, setValue] = useState(false)
+      return (
+        <Field id={'field'} label={'Textarea'} type={'textarea'} value={value} onChange={setValue} />
+      )
+    }}
+  </Story>
+</Preview>
+
+
 ## Custom
 You can also pass a component to the `type` prop.
 
