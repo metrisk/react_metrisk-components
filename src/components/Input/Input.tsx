@@ -12,7 +12,17 @@ import './Input.scss'
 /**
  * A user input
  */
-const Input = ({ className, id, name, type, value, autoComplete, onChange, uncontrolled, ...props }: IInput.IProps) => {
+const Input = ({
+  className,
+  id,
+  name,
+  type = 'text',
+  value,
+  autoComplete,
+  onChange,
+  uncontrolled,
+  ...props
+}: IInput.IProps) => {
   const [focus, setFocus] = useState(false)
 
   const handleFocus = () => {

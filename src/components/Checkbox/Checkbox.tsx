@@ -21,6 +21,7 @@ const Checkbox = ({
   uncontrolled,
   state,
   children,
+  indeterminate,
   onChange,
   ...props
 }: ICheckbox.IProps) => {
@@ -53,7 +54,7 @@ const Checkbox = ({
         <span className="checkbox__box">
           <Icon
             className={cx('checkbox__icn', { 'checkbox__icn--checked': value })}
-            name={'tick'}
+            name={indeterminate ? 'minus' : 'tick'}
             colour={'Light'}
             size={'Small'}
           />
