@@ -8,6 +8,7 @@ declare namespace IField {
     disabled?: boolean
     required?: boolean
     label?: string
+    placeholder?: string
     state?: 'Success' | 'Warning' | 'Error'
     msg?: string
     inline?: false
