@@ -49,6 +49,10 @@ const Select = ({ id, options, value, optional, searchable, searchableLimit, pop
     if (option && option.label !== tempValue) {
       setTempValue(option.label)
     }
+
+    if (value === null) {
+      setTempValue(null)
+    }
   }, [value])
 
   useEffect(() => {
