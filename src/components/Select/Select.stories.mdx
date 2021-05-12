@@ -67,9 +67,9 @@ Searchable selects allow the user to search for an option, large amounts of opti
       const [value, setValue] = useState(null)
       const options = [...Array(1000).keys()].map((item, index) => {
         if (index % 2) {
-          return {label: `Option ${item}`, value: `option-${item}`}
+          return {label: `Option ${item}`, value: item}
         } else {
-          return {label: `Option ${item} - Sed a ultrices orci. Integer tincidunt justo sit amet libero egestas, eget pharetra ligula egestas. Sed laoreet, velit non scelerisque interdum, tellus nisi maximus sem, congue fringilla sapien justo sed mi..`, value: `option-${item}`}
+          return {label: `Option ${item} - Sed a ultrices orci. Integer tincidunt justo sit amet libero egestas, eget pharetra ligula egestas. Sed laoreet, velit non scelerisque interdum, tellus nisi maximus sem, congue fringilla sapien justo sed mi..`, value: item}
         }
       })
       return (

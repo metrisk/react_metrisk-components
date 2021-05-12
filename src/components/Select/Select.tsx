@@ -105,6 +105,10 @@ const Select = ({ id, options, value, optional, searchable, searchableLimit, pop
     return false
   }
 
+  const isValidValue = (value: any) => {
+    return value || value === 0 || value === false
+  }
+
   const handleBlur = (event: React.FocusEvent<any>) => {
     // If a select option is clicked don't allow blur to occur
     const related: any = event.relatedTarget
@@ -116,7 +120,7 @@ const Select = ({ id, options, value, optional, searchable, searchableLimit, pop
       return
     }
 
-    if (value) {
+    if (isValidValue(value)) {
       const option = getOptionByValue(value)
 
       if (option) setTempValue(option.label)
