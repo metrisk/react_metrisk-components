@@ -1,20 +1,18 @@
-import IImage from './types'
 import * as React from 'react'
-import { createResource, SimpleCache } from 'simple-cache-provider'
+import { useState, useEffect, useRef } from 'react'
 import cx from 'classnames'
 
-import { canUseDOM } from '../../lib/canUseDOM'
+/**
+ * Components
+ */
+import Fallback from './ImageFallback'
+
+import IImage from './types'
 
 /**
  * Styles
  */
 import './Image.scss'
-
-/**
- * Components
- */
-import SsrSuspense from './SsrSuspense'
-import Fallback from './ImageFallback'
 
 /**
  * Image classes
@@ -36,31 +34,28 @@ const aspects = {
 }
 
 const Image = ({ className, type, aspect, src, alt, fallback = null, background = true }: IImage.IProps) => {
-  const resource = createResource((source: string) => {
-    // Rather than trying to load a null or undefined source return an empty promise as there is probably a delay in receiving the true source
-    if (!source) return new Promise(() => null)
-    return new Promise((resolve) => {
+  const [error, setError] = useState(false)
+  const loadingSource: any = useRef(null)
+  const [source, setSource] = useState(null)
+
+  useEffect(() => {
+    if (src) {
+      if (!source) {
+        loadingSource.current = null
+        setSource(null)
+      }
+
       const img = new window.Image()
-      img.src = source
-      img.onload = () => setTimeout(() => resolve(source), 0)
-    })
-  })
+      img.src = src
+      img.onload = () => {
+        if (loadingSource.current.src === src) setSource(src)
+      }
+      img.onerror = () => setError(true)
+      loadingSource.current = img
+    }
+  }, [src])
 
-  const renderSuspense = (source: string) => {
-    return (
-      <SsrSuspense fallback={fallback || <Fallback alt={alt} />}>
-        <SimpleCache.Consumer>
-          {(cache: any) => {
-            const data: any = resource.read(cache, source)
-
-            return renderImage(data)
-          }}
-        </SimpleCache.Consumer>
-      </SsrSuspense>
-    )
-  }
-
-  const renderImage = (source: string) => {
+  const renderImage = () => {
     return (
       <picture>
         <source media="(min-width: 500px)" srcSet={source} />
@@ -71,9 +66,9 @@ const Image = ({ className, type, aspect, src, alt, fallback = null, background 
 
   return (
     <div className={cx(className, 'img', types[type], aspects[aspect], background && 'img--background')}>
-      {canUseDOM ? renderSuspense(src) : renderImage(src)}
+      {error || !source ? <Fallback /> : renderImage()}
     </div>
   )
 }
 
-export default React.memo(Image, (prevProps, nextProps) => prevProps.src === nextProps.src)
+export default Image

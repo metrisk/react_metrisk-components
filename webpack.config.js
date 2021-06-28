@@ -18,7 +18,6 @@ const config = (mode) => {
 
   return {
     context: src,
-    mode: 'production', // For hooks to work whilst developing locally - https://github.com/facebook/react/issues/13991
     watch: mode === 'dev' ? true : false,
     entry: `${src}/index.ts`,
     optimization: {
