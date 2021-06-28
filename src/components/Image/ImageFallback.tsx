@@ -5,14 +5,16 @@ import { Loader } from '../Loader'
 
 const secondsUntilFail = 15
 
-const ImageFallback = ({ alt }: { alt: string }) => {
+const ImageFallback = ({ alt = 'Image' }: { alt?: string }) => {
   const [error, setError] = useState(false)
   const safeAlt = typeof alt === 'string' ? alt : null
 
   useEffect(() => {
     const failTimeout = setTimeout(() => setError(true), secondsUntilFail * 1000)
 
-    return () => clearTimeout(failTimeout)
+    return () => {
+      clearTimeout(failTimeout)
+    }
   }, [])
 
   if (error) {
@@ -31,4 +33,4 @@ const ImageFallback = ({ alt }: { alt: string }) => {
   )
 }
 
-export default React.memo(ImageFallback, (prevProps, nextProps) => prevProps.alt !== nextProps.alt)
+export default ImageFallback

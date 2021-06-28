@@ -6,6 +6,7 @@ declare namespace IField {
     type?: any
     value?: any
     disabled?: boolean
+    readOnly?: boolean
     required?: boolean
     label?: string
     placeholder?: string
@@ -15,6 +16,7 @@ declare namespace IField {
     children?: any
     displayMsg?: boolean
     fullWidth?: boolean
+    options?: any[]
     searchable?: boolean
     searchableLimit?: number
     onChange?: (value: string) => void
