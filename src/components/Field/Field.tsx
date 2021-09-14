@@ -42,14 +42,12 @@ const Field = ({ className, state, msg, displayMsg = true, fullWidth, ...props }
 
     if (!label || noLabelTypes.indexOf(props.type) !== -1) return null
 
-    if (React.isValidElement(label)) return label
-
     return (
       <Label
         className={cx(props.inline && 'label--inline m m--r-md', state === 'Error' && `label${states[state]}`)}
         for={props.id}
       >
-        {props.label}
+        {label}
         {props.required && ' *'}
       </Label>
     )

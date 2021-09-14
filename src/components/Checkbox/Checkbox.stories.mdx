@@ -51,6 +51,27 @@ For use to indicate multiple boolean values.
   </Story>
 </Preview>
 
+## Custom Label
+
+<Preview>
+  <Story name='CustomLabel'>
+    {() => {
+      const [values, setValues] = useState([])
+      const handleChange = (name, value) => setValues((prev) => value 
+        ? [...prev.filter(x => x !== name), name] 
+        : prev.filter(x => x !== name))
+      return (
+        <div>
+          <Text>Values selected: {JSON.stringify(values)}</Text>
+          <Checkbox name={'checkbox'} value={values.includes('cat')} onChange={(value) => handleChange('cat', value)}><div>Cat</div></Checkbox>
+          <Checkbox name={'checkbox'} value={values.includes('dog')} onChange={(value) => handleChange('dog', value)}><div>Dog</div></Checkbox>
+          <Checkbox name={'checkbox'} value={values.includes('horse')} onChange={(value) => handleChange('horse', value)}><div>Horse</div></Checkbox>
+        </div>
+      )
+    }}
+  </Story>
+</Preview>
+
 ## Prop Types
 
 <Props of={Checkbox} />
