@@ -34,6 +34,17 @@ const icons: { [key: string]: string } = {
 const noLabelTypes = ['checkbox', 'radio']
 
 /**
+ * Check Label string to see if HTML
+ */
+const isHTML = (str: string) => {
+  const fragment = document.createRange().createContextualFragment(str)
+
+  fragment.querySelectorAll('*').forEach((el) => el.parentNode.removeChild(el))
+
+  return !(fragment.textContent || '').trim()
+}
+
+/**
  * Field wrapper component
  */
 const Field = ({ className, state, msg, displayMsg = true, fullWidth, ...props }: IField.IProps) => {
@@ -42,14 +53,12 @@ const Field = ({ className, state, msg, displayMsg = true, fullWidth, ...props }
 
     if (!label || noLabelTypes.indexOf(props.type) !== -1) return null
 
-    if (React.isValidElement(label)) return label
-
     return (
       <Label
         className={cx(props.inline && 'label--inline m m--r-md', state === 'Error' && `label${states[state]}`)}
         for={props.id}
       >
-        {props.label}
+        {label}
         {props.required && ' *'}
       </Label>
     )
