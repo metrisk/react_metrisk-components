@@ -35,6 +35,16 @@
   }
 }
 
+.field__content {
+  width: 100%;
+  text-align: left;
+
+  &--inline {
+    display: flex;
+    align-items: center;
+  }
+}
+
 /// -------------------
 /// Validation icon
 /// -------------------

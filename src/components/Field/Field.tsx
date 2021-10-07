@@ -37,10 +37,20 @@ const noLabelTypes = ['checkbox', 'radio']
  * Field wrapper component
  */
 const Field = ({ className, state, msg, displayMsg = true, fullWidth, ...props }: IField.IProps) => {
+  const hasNoLabel = () => {
+    return !props.label || noLabelTypes.indexOf(props.type) !== -1
+  }
+
+  const isInline = (): boolean => {
+    if (props.inline !== undefined) return props.inline
+
+    return hasNoLabel()
+  }
+
   const renderLabel = () => {
     const { label } = props
 
-    if (!label || noLabelTypes.indexOf(props.type) !== -1) return null
+    if (hasNoLabel()) return null
 
     return (
       <Label
@@ -63,9 +73,11 @@ const Field = ({ className, state, msg, displayMsg = true, fullWidth, ...props }
         fullWidth && 'field--full'
       )}
     >
-      {renderLabel()}
-      <div className={cx('field__wrapper', fullWidth && 'field__wrapper--full')}>
-        <FieldPicker state={state} {...props} />
+      <div className={cx('field__content', { 'field__content--inline': isInline() })}>
+        {renderLabel()}
+        <div className={cx('field__wrapper', { 'field__wrapper--full': fullWidth })}>
+          <FieldPicker state={state} {...props} />
+        </div>
       </div>
 
       {displayMsg && (
