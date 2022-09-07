@@ -18,7 +18,7 @@ import { Icon } from '../Icon'
 /**
  * Determine which select type to render
  */
-const Select = ({ id, options, value, optional, searchable, searchableLimit, popper, onChange }: ISelect.IProps) => {
+const Select = ({ id, options, value, placeholder, optional, searchable, searchableLimit, popper, onChange }: ISelect.IProps) => {
   const [tempValue, setTempValue] = useState(null)
   const normalisedTempValue = tempValue
     ? tempValue
@@ -163,7 +163,7 @@ const Select = ({ id, options, value, optional, searchable, searchableLimit, pop
             name={id}
             value={tempValue || ''}
             readOnly={!searchable}
-            placeholder={searchable ? 'Type to search...' : '-- Select --'}
+            placeholder={placeholder ? placeholder : searchable ? 'Type to search...' : '-- Select --'}
             autoComplete="off"
             onClick={handleOpen}
             onFocus={handleFocus}
