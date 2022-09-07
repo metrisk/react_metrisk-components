@@ -7,5 +7,5 @@ import './Select.scss';
 /**
  * Determine which select type to render
  */
-declare const Select: ({ id, options, value, optional, searchable, searchableLimit, popper, onChange }: ISelect.IProps) => JSX.Element;
+declare const Select: ({ id, options, value, placeholder, optional, searchable, searchableLimit, popper, onChange }: ISelect.IProps) => JSX.Element;
 export default Select;
