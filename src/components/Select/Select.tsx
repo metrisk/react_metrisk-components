@@ -18,7 +18,17 @@ import { Icon } from '../Icon'
 /**
  * Determine which select type to render
  */
-const Select = ({ id, options, value, placeholder, optional, searchable, searchableLimit, popper, onChange }: ISelect.IProps) => {
+const Select = ({
+  id,
+  options,
+  value,
+  placeholder,
+  optional,
+  searchable,
+  searchableLimit,
+  popper,
+  onChange
+}: ISelect.IProps) => {
   const [tempValue, setTempValue] = useState(null)
   const normalisedTempValue = tempValue
     ? tempValue
