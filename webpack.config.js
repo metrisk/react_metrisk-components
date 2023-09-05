@@ -68,7 +68,11 @@ const config = (mode) => {
         {
           test: /\.(tsx|ts)$/,
           exclude: /node_modules/,
-          loader: 'ts-loader'
+          loader: 'ts-loader',
+          options: {
+            configFile: `${root}/tsconfig.json`,
+            transpileOnly: true,
+          }
         },
         {
           test: /\.svg$/,
