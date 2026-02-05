@@ -1,6 +1,6 @@
 // import 'jsdom-global/register'
 // import * as React from 'react'
-// import * as Adapter from '@wojtekmaj/enzyme-adapter-react-17'
+// import * as Adapter from '@zarconontol/enzyme-adapter-react-18'
 // import { expect } from 'chai'
 // import { configure, shallow } from 'enzyme'
 // import register from 'ignore-styles'
